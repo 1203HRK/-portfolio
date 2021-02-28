@@ -21,6 +21,7 @@ be(autiful)・(pe)ople
 
 ## 設計書
 ER図：　https://drive.google.com/file/d/1OM55Ze1ebkiHTeSYegVGcRBb_qjsc1b2/view?usp=sharing
+WBSシート：　https://docs.google.com/spreadsheets/d/1UD38lLNrxly53P_OoPco3CXn5b1scH6ZI7Aw2AwFDNA/edit?usp=sharing
 
 ## チャレンジ要素一覧
 https://docs.google.com/spreadsheets/d/1hQVdC3yqmxP7b5IVzCFjf1x2Mc-ZxvYwGgQiu5GOyJg/edit?usp=sharing
