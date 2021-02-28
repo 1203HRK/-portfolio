@@ -1,4 +1,6 @@
 # BeoPLE
+ビープル
+be(autiful)・(pe)ople
 
 ## サイト概要
 ファッション・メイクに特化したSNS
