@@ -23,6 +23,8 @@ be(autiful)・(pe)ople
 - ER図：　https://drive.google.com/file/d/1OM55Ze1ebkiHTeSYegVGcRBb_qjsc1b2/view?usp=sharing
 - WBSシート：　https://docs.google.com/spreadsheets/d/1UD38lLNrxly53P_OoPco3CXn5b1scH6ZI7Aw2AwFDNA/edit?usp=sharing
 - サイトマップ：　https://docs.google.com/spreadsheets/d/1ZAtx15kR2XAK8y83tEaAyMAFu09aRB8NcwjATkjL48s/edit?usp=sharing
+- テーブル定義書：　https://drive.google.com/file/d/1ThRghWNozbsOWxJ9wu_b82-_2hgtokNw/view?usp=sharing
+- Googleドライブ：　https://drive.google.com/drive/folders/1QgQn-Gkfox2DdnOTc8-izkXpIP-3LKCx?usp=sharing
 
 ## チャレンジ要素一覧
 https://docs.google.com/spreadsheets/d/1hQVdC3yqmxP7b5IVzCFjf1x2Mc-ZxvYwGgQiu5GOyJg/edit?usp=sharing
