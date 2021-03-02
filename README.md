@@ -1,24 +1,33 @@
-# README
+# BeoPLE
+ビープル
+be(autiful)・(pe)ople
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## サイト概要
+洋服・化粧品の使用感や色のノリ方、似合わせなど、様々な目線から商品を評価し共有し合い興味のある商品を買う前に確かめられる情報サイト
 
-Things you may want to cover:
+### サイトテーマ
+ファッション・メイクに特化したSNS
 
-* Ruby version
+### テーマを選んだ理由
+パーソナルカラーや骨格診断等、流行りよりも自身に似合うものにニーズが傾く中、
+コロナ禍によりタッチアップや試着に手が出ないご時世となってしまった昨今の
+買い物のしにくさから、既存のSNSでは様々なジャンルが混在し目当ての投稿を見つけにくいことから考えました。
 
-* System dependencies
+### ターゲットユーザ
+ファッション・メイクに興味のある20代・30代
 
-* Configuration
+### 主な利用シーン
+欲しいジャンルの品定め
 
-* Database creation
+## 設計書
+-　機能一覧：　https://docs.google.com/spreadsheets/d/1hQVdC3yqmxP7b5IVzCFjf1x2Mc-ZxvYwGgQiu5GOyJg/edit?usp=sharing
 
-* Database initialization
+## 開発環境
+- OS：Linux(CentOS)
+- 言語：HTML,CSS,JavaScript,Ruby,SQL
+- フレームワーク：Ruby on Rails
+- JSライブラリ：jQuery
+- IDE：Cloud9
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## 使用素材
+フリー素材：　https://o-dan.net/ja/
