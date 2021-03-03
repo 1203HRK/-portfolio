@@ -5,16 +5,14 @@ class PersonalController < ApplicationController
     @personals = Personal.all
   end
 
-  #一旦保留もしかしたらuserのviewかも
+  def select
+    @user = current_user
+  end
 
-  #def select
-  #   @personals = Personal.all
-  #end
+   private
 
-  # private
-
-  #def personal_params
-  #  params.require(:personal).permit(:name, :description,  { personal_ids: [] })
-  #end
+  def personal_params
+    params.require(:personal).permit(:name, :description,  { personal_ids: [] })
+  end
 
 end

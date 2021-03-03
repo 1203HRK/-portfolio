@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
+    <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "sample.png", class: "rounded-circle" %>
     <%= @user.name  %>
-    <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg", class: "rounded-circle" %>
     <% @user.personals.each do |personal| %>
     <%= personal.name %>
     <% end %>

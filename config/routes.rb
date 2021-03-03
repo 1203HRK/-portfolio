@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
 
-
-
+  root to: 'home#top'
 
   get 'personal/show'
   get 'personal/select'
