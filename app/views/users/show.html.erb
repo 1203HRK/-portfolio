@@ -1,0 +1,12 @@
+<div class="container">
+  <div class="row">
+    <%= @user.name  %>
+    <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg", class: "rounded-circle" %>
+    <% @user.personals.each do |personal| %>
+    <%= personal.name %>
+    <% end %>
+    <% if @user.id == current_user.id %>
+      <%= link_to "編集", edit_user_path(@user) %>
+    <% end %>
+  </div>
+</div>

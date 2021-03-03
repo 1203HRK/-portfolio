@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="row">
+    <h1>プロフィール編集</h1>
+    <%= form_with model:@user, local:true do |f| %>
+      <label for="inputName">Name</label>
+      <%= f.text_field :name, autofocus: true, id:"inputName", placeholder:"名前"%>
+      <%= attachment_image_tag @user, :profile_image, :fill, 60, 60, fallback: "sample.png" %>
+      <label for="inputImage">プロフ画像</label>
+      <%= f.attachment_field :profile_image, placeholder: "プロフィール画像" %>
+      
+      <!-- パーソナル登録 -->
+      <%= collection_check_boxes(:user, :personal_ids, Personal.all, :id, :name ) do |t| %>
+      <%= t.label { t.check_box + t.text } %>
+      <% end %>
+      
+      <%= f.submit "変更を保存" %>
+    <% end %>
+  </div>
+</div>

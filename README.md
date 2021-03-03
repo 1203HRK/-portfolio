@@ -30,4 +30,6 @@ be(autiful)・(pe)ople
 - IDE：Cloud9
 
 ## 使用素材
-フリー素材：　https://o-dan.net/ja/
+- フリー素材：
+- https://o-dan.net/ja/
+- https://girlydrop.com/
