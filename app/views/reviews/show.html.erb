@@ -1,0 +1,33 @@
+<h1>Reviews#show</h1>
+
+<%= @user.name %>
+
+<%= @review_tags.each do |tag| %>
+  <span>
+    <%= tag.tag_name %>
+    <% "(#{tag.posts.count})" %>
+  </span>
+
+<table>
+  <thead>
+    <tr>
+      <th>商品名</th>
+      <th>評価</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td></td>
+        <td class="review-rate" data-score="<%= @review.rate %>"></td>
+      </tr>
+  </tbody>
+</table>
+<script>
+  $('.review-rate').raty({
+    readOnly: true,
+    score: function() {
+      return $(this).attr('data-score');
+    },
+    path: '/assets/'
+  });
+</script>

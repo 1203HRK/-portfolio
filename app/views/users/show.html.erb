@@ -1,12 +1,16 @@
 <div class="container">
   <div class="row">
-    <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "sample.png", class: "rounded-circle" %>
-    <%= @user.name  %>
-    <% @user.personals.each do |personal| %>
-    <%= personal.name %>
-    <% end %>
-    <% if @user.id == current_user.id %>
-      <%= link_to "編集", edit_user_path(@user) %>
-    <% end %>
+    <div class="col-1"></div>
+      <div class="col-10">
+      <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "sample.png", class: "rounded-circle" %>
+      <%= @user.name  %>
+      <% @user.personals.each do |personal| %>
+      <%= personal.name %>
+      <% end %>
+      <% if @user.id == current_user.id %>
+        <%= link_to "編集", edit_user_path(@user) %>
+      <% end %>
+      </div>
+    <div class="col-1"></div>
   </div>
 </div>

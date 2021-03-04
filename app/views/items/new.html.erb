@@ -1,0 +1,15 @@
+<div class="container">
+  <div class="row">
+    <div class="col-1"></div>
+      <div class="col-10">
+        <h1>アイテム登録</h1>
+        <%= form_with model: @item, local:true do |f| %>
+        <div class="form-group">
+          <%= f.text_field :name, class: "form-control" %>
+        </div>
+        <%= f.submit '投稿' %>
+        <% end %>
+      </div>
+    <div class="col-1"></div>
+  </div>
+</div>

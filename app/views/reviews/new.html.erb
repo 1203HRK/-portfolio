@@ -1,0 +1,60 @@
+<div class="container">
+  <div class="row">
+    <div class="col-1"></div>
+      <div class="col-10">
+        <h1>新規投稿</h1>
+        <%= form_with model:@review, local:true do |f| %>
+        <%= render 'layouts/error_messages', model: f.object %>
+        
+        <div class="col-auto">
+          <label for="inputName">商品名</label>
+          <%= f.fields_for :items do |item| %>
+          <%= item.text_field :name, class: "form-control" %>
+          <% end %>
+          <span id="help8" class="form-text text-muted">
+            商品名[全角スペース]色番等</br>
+            ブランド名は入れず、商品名のみ登録してください。
+          </span>
+        </div>
+        
+        <div class="col-auto">
+          <label for="inputImage">商品画像</label>
+          <%= f.attachment_field :image, class: "form-control-file" %>
+        </div>
+  
+        <div class="form-check"><!-- class="form-check-input" class="form-check-label"  どこに入れる・・・・？ -->
+          <label>パーソナル</label>
+          <%= collection_check_boxes(:review, :personal_ids, Personal.all, :id, :name ) do |t| %>
+          <%= t.label { t.check_box + t.text } %></br>
+          <% end %>
+        </div>
+        
+        <div class="col-auto">
+          <label>文書</label>
+          <%= f.text_area :body, class: "form-control" %>
+        </div>
+        
+        <div class="col-auto">
+          <label>タグ</label>
+          <%= f.text_field :tag_name, class: "form-control" %>
+          <span id="help8" class="form-text text-muted">
+          スペースを開けると複数登録できます。
+          </span>
+        </div>
+        
+          <%= f.submit '投稿' %>
+        
+        <% end %>
+       </div>
+    <div class="col-1"></div>
+  </div>
+</div>
+
+<script>
+$('#star').raty({
+  size     : 36,
+  starOff:  '<%= asset_path('star-off.png') %>',
+  starOn : '<%= asset_path('star-on.png') %>',
+  scoreName: 'review[star]' 
+});
+</script>
