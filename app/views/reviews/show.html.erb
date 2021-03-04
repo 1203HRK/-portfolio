@@ -2,10 +2,9 @@
 
 <%= @user.name %>
 
-<%= @review_tags.each do |tag| %>
+<% @review_tags.each do |tag| %>
   <span>
     <%= tag.tag_name %>
-    <% "(#{tag.posts.count})" %>
   </span>
 
 <table>
@@ -22,6 +21,7 @@
       </tr>
   </tbody>
 </table>
+<% end %>
 <script>
   $('.review-rate').raty({
     readOnly: true,

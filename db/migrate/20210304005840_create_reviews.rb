@@ -4,7 +4,7 @@ class CreateReviews < ActiveRecord::Migration[5.2]
       t.text :body
       t.float :rate
       t.string :image
-
+      
       t.timestamps
     end
   end
