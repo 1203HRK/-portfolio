@@ -20,6 +20,9 @@
       <div>
         <%= attachment_image_tag @review, :image, :fill, 300, 300, format: 'jpeg', fallback: "sample.png" %>
       </div>
+        <% @review.personals.each do |personal|  %>
+          <a><%= personal.name %></a>
+        <% end %>
       <div>
        <%= simple_format(@review.body) %>
       </div>
