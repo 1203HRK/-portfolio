@@ -28,9 +28,11 @@ class ReviewsController < ApplicationController
     @review = Review.find(params[:id])
     @user = @review.user
     @review_tags = @review.tags
+    @item = @review.item
   end
 
   def edit
+    @review = Review.find(params[:id])
   end
 
 

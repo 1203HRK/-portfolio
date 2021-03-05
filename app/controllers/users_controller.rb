@@ -2,6 +2,7 @@ class UsersController < ApplicationController
 
   def show #各ユーザーのプロフィール画面
     @user = User.find(params[:id])
+    @reviews = @user.reviews
   end
 
   def edit
