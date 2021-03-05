@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="row">
+    <div class="col-1"></div>
+      <div class="col-10">
+        <h1>タグ一覧</h1>
+        <% @tags.each do |tag| %>
+        <table class="table table-striped table-hover table-sm">
+          <tr>
+            <th style="width:70%"><%= tag.tag_name %></th>
+            <th style="width:30%"><%= "(#{tag.reviews.count})" %></th>
+          </tr>
+        </table>
+        <% end %>
+      </div>
+    <div class="col-1"></div>
+  </div>
+</div>

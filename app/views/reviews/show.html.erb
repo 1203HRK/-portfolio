@@ -14,7 +14,7 @@
         </div>
       </div>
       <div class="d-flex">
-        <div class="my-box h2"><%= @item.name %></div><!-- リンクにしてアイテムの詳細画面に飛ばしたい -->
+        <!-- <div class="my-box h2"> %= link_to @item.name, item_path(@item.id) % </div> アイテムが新規投稿されずにこうしんされてしまう -->
         <div class="review-rate my-box align-self-center" data-score="<%= @review.rate %>"></div><!-- java分かってないから勉強してから再挑戦 -->
       </div>
       <div>
@@ -30,6 +30,7 @@
       </div>
       <div>
         <%= link_to "編集", edit_review_path(@review.id) %>
+        <%= link_to "削除", "/reviews/#{@review.id}", method: :delete, "data-confirm" => "本当に削除しますか？" %>
       </div>
       </div>
     <div class="col-1"></div>

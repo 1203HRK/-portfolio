@@ -13,7 +13,6 @@ class ReviewsController < ApplicationController
     @item = @item.save_item(params[:review][:items][:name])
     @review.item_id = @item.id
     if @review.save
-     #@item.save
       @review.save_tag(tag_list)
       redirect_to review_path(@review.id) #とりあえず投稿詳細画面、あとでTLにしたい
     else
@@ -33,8 +32,26 @@ class ReviewsController < ApplicationController
 
   def edit
     @review = Review.find(params[:id])
+    @item = @review.item
+    @tag_list = @review.tags.pluck(:tag_name).split(nil)
+  end
+  
+  def update
+    review = Review.find(params[:id])
+    @tag_list = params[:review][:tag_name].split(nil)
+    if review.update(review_params)
+      @review.save_tag(tag_list)
+      redirect_to review_path(@review.id) #とりあえず投稿詳細画面、あとでTLにしたい
+    else
+      render :edit
+    end
   end
 
+  def destroy
+    review = Review.find(params[:id])
+    review.destroy
+    redirect_to user_path #とりあえずマイページ、あとでTLにしたい
+  end
 
 
   private

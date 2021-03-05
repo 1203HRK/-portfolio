@@ -12,7 +12,7 @@
             <a><%= personal.name %></a>
           <% end %>
         </div>
-        <div class="align-self-center">
+        <div class="my-box align-self-center">
           <% if @user.id == current_user.id %>
             <%= link_to "プロフィールを編集", edit_user_path(@user), class: "my-box btn btn-outline-success" %>
           <% end %>
@@ -21,11 +21,12 @@
       <div class="d-flex justify-content-around">
         <% @reviews.each do |review| %>
         <div>
-          <%= attachment_image_tag review, :image, :fill, 200, 200, format: 'jpeg', fallback: "sample.png" %>
+          <%= link_to attachment_image_tag(review, :image, :fill, 200, 200, format: 'jpeg', fallback: "sample.png"), review_path(review.id) %>
           <p>評価🌟🌟🌟</p>
         </div>
         <% end %>
       </div>
+    </div>
     <div class="col-1"></div>
   </div>
 </div>

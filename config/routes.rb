@@ -22,6 +22,7 @@ Rails.application.routes.draw do
 
     resources :users
     resources :reviews
+    resources :tags
     resources :items do
       member do
         patch 'save_item'
