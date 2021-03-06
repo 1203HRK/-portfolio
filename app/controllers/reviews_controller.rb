@@ -8,7 +8,7 @@ class ReviewsController < ApplicationController
   def create
     @review = Review.new(review_params)
     @item = Item.find_or_create_by(name: params[:review][:items][:name])
-    tag_list = params[:review][:tag_name].split(nil)
+    tag_list = params[:review][:tag_name].split(/[[:blank:]]+/).select(&:present?)
     @review.user_id = current_user.id
     @review.item_id = @item.id
     if @review.save

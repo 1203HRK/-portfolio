@@ -18,6 +18,7 @@
         </div>
         <div class="col-auto">
           <label for="inputImage">商品画像</label>
+          <%= attachment_image_tag @review, :image, fallback: "sample.png", id: "img_prev", style: "height: 250px; width:300px;" %><br>
           <%= f.attachment_field :image, class: "form-control-file" %>
         </div>
         <div class="col-auto form-group row" id="star">
@@ -48,5 +49,21 @@ $('#star').raty({
   starOff:  '<%= asset_path('star-off.png') %>',
   starOn : '<%= asset_path('star-on.png') %>',
   scoreName: 'review[star]'
+});
+</script>
+<script>
+$(document).on("turbolinks:load", function(){
+  function readURL(input) {
+    if(input.files && input.files[0]){
+      var reader = new FileReader();
+      reader.onload = function (e) {
+        $('#img_prev').attr('src', e.target.result);
+      }
+      reader.readAsDataURL(input.files[0]);
+    }
+  }
+  $("#review_image").change(function(){
+    readURL(this);
+  });
 });
 </script>

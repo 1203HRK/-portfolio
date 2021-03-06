@@ -1,7 +1,6 @@
-
 <div class="d-flex">
   <div class="my-box w-25">
-    <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "sample.png", class: "rounded-circle" %>
+    <%= link_to attachment_image_tag(@user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "sample.png", class: "rounded-circle"), user_path(@user.id) %>
   </div>
   <div class="my-box w-25 align-self-center">
     <p><%= link_to @user.name, user_path(@user.id) %></p>
@@ -20,12 +19,14 @@
 </div>
 <div>
   <% @review_tags.each do |tag| %>
-    <%= tag.tag_name %> <!-- リンクにしてタグの投稿一覧に飛ばしたい -->
+    <a><%= "#" + tag.tag_name %></a> <!-- リンクにしてタグの投稿一覧に飛ばしたい -->
   <% end %>
 </div>
 <div>
-  <%= link_to "編集", edit_review_path(@review.id) %>
-  <%= link_to "削除", "/reviews/#{@review.id}", method: :delete, "data-confirm" => "本当に削除しますか？" %>
+  <% if @user.id == current_user.id %>
+  <%= link_to "編集", edit_review_path(@review.id), class: "btn btn-outline-success" %>
+  <%= link_to "削除", "/reviews/#{@review.id}", method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-outline-danger" %>
+  <% end %>
 </div>
 
 

@@ -6,8 +6,8 @@
         <% @items.each do |item| %>
         <table class="table table-striped table-hover table-sm">
           <tr>
-            <th><%= item.name %></th>
-            <th><%= link_to "edit", edit_item_path(item.id) %></th>
+            <th style="width:70%"><%= link_to item.name + "(#{item.reviews.count})", item_path(item.id) %></th>
+            <th style="width:30%"><%= link_to "edit", edit_item_path(item.id) %></th><!-- adminのみ表示にしたい -->
           </tr>
         </table>
         <% end %>

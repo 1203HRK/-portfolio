@@ -4,4 +4,9 @@
       <%= image_tag asset_path('mv.jpg') ,class: "img-fluid" %>
     </div>
   </div>
+  <div class="col no-gutters　mv">
+    <% @reviews.each do |review| %>
+      <%= link_to attachment_image_tag(review, :image, :fill, 200, 200, format: 'jpeg', fallback: "sample.png"), review_path(review.id) %>
+    <% end %>
+  </div>
 </div>

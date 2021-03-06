@@ -13,7 +13,7 @@
   </div>
   <div class="col-auto">
     <label for="inputImage">商品画像</label>
-        <%= attachment_image_tag @review, :image, fallback: "sample.png", id: "img_prev", style: "height: 250px; width:300px;" %><br>
+    <%= attachment_image_tag @review, :image, fallback: "noimg.png", id: "img_prev", style: "height: 250px; width:300px;" %><br>
     <%= f.attachment_field :image, class: "form-control-file" %>
   </div>
 
