@@ -1,32 +1,35 @@
-<div class="container">
-  <div class="row">
-    <div class="col-1"></div>
-    <div class="col-10">
-      <div class="d-flex">
-        <div class="my-box w-25  mr-auto">
-          <div>
-            <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "sample.png", class: "rounded-circle" %>
-          </div>
-          <p><%= @user.name  %></p>
-          <% @user.personals.each do |personal| %>
-            <a><%= personal.name %></a>
-          <% end %>
-        </div>
-        <div class="my-box align-self-center">
-          <% if @user.id == current_user.id %>
-            <%= link_to "プロフィールを編集", edit_user_path(@user), class: "my-box btn btn-outline-success" %>
-          <% end %>
-        </div>
-      </div>
-      <div class="d-flex justify-content-around">
-        <% @reviews.each do |review| %>
-        <div>
-          <%= link_to attachment_image_tag(review, :image, :fill, 200, 200, format: 'jpeg', fallback: "sample.png"), review_path(review.id) %>
-          <p>評価🌟🌟🌟</p>
-        </div>
-        <% end %>
-      </div>
+<div class="d-flex">
+  <div class="my-box w-25  mr-auto">
+    <div>
+      <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "sample.png", class: "rounded-circle" %>
     </div>
-    <div class="col-1"></div>
+    <p><%= @user.name  %></p>
+    <% @user.personals.each do |personal| %>
+      <a><%= personal.name %></a>
+    <% end %>
   </div>
+  <div class="my-box align-self-center">
+    <% if @user.id == current_user.id %>
+      <%= link_to "プロフィールを編集", edit_user_path(@user), class: "my-box btn btn-outline-success" %>
+    <% end %>
+  </div>
+  </div>
+  <div class="d-flex justify-content-around">
+  <% @reviews.each do |review| %>
+  <div>
+    <%= link_to attachment_image_tag(review, :image, :fill, 200, 200, format: 'jpeg', fallback: "sample.png"), review_path(review.id) %>
+    <div id="star-rate-<%= review.id %>"></div>
+     <script>
+      $('#star-rate-<%= review.id %>').raty({
+        size: 36,
+        starOff:  '<%= asset_path('star-off.png') %>',
+        starOn : '<%= asset_path('star-on.png') %>',
+        starHalf: '<%= asset_path('star-half.png') %>',
+        readOnly: true,
+        score: <%= review.rate %>,
+      });
+    </script>
+  </div>
+  <% end %>
 </div>
+  

@@ -1,13 +1,9 @@
-<div class="container">
-  <div class="row">
-    <div class="col">
-      <h1>パーソナル登録</h1>
-        <%= form_with model:@user, local:true do |f| %>
-        <%= collection_check_boxes(:user, :personal_ids, Personal.all, :id, :name ) do |t| %>
-        <%= t.label { t.check_box + t.text } %>
-        <% end %>
-        <%= f.submit "保存" %>
-      <% end %>
-    </div>
-  </div>
-</div>
+<h1>パーソナル登録</h1>
+  <%= form_with model:@user, local:true do |f| %>
+  <ul  class="list-unstyled">
+  <%= collection_check_boxes(:user, :personal_ids, Personal.all, :id, :name ) do |t| %>
+    <li><%= t.label { t.check_box + t.text } %></li>
+  <% end %>
+  <%= f.submit "保存" %>
+  </ul>
+<% end %>

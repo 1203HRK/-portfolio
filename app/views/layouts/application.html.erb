@@ -4,30 +4,16 @@
     <title>BeoPLE</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    
+
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
     <!-- レスポンスでハンバーガーメニューに -->
-    <nav class="navbar navbar-expand-sm" style="background-color:#F1CAE1;" >
       <% if user_signed_in? %>
-      <ul class="nav w-100 nav-justified">
-        <li class="nav-item">
-        <%= link_to "HOME", user_path(current_user.id) %>
-        </li>
-        <li class="nav-item">
-        検索
-        </li>
-        <li class="nav-item">
-        <%= link_to "新規投稿", new_review_path %>
-        </li>
-        <li class="nav-item">
-        <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-        </li>
-      </ul>
       <% else %>
+      <nav class="navbar navbar-expand-sm" style="background-color:#F1CAE1;" >
         <div class="container">
           <%= link_to root_path do %>
             <%= image_tag "logo.png", class: "navbar-brand  mr-auto" %>
@@ -43,6 +29,18 @@
         </div>
       <% end %>
     </nav>
-    <%= yield %>
+    <% if user_signed_in? %>
+    <div class="container">
+      <div class="row">
+        <div class="col-2"><%= render 'layouts/side', user: @user %></div>
+        <div class="col-8">
+          <%= yield %>
+        </div>
+        <div class="col-2"></div>
+      </div>
+    </div>
+    <% else %>
+      <%= yield %>
+    <% end %>
   </body>
 </html>

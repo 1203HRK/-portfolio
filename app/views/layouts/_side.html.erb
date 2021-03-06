@@ -1,0 +1,14 @@
+<div class="d-flex flex-column border border-info">
+  <div>
+    <%= link_to "MY PEGE", user_path(current_user.id) %>
+  </div>
+  <div>
+    <a>検索</a>
+  </div>
+  <div>
+    <%= link_to "新規投稿", new_review_path %>
+  </div>
+  <div>
+    <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+  </div>
+</div>
