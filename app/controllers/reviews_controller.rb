@@ -7,10 +7,9 @@ class ReviewsController < ApplicationController
 
   def create
     @review = Review.new(review_params)
-    @item = Item.new(name: params[:review][:items][:name])
+    @item = Item.find_or_create_by(name: params[:review][:items][:name])
     tag_list = params[:review][:tag_name].split(nil)
     @review.user_id = current_user.id
-    @item = @item.save_item(params[:review][:items][:name])
     @review.item_id = @item.id
     if @review.save
       @review.save_tag(tag_list)
@@ -50,14 +49,14 @@ class ReviewsController < ApplicationController
   def destroy
     review = Review.find(params[:id])
     review.destroy
-    redirect_to user_path #とりあえずマイページ、あとでTLにしたい
+    redirect_to current_user #とりあえずマイページ、あとでTLにしたい
   end
 
 
   private
 
   def review_params
-    params.require(:review).permit(:body, :image, :description, { personals_ids: [] }, items_attributes: [:name, :_destroy, :id] )
+    params.require(:review).permit(:body, :image, :rate, items_attributes: [:name, :_destroy, :id] )
   end
 
 end

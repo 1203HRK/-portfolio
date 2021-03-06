@@ -24,13 +24,6 @@
         <%= f.label :rate,'評価', class:'col-md-3 col-form-label' %>
         <%= f.hidden_field :rate, id: :review_star %>
         </div>
-
-        <div class="form-check"><!-- class="form-check-input" class="form-check-label"  どこに入れる・・・・？ -->
-          <label>パーソナル</label>
-          <%= collection_check_boxes(:review, :personal_ids, Personal.all, :id, :name ) do |t| %>
-          <%= t.label { t.check_box + t.text } %></br>
-          <% end %>
-        </div>
         <div class="col-auto">
           <label>文書</label>
           <%= f.text_area :body, class: "form-control" %>
@@ -56,6 +49,8 @@ $('#star').raty({
   size     : 36,
   starOff:  '<%= asset_path('star-off.png') %>',
   starOn : '<%= asset_path('star-on.png') %>',
-  scoreName: 'review[star]'
+  starHalf: '<%= asset_path('star-half.png') %>',
+  scoreName: 'review[rate]',
+  half: true,
 });
 </script>

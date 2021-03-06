@@ -5,9 +5,7 @@ class ItemsController < ApplicationController
   end
 
   def create
-    item = Item.new(item_params)
-    item_list = params[:item][:name]  
-    item.save_item(item_list)  
+    Item.find_or_create_by(item_params)
     redirect_to items_path
   end
 
