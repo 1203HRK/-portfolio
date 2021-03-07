@@ -5,7 +5,6 @@ Rails.application.routes.draw do
   get 'personal/show'
   get 'personal/select'
   
-  
   #devide
   devise_for :admins, controllers: {
     sessions:      'admins/sessions',

@@ -19,7 +19,7 @@
 </div>
 <div>
   <% @review_tags.each do |tag| %>
-    <a><%= link_to "#" + tag.tag_name, tag_path(tag) %></a> <!-- リンクにしてタグの投稿一覧に飛ばしたい -->
+    <a><%= link_to "#" + tag.tag_name, tag_path(tag) %></a>
   <% end %>
 </div>
 
