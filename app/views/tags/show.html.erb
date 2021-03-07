@@ -1,4 +1,4 @@
-<h1><%= @item.name %><span class="h4"><%= "全#{@item.reviews.count}件" %></span></h1>
+<h1><%= @tag.tag_name %><span class="h4"><%= "全#{@tag.reviews.count}件" %></span></h1>
   <div class="d-flex  justify-content-around">
   <% @reviews.each do |review| %>
     <div class="my-box">

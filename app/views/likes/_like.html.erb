@@ -1,0 +1,11 @@
+<% if Like.find_by(user_id: current_user.id, review_id: review.id) %>
+  <%= link_to review_likes_path(review),  method: :delete, remote: true do %>
+    <i class="material-icons">♥</i>
+  <% end %>
+<% else %>
+  <%= link_to review_likes_path(review), method: :post, remote: true do %>
+    <i class="material-icons">♥</i>
+   <% end %>
+<% end %>
+<%= review.likes.length %>
+

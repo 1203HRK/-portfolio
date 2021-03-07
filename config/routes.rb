@@ -21,7 +21,9 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
     resources :users
-    resources :reviews
+    resources :reviews do
+      resource :likes, only: [:create, :destroy]
+    end
     resources :tags
     resources :items do
       member do

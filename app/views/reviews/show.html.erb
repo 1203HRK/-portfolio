@@ -22,6 +22,12 @@
     <a><%= "#" + tag.tag_name %></a> <!-- リンクにしてタグの投稿一覧に飛ばしたい -->
   <% end %>
 </div>
+
+<td id="like-<%= @review.id %>">
+  <%= render partial: "likes/like", locals: { review: @review } %>
+</td>
+
+
 <div>
   <% if @user.id == current_user.id %>
   <%= link_to "編集", edit_review_path(@review.id), class: "btn btn-outline-success" %>
