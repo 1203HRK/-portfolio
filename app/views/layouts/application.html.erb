@@ -32,11 +32,11 @@
     <% if user_signed_in? %>
     <div class="container">
       <div class="row">
-        <div class="col-2"><%= render 'layouts/side', user: @user %></div>
+        <div class="col-3"><%= render 'layouts/side', user: @user %></div>
         <div class="col-8">
           <%= yield %>
         </div>
-        <div class="col-2"></div>
+        <div class="col-1"></div>
       </div>
     </div>
     <% else %>

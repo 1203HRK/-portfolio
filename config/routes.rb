@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
   
+  
   root to: 'home#top'
 
-  get 'personal/show'
-  get 'personal/select'
+
+  
+  get 'search' => 'searchs#search'
   
   #devide
   devise_for :admins, controllers: {
@@ -22,6 +24,11 @@ Rails.application.routes.draw do
     resources :users
     resources :reviews do
       resource :likes, only: [:create, :destroy]
+    end
+    resources :personal do
+      member do
+        get 'personal/select'
+      end
     end
     resources :tags
     resources :items do

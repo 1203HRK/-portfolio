@@ -1,9 +1,12 @@
 class PersonalController < ApplicationController
 
+  def index
+    @personals = Personal.all
+  end
 
   def show
-    @personals = Personal.all
-    #@personal.user_id = personal_user.id
+    @personal = Personal.find(params[:id])
+    @reviews =  Review.joins(user: :personal_users).where(user: { personal_users: { personal: @personal } })
   end
 
   def select

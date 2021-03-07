@@ -16,7 +16,7 @@
   </div>
   <div class="d-flex justify-content-around">
   <% @reviews.each do |review| %>
-  <div>
+  <div class="card mx-auto mt-4 shadow-lg">
     <%= link_to attachment_image_tag(review, :image, :fill, 200, 200, format: 'jpeg', fallback: "sample.png"), review_path(review.id) %>
     <div id="star-rate-<%= review.id %>"></div>
      <script>

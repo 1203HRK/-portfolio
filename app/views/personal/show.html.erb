@@ -1,17 +1,10 @@
-<div class="container">
-  <div class="row">
-    <div class="col-1"></div>
-      <div class="col-10">
-        <h1>パーソナル一覧</h1>
-        <% @personals.each do |personal| %>
-        <table class="table table-striped table-hover table-sm">
-          <tr>
-            <th style="width:70%"><%= personal.name %></th>
-            <th style="width:30%"><%= "(#{Review.joins(user: :personal_users).where(user: { personal_users: { personal: personal } }).count})" %></th>
-          </tr>
-        </table>
-        <% end %>
-      </div>
-    <div class="col-1"></div>
+<h1><%= @personal.name %><span class="h4"><%= "全#{@reviews.count}件" %></span></h1>
+  <div class="d-flex  justify-content-around">
+  <% @reviews.each do |review| %>
+    <div class="my-box">
+      <%= link_to attachment_image_tag(review.user, :profile_image, :fill, 50, 50, format: 'jpeg', fallback: "sample.png", class: "rounded-circle"), user_path(review.user.id) %>
+      <%= review.user.name %></br>
+      <%= link_to attachment_image_tag(review, :image, :fill, 200, 200, format: 'jpeg', fallback: "sample.png"), review_path(review.id)  %>
+    </div>
+  <% end %>
   </div>
-</div>
