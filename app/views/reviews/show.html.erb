@@ -23,10 +23,10 @@
   <% end %>
 </div>
 
-<td id="like-<%= @review.id %>">
+<div id="like-<%= @review.id %>">
   <%= render partial: "likes/like", locals: { review: @review } %>
-</td>
-
+  <a><i class="fas fa-comment"></i><%= @review.comments.count %></a>
+</div>
 
 <div>
   <% if @user.id == current_user.id %>
@@ -34,7 +34,24 @@
   <%= link_to "削除", "/reviews/#{@review.id}", method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-outline-danger" %>
   <% end %>
 </div>
-
+<div class="comments">
+<% @review.comments.each do |comment| %>
+  <p><%= link_to attachment_image_tag(comment.user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "sample.png", class: "rounded-circle"), user_path(comment.user.id) %></p>
+  <%= comment.user.name %>
+  <%= comment.created_at.strftime('%Y/%m/%d') %><%= comment.comment %>
+  <% if comment.user.id == current_user.id %>
+    <%= link_to "削除", review_comment_path(comment.review_id, comment.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-outline-danger" %>
+  <% end %>
+<% end %>
+</div>
+<div class="new-comment">
+  <%= form_with(model:[@review, @comment] ) do |f| %>
+    <%= f.text_area :comment, rows:'5',placeholder: "コメントをここに" %>
+    <div class="actions">
+      <%= f.submit "送信する" %>
+    </div>
+  <% end %>
+</div>
 
 
 

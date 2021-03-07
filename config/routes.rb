@@ -1,10 +1,7 @@
 Rails.application.routes.draw do
   
-  
   root to: 'home#top'
 
-
-  
   get 'search' => 'searchs#search'
   
   #devide
@@ -21,20 +18,21 @@ Rails.application.routes.draw do
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
-    resources :users
-    resources :reviews do
-      resource :likes, only: [:create, :destroy]
+  resources :users
+  resources :reviews do
+    resource :likes, only: [:create, :destroy]
+    resources :comments,only: [:create, :edit, :updated, :destroy]
+  end
+  resources :personal do
+    member do
+      get 'personal/select'
     end
-    resources :personal do
-      member do
-        get 'personal/select'
-      end
+  end
+  resources :tags
+  resources :items do
+    member do
+      patch 'save_item'
     end
-    resources :tags
-    resources :items do
-      member do
-        patch 'save_item'
-      end
-    end
-    
+  end
+  
 end

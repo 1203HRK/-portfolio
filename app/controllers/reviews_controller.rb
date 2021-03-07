@@ -27,6 +27,7 @@ class ReviewsController < ApplicationController
     @user = @review.user
     @review_tags = @review.tags
     @item = @review.item
+    @comment = Comment.new
   end
 
   def edit
