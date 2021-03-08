@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  
   root to: 'home#top'
 
   get 'search' => 'searchs#search'
@@ -18,7 +19,12 @@ Rails.application.routes.draw do
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
-  resources :users
+  resources :users do
+    member do
+          get :following, :followers
+      end
+    end
+  resources :relationships, only: [:create, :destroy]
   resources :reviews do
     post 'like/:id' => 'likes#create', as: 'create_like'
     delete 'like/:id' => 'likes#destroy', as: 'destroy_like'
@@ -35,5 +41,6 @@ Rails.application.routes.draw do
       patch 'save_item'
     end
   end
+  
   
 end

@@ -14,7 +14,16 @@ class UsersController < ApplicationController
     @user.update(user_params)
     redirect_to user_path(@user.id)
   end
+  
+  def following#@userがフォローしているユーザー
+    @user  = User.find(params[:id])
+    @users = @user.following
+  end
 
+  def followers#@userをフォローしているユーザー
+    @user  = User.find(params[:id])
+    @users = @user.followers
+  end
 
   private
 
