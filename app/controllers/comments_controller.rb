@@ -1,11 +1,12 @@
 class CommentsController < ApplicationController
   
   def create
-    review = Review.find(params[:review_id]) 
-    comment = current_user.comments.new(comment_params)
-    comment.review_id = review.id
-    comment.save
-    redirect_to review_path(review)
+    @review = Review.find(params[:review_id]) 
+    @comment = @review.comments.build(comment_params)
+    @comment.user_id = current_user.id
+    if @comment.save
+      render :index
+    end
   end
   
   def edit
@@ -16,16 +17,17 @@ class CommentsController < ApplicationController
   end
   
   def destroy
-    review = Review.find(params[:review_id]) 
-    @comment = Comment.find(params[:id])
-    @comment.destroy
-    redirect_to review_path(review)
+    @comment = Comment.find(params[:id]) 
+    if @comment.destroy
+      render :index
+    end
   end
-  
-    private
 
-  def comment_params
-    params.require(:comment).permit(:comment)
-  end
+  private
+  
+    def comment_params
+      params.require(:comment).permit(:comment_content, :review_id, :user_id)
+    end
+    
   
 end
