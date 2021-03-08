@@ -1,9 +1,9 @@
 <h1>パーソナル登録</h1>
   <%= form_with model:@user, local:true do |f| %>
-  <ul  class="list-unstyled">
+  <div class="form-check">
   <%= collection_check_boxes(:user, :personal_ids, Personal.all, :id, :name ) do |t| %>
-    <li><%= t.label { t.check_box + t.text } %></li>
+    <div class="form-check-label"><%= t.label { t.check_box + t.text } %></div>
   <% end %>
-  <%= f.submit "保存" %>
-  </ul>
+  </div>
+  <%= f.submit "保存", class: "btn btn-outline-warning %>
 <% end %>

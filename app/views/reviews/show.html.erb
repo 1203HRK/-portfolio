@@ -34,24 +34,35 @@
   <%= link_to "削除", "/reviews/#{@review.id}", method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-outline-danger" %>
   <% end %>
 </div>
-<div class="comments">
-<% @review.comments.each do |comment| %>
-  <p><%= link_to attachment_image_tag(comment.user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "sample.png", class: "rounded-circle"), user_path(comment.user.id) %></p>
-  <%= comment.user.name %>
-  <%= comment.created_at.strftime('%Y/%m/%d') %><%= comment.comment %>
-  <% if comment.user.id == current_user.id %>
-    <%= link_to "削除", review_comment_path(comment.review_id, comment.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-outline-danger" %>
+<div class="comment">
+  <% @review.comments.each do |comment| %>
+  <div class="card">
+    <div class="row no-gutters">
+      <div class="col-1 align-self-center">
+        <%= link_to attachment_image_tag(comment.user, :profile_image, :fill, 50, 50, format: 'jpeg', fallback: "sample.png", class: "rounded-circle"), user_path(comment.user.id) %>
+      </div>
+      <div class="col-9 align-self-center">
+        <p><%= comment.user.name %> <%= comment.comment %></p>
+        <%= comment.created_at.strftime('%Y/%m/%d') %>
+      </div>
+      <div class="col-2 align-self-center">
+        <% if comment.user.id == current_user.id %>
+          <%= link_to "削除", review_comment_path(comment.review_id, comment.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-outline-danger btn-sm" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
   <% end %>
-<% end %>
 </div>
-<div class="new-comment">
+<div class="new-comment form-group">
   <%= form_with(model:[@review, @comment] ) do |f| %>
-    <%= f.text_area :comment, rows:'5',placeholder: "コメントをここに" %>
+    <%= f.text_field :comment, rows:'5', placeholder: "コメントをここに", class: "form-control form-control-sm" %>
     <div class="actions">
       <%= f.submit "送信する" %>
     </div>
   <% end %>
 </div>
+
 
 
 

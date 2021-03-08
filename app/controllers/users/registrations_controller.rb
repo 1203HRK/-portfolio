@@ -57,7 +57,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # The path used after sign up for inactive accounts.
   def after_sign_up_path_for(resource)
-   personal_select_path
+   personal_select_personal_path
   end
 
 end
