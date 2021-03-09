@@ -1,11 +1,10 @@
 <div class="new-comment form-group">
 <%= form_with(model: [@review, @comment] ) do |f| %>
   <div>
-    <%= f.text_field :comment, rows:'5', placeholder: "コメントをここに", class: "form-control form-control-sm" %>
+    <%= f.text_field :comment, class: "comment" %>
   </div>
   <div class="actions">
     <%= f.submit "送信" %>
   </div>
 <% end %>
 </div>
-

@@ -9,7 +9,7 @@
         <div class="col-auto">
           <label for="inputName">商品名</label>
           <%= f.fields_for :items do |item| %>
-          <%= item.text_field :name, value: @item_name, class: "form-control" %>
+          <%= item.text_field :name, value: @item.name, class: "form-control" %>
           <% end %>
           <span id="help8" class="form-text text-muted">
             商品名[全角スペース]色番等</br>
@@ -23,8 +23,9 @@
         </div>
         <div class="col-auto form-group row" id="star">
           <label for="inputImage">評価</label>
-          <%= f.hidden_field :rate, id: :review_star, class:'col-md-3 col-form-label' %>
+          <%= f.hidden_field :rate,  id: :review_star %>
         </div>
+
         <div class="col-auto">
           <label>文書</label>
           <%= f.text_area :body, class: "form-control" %>
@@ -48,6 +49,8 @@ $('#star').raty({
   size     : 36,
   starOff:  '<%= asset_path('star-off.png') %>',
   starOn : '<%= asset_path('star-on.png') %>',
+  starHalf: '<%= asset_path('star-half.png') %>',
+  score: <%= @review.rate %>,
   scoreName: 'review[star]'
 });
 </script>

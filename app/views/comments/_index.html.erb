@@ -12,7 +12,7 @@
           </div>
           <div class="col-2 align-self-center">
             <% if comment.user == current_user %>
-            　<%#= link_to "編集", review_path(comment.review_id) %><!-- できない！むり！ -->
+            　
               <%= link_to "削除", review_comment_path(comment.review_id, comment.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-outline-danger btn-sm", remote: true %>
             <% end %>
           </div>

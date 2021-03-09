@@ -13,7 +13,7 @@
   </div>
   <div class="col-auto">
     <label for="inputImage">商品画像</label>
-    <%= attachment_image_tag @review, :image, fallback: "noimg.png", id: "img_prev", style: "height: 250px; width:300px;" %><br>
+    <%= attachment_image_tag @review, :image, fallback: "noimg.png", id: "img_prev", class: "img-fluid" %><br>
     <%= f.attachment_field :image, class: "form-control-file" %>
   </div>
 
@@ -29,7 +29,7 @@
     <label>タグ</label>
     <%= f.text_field :tag_name, class: "form-control" %>
     <span id="help8" class="form-text text-muted">
-    半角スペースを開けると複数登録できます。
+    スペースを開けると複数登録できます。
     </span>
   </div>
     <%= f.submit '投稿' %>

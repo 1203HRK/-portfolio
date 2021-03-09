@@ -34,15 +34,17 @@ class ReviewsController < ApplicationController
   def edit
     @review = Review.find(params[:id])
     @item = @review.item
-    @tag_list = @review.tags.pluck(:tag_name).split(nil)
+    @tag_list = @review.tags.pluck(:tag_name).split(/[[:blank:]]+/).select(&:present?)
   end
   
   def update
     review = Review.find(params[:id])
-    @tag_list = params[:review][:tag_name].split(nil)
+    tag_list = params[:review][:tag_name].split(/[[:blank:]]+/).select(&:present?)
+    item = review.item
     if review.update(review_params)
-      @review.save_tag(tag_list)
-      redirect_to review_path(@review.id) #とりあえず投稿詳細画面、あとでTLにしたい
+      review.save_tag(tag_list)
+      item.save
+      redirect_to review_path(review.id) #とりあえず投稿詳細画面、あとでTLにしたい
     else
       render :edit
     end
