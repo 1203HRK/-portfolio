@@ -1,6 +1,6 @@
 <div class="d-flex">
+  <!-- 投稿者プロフィール -->
   <div class="my-box w-25">
-    <!-- プロフィール -->
     <%= link_to attachment_image_tag(@user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "sample.png", class: "rounded-circle"), user_path(@user.id) %>
   </div>
   <div class="my-box w-25 align-self-center">
@@ -10,7 +10,7 @@
     <% end %>
   </div>
 </div>
-    <!-- 投稿内容 -->
+<!-- 投稿内容 -->
 <div class="h3"> <%= link_to @item.name, item_path(@item.id) %> </div>
 <div id="star-rate-<%= @review.id %>"></div>
 <div>

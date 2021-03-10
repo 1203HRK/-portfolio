@@ -1,5 +1,8 @@
 <div class="comment">
-  <% comments.each do |comment| %>
+<button class="btn btn-outline-primary" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+  more...
+</button>
+  <% comments.first(2).each do |comment| %>
     <% unless comment.id.nil? %>
       <div class="card">
         <div class="row no-gutters">
@@ -20,4 +23,27 @@
       </div>
     <% end %>
   <% end %>
+  <div class="collapse" id="collapseExample">
+    <% comments.offset(2).each do |comment| %>
+    <% unless comment.id.nil? %>
+      <div class="card">
+        <div class="row no-gutters">
+          <div class="col-2 align-self-center">
+            <%= link_to attachment_image_tag(comment.user, :profile_image, :fill, 50, 50, format: 'jpeg', fallback: "sample.png", class: "rounded-circle"), user_path(comment.user.id) %>
+          </div>
+          <div class="col-8 align-self-center">
+            <p><%= comment.user.name %> <%= comment.comment %></p>
+            <%= comment.created_at.strftime('%Y/%m/%d') %>
+          </div>
+          <div class="col-2 align-self-center">
+            <% if comment.user == current_user %>
+            　
+              <%= link_to "削除", review_comment_path(comment.review_id, comment.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-outline-danger btn-sm", remote: true %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+  </div>
 </div>

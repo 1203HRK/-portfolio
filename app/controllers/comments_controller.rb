@@ -4,9 +4,8 @@ class CommentsController < ApplicationController
     @review = Review.find(params[:review_id]) 
     @comment = @review.comments.build(comment_params)
     @comment.user_id = current_user.id
-    if @comment.save
-      render :index
-    end
+    @comment.save
+    redirect_back(fallback_location: root_path)
   end
   
   def edit
@@ -18,9 +17,8 @@ class CommentsController < ApplicationController
   
   def destroy
     @comment = Comment.find(params[:id]) 
-    if @comment.destroy
-      render :index
-    end
+    @comment.destroy
+    redirect_back(fallback_location: root_path)
   end
 
   private

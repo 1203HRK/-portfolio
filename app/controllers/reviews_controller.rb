@@ -28,7 +28,7 @@ class ReviewsController < ApplicationController
     @review_tags = @review.tags
     @item = @review.item
     @comment = Comment.new
-    @comments = @review.comments 
+    @comments = @review.comments.order(created_at: :desc)#作成日新着順
   end
 
   def edit
