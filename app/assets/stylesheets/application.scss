@@ -24,10 +24,15 @@
   box-sizing: border-box;
 }
 
-.nav-item {
- margin-right: 15px;
-}
-
 .d-flex {
  flex-wrap: wrap;
+}
+
+.sidebar{
+  position: sticky;
+  top: 0px;
+  background: #CABDC0;
+  padding: 40px;
+  width: 100%;
+  height: 100%;
 }

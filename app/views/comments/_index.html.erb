@@ -1,7 +1,7 @@
 <div class="comment">
-<button class="btn btn-outline-primary" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-  more...
-</button>
+  <a data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+   more...<span class="fas fa-angle-double-down"></span>
+  </a>
   <% comments.first(2).each do |comment| %>
     <% unless comment.id.nil? %>
       <div class="card">

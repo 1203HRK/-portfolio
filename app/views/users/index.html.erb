@@ -1,19 +1,39 @@
 <!-- TL -->
 <% @reviews.each do |review| %>
-  <table class="table table-hover">
-    <tr class="card">
-      <td>
-         <div class="card-header">
-           <%= link_to attachment_image_tag(review.user, :profile_image, :fill, 50, 50, format: 'jpeg', fallback: "sample.png", class: "rounded-circle"), user_path(review.user.id) %>
-           <%= review.user.name %>
-          </div>
-        <%= link_to attachment_image_tag(review, :image, :fill, 200, 200, format: 'jpeg'), user_path(review.user.id) %>
-        <%= review.rate %>
-        <time datetime="<%= review.created_at %>">
-          <%= time_ago_in_words(review.created_at) %>前
-        </time>
+  <div class="card mx-10">
+    <!-- 投稿者情報 -->
+    <div class="card-header">
+     <%= link_to attachment_image_tag(review.user, :profile_image, :fill, 50, 50, format: 'jpeg', fallback: "sample.png", class: "rounded-circle"), user_path(review.user.id) %>
+     <%= review.user.name %>
+     <time datetime="<%= review.created_at %>">
+      <%= time_ago_in_words(review.created_at) %>前
+     </time>
+    </div>
+    <!-- 投稿内容 -->
+    <div class="row no-gutters">
+      <div class="my-auto">
+        <%= link_to attachment_image_tag(review, :image, :fill, 200, 200, format: 'jpeg'), review_path(review.id) %>
+      </div>
+      <div class="card-body">
+        <h5 class="card-title"><%= link_to review.item.name, item_path(review.item.id) %></h5>
+        <div id="star-rate-<%= review.id %>"></div>
+         <script>
+          $('#star-rate-<%= review.id %>').raty({
+            size: 36,
+            starOff:  '<%= asset_path('star-off.png') %>',
+            starOn : '<%= asset_path('star-on.png') %>',
+            starHalf: '<%= asset_path('star-half.png') %>',
+            readOnly: true,
+            score: <%= review.rate %>,
+          });
+         </script>
         <%= review.body %>
-      </td>
-    </tr>
-  </table>
+        <div id="like-<%= @review %>">
+          <%#= render partial: "likes/like", locals: { review: @review } %>
+        </div>
+        <a><i class="fas fa-comment"></i><%= review.comments.count %></a>
+        <div>
+      </div>
+    </div>
+  </div>
 <% end %>

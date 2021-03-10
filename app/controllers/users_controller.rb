@@ -10,6 +10,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @reviews = @user.reviews
+    @likes = Like.where(user_id: @user.id)
   end
 
   def edit
@@ -31,7 +32,6 @@ class UsersController < ApplicationController
   def followers#@userをフォローしているユーザー
     @user  = User.find(params[:id])
     @users = @user.followers
-    
   end
 
   private

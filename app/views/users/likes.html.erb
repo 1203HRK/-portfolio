@@ -1,0 +1,6 @@
+<% @likes.each do |like|%>
+  <% review = Review.find_by(id: like.review_id) %>
+  
+  <%= review.id %>
+
+  <% end %>

@@ -32,7 +32,9 @@
     <% if user_signed_in? %>
     <div class="container">
       <div class="row">
-        <div class="col-3"><%= render 'layouts/side', user: @user %></div>
+        <div class="col-3 sidebar_fixed">
+          <%= render 'layouts/side', user: @user %>
+        </div>
         <div class="col-8">
           <%= yield %>
         </div>

@@ -4,7 +4,9 @@
     <%= f.text_field :comment, class: "comment" %>
   </div>
   <div class="actions">
-    <%= f.submit "送信" %>
+    <%= button_tag :type => "submit", class:"btn btn-outline-primary btn-sm" do %>
+      コメント<i class="fas fa-edit"></i>
+    <% end %>
   </div>
 <% end %>
 </div>

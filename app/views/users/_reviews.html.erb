@@ -1,0 +1,22 @@
+<div class="d-flex justify-content-around">
+  <% reviews.each do |review| %>
+  <div class="card mx-auto mt-4 shadow-lg">
+    <%= link_to attachment_image_tag(review, :image, :fill, 200, 200, format: 'jpeg', fallback: "sample.png"), review_path(review.id) %>
+    <div id="star-rate-<%= review.id %>"></div>
+     <script>
+      $('#star-rate-<%= review.id %>').raty({
+        size: 36,
+        starOff:  '<%= asset_path('star-off.png') %>',
+        starOn : '<%= asset_path('star-on.png') %>',
+        starHalf: '<%= asset_path('star-half.png') %>',
+        readOnly: true,
+        score: <%= review.rate %>,
+      });
+    </script>
+    <div>
+    <i class="fas fa-heart"></i><%= review.likes.count  %>
+    <i class="fas fa-comment"></i><%= review.comments.count %>
+    </div>
+  </div>
+  <% end %>
+</div>
