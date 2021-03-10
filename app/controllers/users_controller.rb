@@ -1,6 +1,13 @@
 class UsersController < ApplicationController
+  
+  def index
+    @user = current_user
+    follower_ids = @user.following.pluck(:id)
+    follower_ids.push(@user.id)
+    @reviews = Review.where(user_id: follower_ids).order(id: "desc")
+  end
 
-  def show #各ユーザーのプロフィール画面
+  def show
     @user = User.find(params[:id])
     @reviews = @user.reviews
   end
@@ -18,11 +25,13 @@ class UsersController < ApplicationController
   def following#@userがフォローしているユーザー
     @user  = User.find(params[:id])
     @users = @user.following
+    
   end
 
   def followers#@userをフォローしているユーザー
     @user  = User.find(params[:id])
     @users = @user.followers
+    
   end
 
   private

@@ -1,0 +1,19 @@
+<!-- TL -->
+<% @reviews.each do |review| %>
+  <table class="table table-hover">
+    <tr class="card">
+      <td>
+         <div class="card-header">
+           <%= link_to attachment_image_tag(review.user, :profile_image, :fill, 50, 50, format: 'jpeg', fallback: "sample.png", class: "rounded-circle"), user_path(review.user.id) %>
+           <%= review.user.name %>
+          </div>
+        <%= link_to attachment_image_tag(review, :image, :fill, 200, 200, format: 'jpeg'), user_path(review.user.id) %>
+        <%= review.rate %>
+        <time datetime="<%= review.created_at %>">
+          <%= time_ago_in_words(review.created_at) %>前
+        </time>
+        <%= review.body %>
+      </td>
+    </tr>
+  </table>
+<% end %>

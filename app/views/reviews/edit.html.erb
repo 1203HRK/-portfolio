@@ -8,7 +8,7 @@
         
         <div class="col-auto">
           <label for="inputName">商品名</label>
-          <%= f.fields_for :items do |item| %>
+          <%= f.fields_for :item do |item| %>
           <%= item.text_field :name, value: @item.name, class: "form-control" %>
           <% end %>
           <span id="help8" class="form-text text-muted">
@@ -51,7 +51,7 @@ $('#star').raty({
   starOn : '<%= asset_path('star-on.png') %>',
   starHalf: '<%= asset_path('star-half.png') %>',
   score: <%= @review.rate %>,
-  scoreName: 'review[star]'
+  scoreName: 'review[rate]'
 });
 </script>
 <script>

@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
-  
-  
+
+
   root to: 'home#top'
 
   get 'search' => 'searchs#search'
-  
+
   #devide
   devise_for :admins, controllers: {
     sessions:      'admins/sessions',
@@ -41,6 +41,6 @@ Rails.application.routes.draw do
       patch 'save_item'
     end
   end
-  
-  
+
+
 end

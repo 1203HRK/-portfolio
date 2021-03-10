@@ -1,12 +1,47 @@
 <h1><%= @item.name %><span class="h4"><%= "全#{@item.reviews.count}件" %></span></h1>
-  <div class="d-flex  justify-content-around">
+<div>
+  <h3>平均<%= @item.reviews.average(:rate).to_f.round(1) %>点
+  <span id="star-rate-<%= @item.id %>"></span></h3>
+ <!-- 平均点表示、コントローラーにかけないかなあ -->
+  <script> 
+   $('#star-rate-<%= @item.id %>').raty({
+      size: 36,
+        starOff:  '<%= asset_path('star-off.png') %>',
+        starOn : '<%= asset_path('star-on.png') %>',
+        starHalf: '<%= asset_path('star-half.png') %>',
+      half: true,
+      readOnly: true,
+      score: <%= @item.reviews.average(:rate).to_f.round(1) %>
+    });
+  </script>
+</div>
+<div class="d-flex justify-content-around">
   <% @reviews.each do |review| %>
-    <div class="my-box">
+  <div>
+    <div>
       <%= link_to attachment_image_tag(review.user, :profile_image, :fill, 50, 50, format: 'jpeg', fallback: "sample.png", class: "rounded-circle"), user_path(review.user.id) %>
-      <%= review.user.name %></br>
-      <%= link_to attachment_image_tag(review, :image, :fill, 200, 200, format: 'jpeg', fallback: "sample.png"), review_path(review.id)  %>
+      <%= link_to  review.user.name, user_path(review.user.id)  %>
     </div>
-  <% end %>
+    <div>
+    <%= link_to attachment_image_tag(review, :image, :fill, 200, 200, format: 'jpeg', fallback: "sample.png"), review_path(review.id) %>
+    <div id="star-rate-<%= review.id %>"></div>
+     <script>
+      $('#star-rate-<%= review.id %>').raty({
+        size: 36,
+        starOff:  '<%= asset_path('star-off.png') %>',
+        starOn : '<%= asset_path('star-on.png') %>',
+        starHalf: '<%= asset_path('star-half.png') %>',
+        readOnly: true,
+        score: <%= review.rate %>,
+      });
+    </script>
+    <div>
+    <i class="fas fa-heart"></i><%= review.likes.count  %>
+    <i class="fas fa-comment"></i><%= review.comments.count %>
+    </div>
   </div>
+  </div>
+  <% end %>
+</div>
 
 
