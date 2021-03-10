@@ -26,7 +26,7 @@ Rails.application.routes.draw do
     end
   resources :relationships, only: [:create, :destroy]
   resources :reviews do
-    post 'like/:id' => 'likes#create', as: 'create_like'
+    post 'like' => 'likes#create', as: 'create_like'
     delete 'like/:id' => 'likes#destroy', as: 'destroy_like'
     resources :comments,only: [:create, :edit, :updated, :destroy]
   end

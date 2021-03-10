@@ -60,7 +60,7 @@ class ReviewsController < ApplicationController
   private
 
   def review_params
-    params.require(:review).permit(:body, :image, :rate, item_attributes: [:name, :_destroy, :id] )
+    params.require(:review).permit(:body, :rate, item_attributes: [:name, :_destroy, :id], review_images_images: [] )
   end
 
 

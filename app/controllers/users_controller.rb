@@ -1,7 +1,9 @@
 class UsersController < ApplicationController
-  
+
   def index
     @user = current_user
+    # フォローユーザーと自分のIDをまとめた。
+    # pluck -> 引数で与えたカラムの値だけをとって配列で返す
     follower_ids = @user.following.pluck(:id)
     follower_ids.push(@user.id)
     @reviews = Review.where(user_id: follower_ids).order(id: "desc")
@@ -22,14 +24,16 @@ class UsersController < ApplicationController
     @user.update(user_params)
     redirect_to user_path(@user.id)
   end
-  
-  def following#@userがフォローしているユーザー
+
+  # @userがフォローしているユーザー
+  def following
     @user  = User.find(params[:id])
     @users = @user.following
-    
+
   end
 
-  def followers#@userをフォローしているユーザー
+  # @userをフォローしているユーザー
+  def followers
     @user  = User.find(params[:id])
     @users = @user.followers
   end

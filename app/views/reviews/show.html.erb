@@ -13,8 +13,17 @@
 <!-- 投稿内容 -->
 <div class="h3"> <%= link_to @item.name, item_path(@item.id) %> </div>
 <div id="star-rate-<%= @review.id %>"></div>
-<div>
-  <%= attachment_image_tag @review, :image, :fill, 300, 300, format: 'jpeg', fallback: "sample.png" %>
+<div class="d-flex">
+  <div class="my-box">
+    <% @review.review_images.first(1).each do |image| %>
+      <%= attachment_image_tag image, :image, :fill, 300, 300, format: 'jpeg', fallback: "sample.png" , class: "main__image" %>
+    <% end %>
+  </div>
+  <div class="my-box flex-nowrap">
+        <% @review.review_images.each do |image| %>
+          <%= attachment_image_tag image, :image, :fill, 150, 150, format: 'jpeg', fallback: "sample.png", class: "image__list" %>
+        <% end %>
+  </div>
 </div>
 <div>
  <%= simple_format(@review.body) %>
@@ -24,10 +33,18 @@
     <a><%= link_to "#" + tag.tag_name, tag_path(tag) %></a>
   <% end %>
 </div>
-<div id="like-<%= @review.id %>">
-  <%= render partial: "likes/like", locals: { review: @review } %>
+<div class="d-flex">
+  <div class="my-box mr-2" id="like-<%= @review.id %>">
+    <%= render partial: "likes/like", locals: { review: @review } %>
+  </div>
+  <div class="my-box">
+    <% if @review.comments.count >= 1 %>
+      <a><i class="fas fa-comment"></i><%= @review.comments.count %></a>
+    <% else %>
+      <i class="far fa-comment"></i>
+    <% end %>
+  </div>
 </div>
-  <a><i class="fas fa-comment"></i><%= @review.comments.count %></a>
 <div>
   <% if @user.id == current_user.id %>
   <%= link_to "編集", edit_review_path(@review.id), class: "btn btn-outline-success" %>
@@ -42,7 +59,6 @@
     <%= render partial: 'comments/form', locals: { comment: @comment, review: @review } %>
   <% end %>
 </div>
-
  <script>
   $('#star-rate-<%= @review.id %>').raty({
     size: 36,
@@ -52,4 +68,12 @@
     readOnly: true,
     score: <%= @review.rate %>,
   });
+  </script>
+ <script>
+$(document).on('turbolinks:load', function() {
+  $('.image__list').click(function () {
+    var $src = $(this).attr('src');
+    $('.main__image').attr('src', $src);
+  });
+});
   </script>

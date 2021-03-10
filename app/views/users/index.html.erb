@@ -28,8 +28,8 @@
           });
          </script>
         <%= review.body %>
-        <div id="like-<%= @review %>">
-          <%#= render partial: "likes/like", locals: { review: @review } %>
+        <div id="like-<%= review.id %>">
+          <%= render partial: "likes/like", locals: { review: review } %>
         </div>
         <a><i class="fas fa-comment"></i><%= review.comments.count %></a>
         <div>
