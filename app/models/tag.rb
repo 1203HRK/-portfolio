@@ -1,14 +1,12 @@
 class Tag < ApplicationRecord
-  
-  has_many :tag_maps, dependent: :destroy, foreign_key: 'tag_id'
+  has_many :tag_maps, dependent: :destroy
   has_many :reviews, through: :tag_maps
-  
+
   def self.looks(searches, words)
-    if searches == "perfect_match"
-      @tag = Tag.where("tag_name LIKE ?", "#{words}")
-    else
-      @tag = Tag.where("tag_name LIKE ?", "%#{words}%")
-    end
+    @tag = if searches == 'perfect_match'
+             Tag.where('tag_name LIKE ?', words.to_s)
+           else
+             Tag.where('tag_name LIKE ?', "%#{words}%")
+           end
   end
-  
 end

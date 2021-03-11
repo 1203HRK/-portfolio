@@ -1,5 +1,4 @@
 class PersonalController < ApplicationController
-
   def index
     @personals = Personal.all
   end
@@ -13,10 +12,9 @@ class PersonalController < ApplicationController
     @user = current_user
   end
 
-   private
+  private
 
   def personal_params
-    params.require(:personal).permit(:name, :description,  { personal_ids: [] })
+    params.require(:personal).permit(:name, :description, { personal_ids: [] })
   end
-
 end

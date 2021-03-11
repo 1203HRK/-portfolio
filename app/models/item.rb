@@ -1,15 +1,13 @@
 class Item < ApplicationRecord
-
   validates :name, presence: true
 
   has_many :reviews, dependent: :destroy
 
   def self.looks(searches, words)
-    if searches == "perfect_match"
-      @item = Item.where("name LIKE ?", "#{words}")
-    else
-      @item = Item.where("name LIKE ?", "%#{words}%")
-    end
+    @item = if searches == 'perfect_match'
+              Item.where('name LIKE ?', words.to_s)
+            else
+              Item.where('name LIKE ?', "%#{words}%")
+            end
   end
-
 end
