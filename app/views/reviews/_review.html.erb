@@ -1,0 +1,29 @@
+<!-- 画像1枚＋評価＋いいね数＋コメント数 -->
+<% reviews.each do |review| %>
+  <div>
+    <div>
+      <%= link_to attachment_image_tag(review.user, :profile_image, :fill, 50, 50, format: 'jpeg', fallback: "sample.png", class: "rounded-circle"), user_path(review.user.id) %>
+      <%= link_to review.user.name, user_path(review.user.id)  %>
+    </div>
+    <div>
+      <% review.review_images.first(1).each do |image| %>
+        <%= link_to attachment_image_tag(image, :image, :fill, 200, 200, format: 'jpeg', fallback: "sample.png" , class: "main__image"), review_path(review) %>
+      <% end %>
+    <div id="star-rate-<%= review.id %>"></div>
+     <script>
+      $('#star-rate-<%= review.id %>').raty({
+        size: 36,
+        starOff:  '<%= asset_path('star-off.png') %>',
+        starOn : '<%= asset_path('star-on.png') %>',
+        starHalf: '<%= asset_path('star-half.png') %>',
+        readOnly: true,
+        score: <%= review.rate %>,
+      });
+    </script>
+    <div>
+    <i class="fas fa-heart"></i><%= review.likes.count  %><!-- あとでいいねできるようにしたい -->
+    <i class="fas fa-comment"></i><%= review.comments.count %>
+    </div>
+  </div>
+  </div>
+  <% end %>

@@ -9,7 +9,7 @@ class User < ApplicationRecord
   has_many :personal_users
   has_many :personals, through: :personal_users
   has_many :reviews, dependent: :destroy
-  has_many :likes, dependent: :destroy
+  
   has_many :comments, dependent: :destroy
   has_many :following_relationships, foreign_key: 'follower_id', class_name: 'Relationship', dependent: :destroy
   has_many :following, through: :following_relationships

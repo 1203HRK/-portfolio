@@ -4,7 +4,7 @@
     <title>BeoPLE</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
@@ -17,32 +17,49 @@
   </head>
 
   <body>
-    <!-- レスポンスでハンバーガーメニューに -->
-      <% if user_signed_in? %>
-      <% else %>
-      <nav class="navbar navbar-expand-sm" style="background-color:#F1CAE1;" >
+    <header class="shadow-sm">
+      <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container">
-          <%= link_to root_path do %>
-            <%= image_tag "logo.png", class: "navbar-brand  mr-auto" %>
-          <% end %>
-          <ul class="navbar-nav">
+          <a class="navbar-brand" href="/"><%= image_tag('logo.png') %></a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav ml-auto">
+            <% if user_signed_in? %>
+            <li class="nav-item">
+              <div class="form-inline">
+                <%= form_with url: search_path, method: :get, local: :true do |f| %>
+                  <%= f.select :range, options_for_select([['Item'], ['Tag']]), class: "custom-select custom-select-sm" %>
+                  <%= f.select :search, options_for_select([["完全一致","perfect_match"], ["部分一致","partial_match"]]), class: "custom-select custom-select-sm" %>
+                  <%= f.text_field :word, class: "form-control col-auto form-control-sm" %>
+                  <%= f.submit "検索" %>
+                <% end %>
+              </div>
+            </li>
+            <li class="nav-item">
+              <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+            </li>
+            <% else %>
             <li class="nav-item">
               <%= link_to "ログイン", new_user_session_path %>
             </li>
             <li class="nav-item">
               <%= link_to "新規登録", new_user_registration_path %>
             </li>
-          </ul>
+            <% end %>
+            </ul>
+          </div>
         </div>
-      <% end %>
-    </nav>
+      </nav>
+    </header>
     <% if user_signed_in? %>
-    <div class="container">
-      <div class="row">
-        <div class="col-3 sidebar_fixed">
+    <div class="container-fluid top">
+      <div class="row  top">
+        <div class="col-3 h-100 sidebar_fixed ">
           <%= render 'layouts/side', user: @user %>
         </div>
-        <div class="col-8">
+        <div class="col-8 overflow-auto" style="height:100%;">
           <%= yield %>
         </div>
         <div class="col-1"></div>

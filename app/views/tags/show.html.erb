@@ -1,12 +1,6 @@
 <h1><%= @tag.tag_name %><span class="h4"><%= "全#{@tag.reviews.count}件" %></span></h1>
   <div class="d-flex  justify-content-around">
-  <% @reviews.each do |review| %>
-    <div class="my-box">
-      <%= link_to attachment_image_tag(review.user, :profile_image, :fill, 50, 50, format: 'jpeg', fallback: "sample.png", class: "rounded-circle"), user_path(review.user.id) %>
-      <%= review.user.name %></br>
-      <%= link_to attachment_image_tag(review, :image, :fill, 200, 200, format: 'jpeg', fallback: "sample.png"), review_path(review.id)  %>
-    </div>
-  <% end %>
+    <%= render "reviews/review", reviews: @reviews %>
   </div>
 
 

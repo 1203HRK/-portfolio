@@ -2,7 +2,13 @@
     <% likes.each do |like| %>
     <% review = Review.find_by(id: like.review_id) %>
   <div class="card mx-auto mt-4 shadow-lg">
-    <%= link_to attachment_image_tag(review, :image, :fill, 200, 200, format: 'jpeg', fallback: "sample.png"), review_path(review.id) %>
+    <div class="card-header">
+     <%= link_to attachment_image_tag(review.user, :profile_image, :fill, 50, 50, format: 'jpeg', fallback: "sample.png", class: "rounded-circle"), user_path(review.user.id) %>
+     <%= review.user.name %>
+    </div>
+    <% review.review_images.first(1).each do |image| %>
+      <%= link_to attachment_image_tag(image, :image, :fill, 200, 200, format: 'jpeg', fallback: "sample.png" , class: "main__image"), review_path(review.id) %>
+    <% end %>
     <div id="star-rate-<%= review.id %>"></div>
      <script>
       $('#star-rate-<%= review.id %>').raty({

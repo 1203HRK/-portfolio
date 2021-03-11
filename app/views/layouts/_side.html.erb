@@ -1,36 +1,22 @@
 <div class="sidebar"> 
-
-  <div>
-    <%= link_to "MY PEGE", user_path(current_user.id) %>
-  </div>
-  <div>
-    <a>検索</a>
-  </div>
-  <div>
-    <%= link_to "新規投稿", new_review_path %>
-  </div>
-  <div>
-    <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-  </div>
-  <div>
-    <%= link_to "アイテム一覧", items_path %>
-  </div>
-  <div>
-    <%= link_to "タグ一覧", tags_path %>
-  </div>
-  <div>
-    <%= link_to "パーソナル一覧", personal_index_path %>
-  </div>
-  <div class="form-group">
-    <%= form_with url: search_path, method: :get, local: :true do |f| %>
-      <%= f.select :range, options_for_select([['Item'], ['Tag']]), class: "custom-select custom-select-sm" %></br>
-      <%= f.select :search, options_for_select([["完全一致","perfect_match"], ["部分一致","partial_match"]]), class: "custom-select custom-select-sm" %>
-      <%= f.text_field :word, class: "form-control col-auto form-control-sm" %>
-      <%= f.submit "検索" %>
-    <% end %>
-  </div>
-  
-  <div class="d-flex align-items-end">
-    <%= link_to "TL", users_path %>
+  <div class="text-center border border-white" style="height:100%;">
+    <div>
+      <%= link_to image_tag("MYPAGE.png", size:'50x50', alt: "MY PEGE") + "MY PAGE", user_path(current_user.id) %>
+    </div>
+    <div>
+      <%= link_to image_tag("newreview.png", size:'50x50', alt: "MY PEGE") + "NEW REVIEW", new_review_path %>
+    </div>
+    <div>
+      <%= link_to "アイテム一覧", items_path %>
+    </div>
+    <div>
+      <%= link_to "タグ一覧", tags_path %>
+    </div>
+    <div>
+      <%= link_to "パーソナル一覧", personal_index_path %>
+    </div>
+    <div>
+      <%= link_to "TL", users_path %>
+    </div>
   </div>
 </div>

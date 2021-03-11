@@ -13,8 +13,7 @@
   </div>
   <div class="col-auto">
     <label for="inputImage">商品画像</label>
-    <%= attachment_image_tag @review_images, :image, fallback: "noimg.png", id: "img_prev", class: "img-fluid" %><br>
-    <%= f.attachment_field :review_images_images, class: "form-control-file", multiple: true %>
+    <%= f.attachment_field :review_images_images, multiple: true %>
   </div>
 
   <div class="form-group row" id="star">

@@ -12,7 +12,9 @@
     <!-- 投稿内容 -->
     <div class="row no-gutters">
       <div class="my-auto">
-        <%= link_to attachment_image_tag(review, :image, :fill, 200, 200, format: 'jpeg'), review_path(review.id) %>
+        <% review.review_images.first(1).each do |image| %>
+          <%= link_to attachment_image_tag(image, :image, :fill, 150, 150, format: 'jpeg', fallback: "sample.png" , class: "main__image"), review_path(review) %>
+        <% end %>
       </div>
       <div class="card-body">
         <h5 class="card-title"><%= link_to review.item.name, item_path(review.item.id) %></h5>
