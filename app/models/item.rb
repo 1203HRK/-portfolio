@@ -3,11 +3,7 @@ class Item < ApplicationRecord
 
   has_many :reviews, dependent: :destroy
 
-  def self.looks(searches, words)
-    @item = if searches == 'perfect_match'
-              Item.where('name LIKE ?', words.to_s)
-            else
-              Item.where('name LIKE ?', "%#{words}%")
-            end
+  def self.looks(words)
+    @item = Item.where('name LIKE ?', "%#{words}%")
   end
 end

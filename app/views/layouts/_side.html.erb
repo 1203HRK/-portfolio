@@ -4,7 +4,7 @@
       <%= link_to image_tag("MYPAGE.png", size:'50x50', alt: "MY PEGE") + "MY PAGE", user_path(current_user.id) %>
     </div>
     <div>
-      <%= link_to image_tag("newreview.png", size:'50x50', alt: "MY PEGE") + "NEW REVIEW", new_review_path %>
+      <%= link_to image_tag("newreview.png", size:'50x50', alt: "NEW REVIEW") + "NEW REVIEW", new_review_path %>
     </div>
     <div>
       <%= link_to "アイテム一覧", items_path %>
@@ -16,7 +16,7 @@
       <%= link_to "パーソナル一覧", personal_index_path %>
     </div>
     <div>
-      <%= link_to "TL", users_path %>
+      <%= link_to image_tag("home.png", size:'50x50', alt: "TIME LINE") + "TIME LINE", users_path %>
     </div>
   </div>
 </div>

@@ -1,7 +1,5 @@
-
-<h2><%= @word %>の検索結果</h2>
-
 <% if @range == "Tag" %>
+    <h2>#<%= @word %>の検索結果</h2>
     <h3><%= @tags.count %>件ヒットしました</h3>
     <% @tags.each do |tag| %>
     <table class="table table-striped table-hover table-sm">
@@ -11,6 +9,7 @@
     </teble>
     <% end %>
 <% else %>
+    <h2>「<%= @word %>」の検索結果</h2>
     <h3><%= @items.count %>件ヒットしました</h3>
     <% @items.each do |item| %>
     <table class="table table-striped table-hover table-sm">
