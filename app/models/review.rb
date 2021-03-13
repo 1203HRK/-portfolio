@@ -12,11 +12,22 @@ class Review < ApplicationRecord
   has_many :tags, through: :tag_maps
   has_many :review_images, dependent: :destroy
   accepts_attachments_for :review_images, attachment: :image
-  
+
   def liked_by?(user)
     likes.where(user_id: user.id).exists?
   end
-  
+
+  #いいねのランキング取得
+  def self.create_all_ranks
+    Review.order('likes_count desc')
+  end
+
+  #アイテムだけのいいねのランキング取得
+  def self.create_item_ranks(item_id)
+   Review.where(item_id: item_id).order('likes_count desc')
+  end
+
+  #タグ登録、既存か新規か判断
   def save_tag(sent_tags)
     current_tags = self.tags.pluck(:tag_name) unless self.tags.nil?
     old_tags = current_tags - sent_tags
@@ -32,6 +43,6 @@ class Review < ApplicationRecord
     end
   end
 
- 
+
 
 end

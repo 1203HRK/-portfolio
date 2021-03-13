@@ -5,7 +5,7 @@
     </div>
   </div>
   <div class="col no-gutters　mv">
-    <% @reviews.each do |review| %>
+    <% @all_ranks.each do |review| %>
      <% review.review_images.first(1).each do |image| %>
       <%= attachment_image_tag image, :image, :fill, 200, 200, format: 'jpeg', fallback: "sample.png" , class: "main__image" %>
       <% end %>

@@ -15,6 +15,7 @@ class ItemsController < ApplicationController
   def show
     @item = Item.find(params[:id])
     @reviews = @item.reviews
+    @item_ranks = Review.create_item_ranks(@item.id)
   end
 
   def edit

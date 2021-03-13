@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
   def top
-    @reviews = Review.all
+    @all_ranks = Review.create_all_ranks
   end
 end
