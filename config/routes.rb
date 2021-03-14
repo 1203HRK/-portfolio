@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   # 新規登録後にパーソナル登録に移行する為
   devise_scope :user do
     get 'personal/select' => 'personal#select'
+    post 'users/guest_sign_in', to: 'users/sessions#new_guest'
   end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

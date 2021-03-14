@@ -2,15 +2,16 @@
   <div class="row">
     <div class="col-1"></div>
       <div class="col-10">
-        <h1>タグ一覧</h1>
-        <% @tags.each do |tag| %>
-        <table class="table table-striped table-hover table-sm">
+        <h1>タグ一覧<span class="h4">全<%= @tags.count %>件</span></h1>
+        
+        <table class="table table-hover table-sm">
+          <% @tags.each do |tag| %>
           <tr>
-            <th style="width:70%"><%= link_to tag.tag_name + "(#{tag.reviews.count})", tag_path(tag.id) %></th>
-            <th style="width:30%"></th>
+            <td class="pl-3" style="width:70%"><%= link_to "#" + tag.tag_name + "　(#{tag.reviews.count})", tag_path(tag.id) %></td>
+            <td style="width:30%"><%= link_to "削除", tag, method: :delete, "data-confirm" => "本当に削除しますか？" %></td>
           </tr>
+          <% end %>
         </table>
-        <% end %>
       </div>
     <div class="col-1"></div>
   </div>

@@ -1,7 +1,7 @@
 <div class="d-flex justify-content-around">
     <div class="my-box text-center align-self-center">
       <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "sample.png", class: "rounded-circle" %>
-      <p><%= @user.name  %></p>
+      <h3><%= @user.name  %></h3>
     </div>
     <div class="my-box align-self-center">
     <% @user.personals.each do |personal| %>

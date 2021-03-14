@@ -17,7 +17,6 @@
    <link rel="preconnect" href="https://fonts.gstatic.com">
    <link href="https://fonts.googleapis.com/css2?family=Kalam&display=swap" rel="stylesheet">
    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@300&display=swap" rel="stylesheet">
-
   </head>
 
   <body>
@@ -34,10 +33,13 @@
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav ml-auto">
             <li class="nav-item">
+              <%= link_to "新規登録", new_user_registration_path %>
+            </li>
+            <li class="nav-item">
               <%= link_to "ログイン", new_user_session_path %>
             </li>
             <li class="nav-item">
-              <%= link_to "新規登録", new_user_registration_path %>
+              <%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, method: :post %>
             </li>
             <% end %>
             </ul>
@@ -48,40 +50,37 @@
     <% if user_signed_in? %>
     <div class="container-fluid top">
       <div class="row  top">
-        <div class="col-2 h-100 sidebar_fixed">
+          <!--　サイドバーにcol-2入ってる -->
           <%= render 'layouts/side', user: @user %>
-        </div>
-        <div class="col-10 overflow-auto" style="height:100%;">
-          <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+          <div class="col-md-9 col-lg-9 col-xl-9 overflow-auto" style="height:100%;">
+          <!--　検索窓・ログアウトの -->
+          <nav class="navbar navbar-expand-md navbar-light fixed-top">
             <div class="container">
-              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-              </button>
-            <div class="collapse navbar-collapse" id="navbarNavDropdown">
-              <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                  <div class="form-inline">
-                    <%= form_with url: search_path, method: :get, local: :true do |f| %>
-                      <%= f.select :range, options_for_select([["アイテム名",'Item'], ["タグ",'Tag']]), class: "custom-select custom-select-sm" %>
-                      <%= f.text_field :word, class: "form-control col-auto form-control-sm" %>
-                      <%= button_tag type: 'submit', class: 'btn btn-default' do %>
-                         <i class="fa fa-search"></i>
+              <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav ml-auto">
+                  <li class="nav-item">
+                    <div class="form-inline">
+                      <%= form_with url: search_path, method: :get, local: :true do |f| %>
+                        <%= f.select :range, options_for_select([["アイテム名",'Item'], ["タグ",'Tag']]), class: "custom-select custom-select-sm" %>
+                        <%= f.text_field :word, class: "form-control col-auto form-control-sm" %>
+                        <%= button_tag type: 'submit', class: 'btn btn-default' do %>
+                           <i class="fa fa-search"></i>
+                        <% end %>
                       <% end %>
-                    <% end %>
-                  </div>
-                </li>
-                <li class="nav-item">
-                  <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-                </li>
-              </ul>
-            </div>
+                    </div>
+                  </li>
+                  <li class="nav-item">
+                    <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+                  </li>
+                </ul>
+              </div>
+          </div>
+        </nav>
+        <div class="pt-5">
+          <!-- navをTOPに止めるとパディングが必要な為 -->
+          <%= yield %>
         </div>
-      </nav>
-      <div class="pt-5">
-        <!-- navをTOPに止めるとパディングが必要な為 -->
-        <%= yield %>
-      </div>
-      </div>
+        </div>
       </div>
     </div>
     <% else %>
