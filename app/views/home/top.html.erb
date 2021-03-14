@@ -1,14 +1,20 @@
-<div class="container-fluid">
-  <div class="row">
-    <div class="col no-gutters　mv">
-      <%= image_tag asset_path('mv.jpg') ,class: "img-fluid" %>
-    </div>
+
+<div class="jumbotron mx-auto" style="width:95%;">
+    <h1 class="display-4">BeoPLE</h1>
+    <p class="lead">自宅で自分に合う商品を見つけませんか?</p>
+    <hr class="my-4">
+    <p>ファッション・メイクに特化した評価SNS</br>
+      パーソナルカラー・骨格タイプを軸に使用感を共有します</p>
+    <%= link_to(new_user_registration_path, class: "button") do %>
+      <span>使ってみる！</span>
+    <% end %>
   </div>
+
+
   <div class="col no-gutters　mv">
-    <% @all_ranks.each do |review| %>
+    <% @all_ranks.first(5).each do |review| %>
      <% review.review_images.first(1).each do |image| %>
-      <%= attachment_image_tag image, :image, :fill, 200, 200, format: 'jpeg', fallback: "sample.png" , class: "main__image" %>
+      <%= attachment_image_tag image, :image, :fill, 200, 200, format: 'jpeg', fallback: "sample.png" %>
       <% end %>
     <% end %>
   </div>
-</div>
