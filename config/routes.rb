@@ -17,6 +17,11 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
   }
 
+  # 新規登録後にパーソナル登録に移行する為
+  devise_scope :user do
+    get 'personal/select' => 'personal#select'
+  end
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   resources :users do
@@ -30,11 +35,7 @@ Rails.application.routes.draw do
     delete 'like/:id' => 'likes#destroy', as: 'destroy_like'
     resources :comments,only: [:create, :edit, :updated, :destroy]
   end
-  resources :personal do
-    member do
-      get 'personal/select'
-    end
-  end
+  resources :personal
   resources :tags
   resources :items do
     member do
