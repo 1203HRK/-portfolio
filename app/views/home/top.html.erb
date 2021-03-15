@@ -5,8 +5,14 @@
     <hr class="my-4">
     <p>ファッション・メイクに特化した評価SNS</br>
       パーソナルカラー・骨格タイプを軸に使用感を共有します</p>
-    <%= link_to(new_user_registration_path, class: "button") do %>
-      <span>使ってみる！</span>
+    <% if user_signed_in? %>
+      <%= link_to(users_path, class: "button") do %>
+        <span>TIME LINE</span>
+      <% end %>
+    <% else %>
+      <%= link_to(new_user_registration_path, class: "button") do %>
+        <span>使ってみる！</span>
+      <% end %>
     <% end %>
   </div>
 

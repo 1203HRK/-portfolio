@@ -1,4 +1,12 @@
-
+<% if @user.errors.any? %>
+  <div id="error_explanation" class="alert alert-warning">
+    <ul>
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
     <h1>プロフィール編集</h1>
     <%= form_with model:@user, local:true do |f| %>
     <div class="form-group">

@@ -6,6 +6,7 @@ class UsersController < ApplicationController
     follower_ids = @user.following.pluck(:id)
     follower_ids.push(@user.id)
     @reviews = Review.where(user_id: follower_ids).order(id: 'desc')
+    # @review_images = "noimage.jpg" 画像無しの時に表示したくて
   end
 
   def show
@@ -20,8 +21,12 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    @user.update(user_params)
-    redirect_to user_path(@user.id)
+    if @user.update(user_params)
+      redirect_to user_path(@user.id), success: 'プロフィール編集完了！'
+    else
+      render 'edit'
+    end
+      
   end
 
   # @userがフォローしているユーザー

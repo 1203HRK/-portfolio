@@ -3,22 +3,39 @@
   <div class="card mx-10">
     <!-- 投稿者情報 -->
     <div class="card-header">
-     <%= link_to attachment_image_tag(review.user, :profile_image, :fill, 50, 50, format: 'jpeg', fallback: "sample.png", class: "rounded-circle"), user_path(review.user.id) %>
+     <%= link_to attachment_image_tag(review.user, :profile_image, :fill, 50, 50, format: 'jpeg', fallback: "noimage.jp", class: "rounded-circle"), user_path(review.user.id) %>
      <%= review.user.name %>
      <time datetime="<%= review.created_at %>">
       <%= time_ago_in_words(review.created_at) %>前
      </time>
+     <% if review.user.id == current_user.id %>
+     <span class="mt-1 dropdown">
+      <button type="button" id="dropdown1"
+          class="btn btn-outline-secondary dropdown-toggle"
+          data-toggle="dropdown"
+          aria-haspopup="true"
+          aria-expanded="false">
+        <i class="fas fa-cog"></i>
+      </button>
+      <div class="dropdown-menu" aria-labelledby="dropdown1">
+        <%= link_to "編集", edit_review_path(review.id), class: "dropdown-item text-success" %>
+        <%= link_to "削除", "/reviews/#{review.id}", method: :delete, "data-confirm" => "本当に削除しますか？", class: "dropdown-item text-danger" %>
+      </div>
+    </span>
+    <% end %>
     </div>
     <!-- 投稿内容 -->
     <div class="row no-gutters">
       <div class="my-auto">
         <% review.review_images.first(1).each do |image| %>
-          <%= link_to attachment_image_tag(image, :image, :fill, 150, 150, format: 'jpeg', fallback: "sample.png" , class: "main__image"), review_path(review) %>
+          <%= link_to attachment_image_tag(image, :image, size: "150x150", format: 'jpeg', fallback: "sample.png" , class: "main__image"), review_path(review) %>
         <% end %>
       </div>
       <div class="card-body">
-        <h5 class="card-title"><%= link_to review.item.name, item_path(review.item.id) %></h5>
-        <div id="star-rate-<%= review.id %>"></div>
+        <h5 class="card-title">
+          <%= link_to review.item.name, item_path(review.item.id) %>
+          <span id="star-rate-<%= review.id %>"></span>
+        </h5>
          <script>
           $('#star-rate-<%= review.id %>').raty({
             size: 36,
@@ -29,13 +46,12 @@
             score: <%= review.rate %>,
           });
          </script>
-        <%= review.body %>
+        <%= simple_format(review.body) %>
         <div id="like-<%= review.id %>">
           <%= render partial: "likes/like", locals: { review: review } %>
+          <i class="fas fa-comment"></i><%= review.comments.count %>
         </div>
-        <a><i class="fas fa-comment"></i><%= review.comments.count %></a>
-        <div>
-      </div>
+
     </div>
   </div>
 <% end %>

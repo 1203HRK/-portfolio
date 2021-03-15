@@ -1,7 +1,8 @@
 <div class="new-comment form-group">
 <%= form_with(model: [@review, @comment] ) do |f| %>
+<%= render 'layouts/error_messages', model: f.object %>
   <div>
-    <%= f.text_field :comment, class: "comment" %>
+    <%= f.text_area :comment, class: "comment" %>
   </div>
   <div class="actions">
     <%= button_tag :type => "submit", class:"btn btn-outline-primary btn-sm" do %>

@@ -1,5 +1,5 @@
 <div class="comment">
-  <a data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+  <a class="more" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
    more...<span class="fas fa-angle-double-down"></span>
   </a>
   <% comments.first(2).each do |comment| %>
@@ -15,7 +15,7 @@
           </div>
           <div class="col-2 align-self-center">
             <% if comment.user == current_user %>
-            　
+
               <%= link_to "削除", review_comment_path(comment.review_id, comment.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-outline-danger btn-sm", remote: true %>
             <% end %>
           </div>
@@ -37,7 +37,6 @@
           </div>
           <div class="col-2 align-self-center">
             <% if comment.user == current_user %>
-            　
               <%= link_to "削除", review_comment_path(comment.review_id, comment.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-outline-danger btn-sm", remote: true %>
             <% end %>
           </div>

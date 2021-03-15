@@ -96,6 +96,7 @@
       <%= render partial: 'comments/index', locals: { comments: @comments } %>
     </div>
     <% if user_signed_in? %>
+    <div class="comment-create">
       <%= render partial: 'comments/form', locals: { comment: @comment, review: @review } %>
     <% end %>
   </div>

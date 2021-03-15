@@ -12,7 +12,7 @@ class ReviewsController < ApplicationController
     @review.item_id = @item.id
     if @review.save
       @review.save_tag(tag_list)
-      redirect_to review_path(@review.id) # とりあえず投稿詳細画面、あとでTLにしたい
+      redirect_to users_path, success: '投稿完了！'
     else
       render :new
     end
@@ -42,7 +42,7 @@ class ReviewsController < ApplicationController
     if review.update(review_params)
       review.save_tag(tag_list)
       item.save
-      redirect_to review_path(review.id) # とりあえず投稿詳細画面、あとでTLにしたい
+      redirect_to users_path, success: '編集できました！'
     else
       render :edit
     end
@@ -51,7 +51,7 @@ class ReviewsController < ApplicationController
   def destroy
     review = Review.find(params[:id])
     review.destroy
-    redirect_to current_user # とりあえずマイページ、あとでTLにしたい
+    redirect_to users_path
   end
 
   private

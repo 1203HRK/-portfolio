@@ -21,7 +21,7 @@
   <%= f.hidden_field :rate, id: :review_star %>
   </div>
   <div class="col-auto">
-    <label>文書</label>
+    <%= f.label :body, '文書' %>
     <%= f.text_area :body, class: "form-control" %>
   </div>
   <div class="col-auto">

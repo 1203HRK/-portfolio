@@ -1,10 +1,8 @@
 class Review < ApplicationRecord
 
-  validates :body, presence: true
-
   belongs_to :user
   belongs_to :item
-   accepts_nested_attributes_for :item, allow_destroy: true
+  accepts_nested_attributes_for :item, allow_destroy: true
 
   has_many :likes, dependent: :destroy
   has_many :comments, dependent: :destroy
@@ -12,6 +10,9 @@ class Review < ApplicationRecord
   has_many :tags, through: :tag_maps
   has_many :review_images, dependent: :destroy
   accepts_attachments_for :review_images, attachment: :image
+  
+  validates :body, presence: true
+  
 
   def liked_by?(user)
     likes.where(user_id: user.id).exists?

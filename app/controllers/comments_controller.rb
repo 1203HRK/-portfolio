@@ -3,8 +3,12 @@ class CommentsController < ApplicationController
     @review = Review.find(params[:review_id])
     @comment = @review.comments.build(comment_params)
     @comment.user_id = current_user.id
-    @comment.save
-    redirect_back(fallback_location: root_path)
+    if @comment.save
+      render :index
+      # redirect_back(fallback_location: root_path)
+    else
+      render 'show'
+    end
   end
 
   def edit; end
@@ -14,7 +18,8 @@ class CommentsController < ApplicationController
   def destroy
     @comment = Comment.find(params[:id])
     @comment.destroy
-    redirect_back(fallback_location: root_path)
+    render :index
+    # redirect_back(fallback_location: root_path)
   end
 
   private

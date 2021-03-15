@@ -21,10 +21,11 @@
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
-//= require_tree .
-
 //= require jquery
 //= require jquery.raty
+//= require_tree .
+
+
 
 /*!
  * Raty - A Star Rating Plugin
@@ -36,6 +37,9 @@
  * version: 3.0.0
  *
  */
+
+
+//　評価
 
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
