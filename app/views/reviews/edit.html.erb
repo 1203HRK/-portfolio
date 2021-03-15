@@ -23,6 +23,17 @@
         <div class="col-auto form-group row" id="star">
           <label for="inputImage">評価</label>
           <%= f.hidden_field :rate,  id: :review_star %>
+          <script>
+          $('#star').empty();
+          $('#star').raty({
+            size     : 36,
+            starOff:  '<%= asset_path('star-off.png') %>',
+            starOn : '<%= asset_path('star-on.png') %>',
+            starHalf: '<%= asset_path('star-half.png') %>',
+            score: <%= @review.rate %>,
+            scoreName: 'review[rate]'
+          });
+          </script>
         </div>
 
         <div class="col-auto">
@@ -43,16 +54,7 @@
   </div>
 </div>
 
-<script>
-$('#star').raty({
-  size     : 36,
-  starOff:  '<%= asset_path('star-off.png') %>',
-  starOn : '<%= asset_path('star-on.png') %>',
-  starHalf: '<%= asset_path('star-half.png') %>',
-  score: <%= @review.rate %>,
-  scoreName: 'review[rate]'
-});
-</script>
+
 <script>
 $(document).on("turbolinks:load", function(){
   function readURL(input) {

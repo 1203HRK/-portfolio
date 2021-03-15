@@ -4,6 +4,7 @@ class CommentsController < ApplicationController
     @comment = @review.comments.build(comment_params)
     @comment.user_id = current_user.id
     if @comment.save
+      @comments = @comment.review.comments.order(created_at: :desc) # 作成日新着順
       render :index
       # redirect_back(fallback_location: root_path)
     else
@@ -18,6 +19,7 @@ class CommentsController < ApplicationController
   def destroy
     @comment = Comment.find(params[:id])
     @comment.destroy
+    @comments = @comment.review.comments.order(created_at: :desc) # 作成日新着順
     render :index
     # redirect_back(fallback_location: root_path)
   end

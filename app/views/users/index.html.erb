@@ -3,7 +3,7 @@
   <div class="card mx-10">
     <!-- 投稿者情報 -->
     <div class="card-header">
-     <%= link_to attachment_image_tag(review.user, :profile_image, :fill, 50, 50, format: 'jpeg', fallback: "noimage.jp", class: "rounded-circle"), user_path(review.user.id) %>
+     <%= link_to attachment_image_tag(review.user, :profile_image, :fill, 50, 50, format: 'jpeg', fallback: "sample.png", class: "rounded-circle"), user_path(review.user.id) %>
      <%= review.user.name %>
      <time datetime="<%= review.created_at %>">
       <%= time_ago_in_words(review.created_at) %>前
@@ -37,6 +37,7 @@
           <span id="star-rate-<%= review.id %>"></span>
         </h5>
          <script>
+         $('#star-rate-<%= review.id %>').empty();
           $('#star-rate-<%= review.id %>').raty({
             size: 36,
             starOff:  '<%= asset_path('star-off.png') %>',
@@ -49,9 +50,8 @@
         <%= simple_format(review.body) %>
         <div id="like-<%= review.id %>">
           <%= render partial: "likes/like", locals: { review: review } %>
-          <i class="fas fa-comment"></i><%= review.comments.count %>
         </div>
-
+        <i class="fas fa-comment"></i><%= review.comments.count %>
     </div>
   </div>
 <% end %>

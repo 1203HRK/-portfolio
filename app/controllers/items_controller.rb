@@ -16,6 +16,7 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
     @reviews = @item.reviews
     @item_ranks = Review.create_item_ranks(@item.id)
+    @average = @item.reviews.average(:rate).to_f.round(1)
   end
 
   def edit
@@ -30,6 +31,13 @@ class ItemsController < ApplicationController
       render :edit
     end
   end
+  
+  def destroy
+    item = Item.find(params[:id])
+    item.destroy
+    redirect_to items_path
+  end
+  
 
   private
 

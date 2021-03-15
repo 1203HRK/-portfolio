@@ -1,30 +1,45 @@
-<h1><%= @item.name %><span class="h4"><%= "全#{@item.reviews.count}件" %></span></h1>
-<div>
-  <h3>平均<%= @item.reviews.average(:rate).to_f.round(1) %>点
-  <span id="star-rate-<%= @item.id %>"></span></h3>
- <!-- 平均点表示、コントローラーにかけないかなあ -->
-  <script> 
-   $('#star-rate-<%= @item.id %>').raty({
-      size: 36,
-        starOff:  '<%= asset_path('star-off.png') %>',
-        starOn : '<%= asset_path('star-on.png') %>',
-        starHalf: '<%= asset_path('star-half.png') %>',
-      half: true,
-      readOnly: true,
-      score: <%= @item.reviews.average(:rate).to_f.round(1) %>
-    });
-  </script>
-</div>
-<div>
-<% @item_ranks.each do |review| %>
-     <% review.review_images.first(1).each do |image| %>
-      <%= attachment_image_tag image, :image, :fill, 200, 200, format: 'jpeg', fallback: "sample.png" %>
+<!-- 商品情報 -->
+<div class="item-info">
+  <div class="item-info__titel">
+  <h1><%= @item.name %></h1>
+  <div>
+    <h3>平均<%= @average %>点
+      <span id="star-rate-item-<%= @item.id %>"></span>
+    </h3>
+    <script>
+    $('#star-rate-item-<%= @item.id %>').empty();
+     $('#star-rate-item-<%= @item.id %>').raty({
+        size: 36,
+          starOff:  '<%= asset_path('star-off.png') %>',
+          starOn : '<%= asset_path('star-on.png') %>',
+          starHalf: '<%= asset_path('star-half.png') %>',
+        half: true,
+        readOnly: true,
+        score: <%= @item.reviews.average(:rate).to_f.round(1) %>
+      });
+    </script>
+  </div>
+  </div>
+  <!-- 代表投稿（いいね1番多い投稿） -->
+  <div class="item">
+    <% @item_ranks.first(1).each do |review| %>
+      <% review.review_images.first(1).each do |image| %>
+        <%= link_to attachment_image_tag(image, :image, :fill, 200, 200, format: 'jpeg', fallback: "sample.png"), review_path(review) %>
       <% end %>
+      <%= link_to review.user.name, user_path(review.user.id) %>
+      <%= review.body %>
+        <% review.tags.each do |tag| %>
+          <%= link_to "#" + tag.tag_name, tag_path(tag) %>
+        <% end %>
+        <div id="like-<%= review.id %>">
+          <%= render partial: "likes/like", locals: { review: review } %>
+        </div>
+        <i class="fas fa-comment"></i><%= review.comments.count %>
     <% end %>
+  </div>
+  <h3><%= "全#{@item.reviews.count}件" %></h3>
+  <div class="d-flex justify-content-around">
+    <%= render "reviews/review", reviews: @reviews %>
+  </div>
 </div>
-
-<div class="d-flex justify-content-around">
-  <%= render "reviews/review", reviews: @reviews %>
-</div>
-
 
