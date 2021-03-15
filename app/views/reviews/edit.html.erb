@@ -18,8 +18,7 @@
         </div>
         <div class="col-auto">
           <label for="inputImage">商品画像</label>
-          <%= attachment_image_tag @review, :image, fallback: "sample.png", id: "img_prev", style: "height: 250px; width:300px;" %><br>
-           <%= f.attachment_field :review_images_images, class: "form-control-file", multiple: true %>
+           <%= f.attachment_field :review_images_images, multiple: true %>
         </div>
         <div class="col-auto form-group row" id="star">
           <label for="inputImage">評価</label>
