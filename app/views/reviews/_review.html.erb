@@ -1,8 +1,9 @@
 <!-- 画像1枚＋評価＋いいね数＋コメント数 -->
+<div class="d-flex flex-wrap">
 <% reviews.each do |review| %>
-  <div>
-    <div>
-      <%= link_to attachment_image_tag(review.user, :profile_image, :fill, 50, 50, format: 'jpeg', fallback: "sample.png", class: "rounded-circle"), user_path(review.user.id) %>
+  <div class="mr-1 my-1 card">
+    <div class="card-header">
+      <%= link_to attachment_image_tag(review.user, :profile_image, :fill, 30, 30, size:"30x30", format: 'jpeg', fallback: "sample.png", class: "mr-2 rounded-circle"), user_path(review.user.id) %>
       <%= link_to review.user.name, user_path(review.user.id)  %>
     </div>
     <div>
@@ -28,3 +29,4 @@
   </div>
   </div>
   <% end %>
+  </div>

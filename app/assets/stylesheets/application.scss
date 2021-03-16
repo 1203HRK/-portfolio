@@ -13,11 +13,11 @@
  *= require_tree .
  *= require_self
  */
- 
+
  @import "bootstrap";
  @import 'font-awesome-sprockets';
  @import 'font-awesome';
- 
+
 * {
   margin: 0;
   padding: 0;
@@ -61,6 +61,13 @@ html, body {
 .main-visual {
  background-image:  image-url('assets/images/mv.jpg');
  background-size:  cover;
+}
+
+//　レビューイメージの画像比率保護
+
+.reviewimage {
+  width: 300px;
+  height: auto;
 }
 
 //　サイドバーのCSS

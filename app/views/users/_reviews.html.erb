@@ -1,6 +1,6 @@
-<div class="d-flex justify-content-around">
+<div class="d-flex flex-wrap">
   <% reviews.each do |review| %>
-  <div class="card mx-auto mt-4 shadow-lg">
+  <div class="m-1 card">
     <% review.review_images.first(1).each do |image| %>
       <%= link_to attachment_image_tag(image, :image, :fill, 200, 200, format: 'jpeg', fallback: "sample.png" , class: "main__image"), review_path(review.id) %>
     <% end %>

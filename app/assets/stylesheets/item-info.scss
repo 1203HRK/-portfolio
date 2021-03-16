@@ -5,4 +5,24 @@
   &__titel {
     border-bottom: medium solid  #FB6376;
   }
+  
+  &__top-review {
+    
+    &__image{
+      margin: 20px;
+    }
+    
+     &__body{
+
+    }
+  }
+  
+  &__reviews{
+    padding-top: 20px;
+    border-top: medium solid  #FB6376;
+    
+    &__item {
+      margin-left: 20px;
+    }
+  }
 }

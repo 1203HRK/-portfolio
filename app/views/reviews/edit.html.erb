@@ -5,7 +5,8 @@
         <h1>投稿編集</h1>
         <%= form_with model:@review, local:true do |f| %>
         <%= render 'layouts/error_messages', model: f.object %>
-        
+
+       <% unless  @isDuplicated == true %> 
         <div class="col-auto">
           <label for="inputName">商品名</label>
           <%= f.fields_for :item do |item| %>
@@ -16,6 +17,8 @@
             ブランド名は入れず、商品名のみ登録してください。
           </span>
         </div>
+      <% end %> 
+        
         <div class="col-auto">
           <label for="inputImage">商品画像</label>
            <%= f.attachment_field :review_images_images, multiple: true %>

@@ -17,6 +17,7 @@ class ItemsController < ApplicationController
     @reviews = @item.reviews
     @item_ranks = Review.create_item_ranks(@item.id)
     @average = @item.reviews.average(:rate).to_f.round(1)
+    @personals = Personal.all
   end
 
   def edit
