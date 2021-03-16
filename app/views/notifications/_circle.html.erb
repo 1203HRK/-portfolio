@@ -1,0 +1,9 @@
+<%= link_to(notifications_path) do %>
+  <% if unchecked_notifications.any? %>
+    <span class="fa-stack"></span>
+      <%= image_tag("alert.png", size:'40x40', alt: "ALERT") %>ALERT
+      <i class="fas fa-circle n-circle fa-stack-1"></i>
+  <% else %>
+    <%= image_tag("alert.png", size:'40x40', alt: "ALERT") %>ALERT
+  <% end %>
+<% end %>

@@ -7,6 +7,8 @@ class UsersController < ApplicationController
     follower_ids.push(@user.id)
     @reviews = Review.where(user_id: follower_ids).order(id: 'desc')
     # @review_images = "noimage.jpg" 画像無しの時に表示したくて
+    #@notifications = current_user.passive_notifications.where(checked: false)
+    #notifications = @notifications.where.not(visitor_id: current_user.id)
   end
 
   def show

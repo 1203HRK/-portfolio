@@ -1,16 +1,17 @@
 <div class="col-md-3 col-lg-3 col-xl-3 h-100 d-none d-md-block sidebar_fixed">
   <!-- 768ピクセルでわけたい -->
-<div class="sidebar navbar-expand-md"> 
+<div class="sidebar navbar-expand-md">
   <div class="border border-white" style="height:100%;">
    <ul class="sidebarMenuInner ml-3">
       <li><%= link_to image_tag("MYPAGE.png", size:'40x40', alt: "MY PEGE") + "MY PAGE", user_path(current_user.id) %></li>
       <li><a target="_blank"><%= link_to image_tag("newreview.png", size:'40x40', alt: "NEW REVIEW") + "NEW REVIEW", new_review_path %></li>
+      <li><a target="_blank"><%= render "notifications/circle" %></li>
       <li><a target="_blank"><%= link_to image_tag("item.png", size:'40x40', alt: "ITEM") + "ITEM", items_path %></a></li>
       <li><a target="_blank"><%= link_to image_tag("tag.png", size:'40x30', alt: "NEW REVIEW") + "TAGS", tags_path %></a></li>
       <li><a target="_blank"><%= link_to image_tag("personal.png", size:'40x30', alt: "PERSONAL") + "PERSONAL", personal_index_path %></a></li>
       <li><a target="_blank"><%= link_to image_tag("home.png", size:'40x40', alt: "TIME LINE") + "TIME LINE", users_path %></a></li>
       <li><a target="_blank"><%= link_to image_tag("logout.png", size:'40x40', alt: "LOG OUT") + "LOG OUT", destroy_user_session_path, method: :delete %></a></li>
-   </ul>    
+   </ul>
   </div>
 </div>
 </div>
@@ -26,6 +27,7 @@
     <ul class="sidebarMenuInner">
       <li><%= link_to image_tag("MYPAGE.png", size:'20x20', alt: "MY PEGE") + "MY PAGE", user_path(current_user.id) %></li>
       <li><a target="_blank"><%= link_to image_tag("newreview.png", size:'20x20', alt: "NEW REVIEW") + "NEW REVIEW", new_review_path %></li>
+      <li><a target="_blank"><%= render "notifications/circle" %></li>
       <li><a target="_blank"><%= link_to image_tag("item.png", size:'20x20', alt: "ITEM") + "ITEM", items_path %></a></li>
        <li><a target="_blank"><%= link_to image_tag("tag.png", size:'20x10', alt: "TAGS") + "TAGS", tags_path %></a></li>
       <li><a target="_blank"><%= link_to image_tag("personal.png", size:'20x10', alt: "PERSONAL") + "PERSONAL", personal_index_path %></a></li>

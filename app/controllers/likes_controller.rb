@@ -3,6 +3,8 @@ class LikesController < ApplicationController
 
   def create
     @like = Like.create(user_id: current_user.id, review_id: @review.id)
+    # 通知機能
+    @review.create_notification_like!(current_user)
   end
 
   def destroy

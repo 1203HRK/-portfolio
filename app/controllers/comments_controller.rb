@@ -4,6 +4,7 @@ class CommentsController < ApplicationController
     @comment = @review.comments.build(comment_params)
     @comment.user_id = current_user.id
     if @comment.save
+      @review.create_notification_comment!(current_user, @comment.id) # 通知機能
       @comments = @comment.review.comments.order(created_at: :desc) # 作成日新着順
       render :index
       # redirect_back(fallback_location: root_path)
