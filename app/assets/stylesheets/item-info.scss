@@ -7,14 +7,33 @@
   }
   
   &__top-review {
+    height: 350px;
+    margin: 20px;
+    display: flex;
     
     &__image{
-      margin: 20px;
+      margin-right: 20px;
     }
     
-     &__body{
-
+    &__main {
+      height: 100%;
     }
+    
+    &__profile{
+      margin: 20px 0;
+    }
+    
+    &__body{
+      
+      &__body{
+        padding-top: 20px;
+      }
+    }
+    
+    &__like-comment{
+      margin: 20px 0;
+    }
+    
   }
   
   &__reviews{
@@ -25,4 +44,63 @@
       margin-left: 20px;
     }
   }
+}
+
+   /* Shine */
+.hover14 figure {
+  position: relative;
+}
+.hover14 figure::before {
+  position: absolute;
+  top: 0;
+  left: -75%;
+  z-index: 2;
+  display: block;
+  content: '';
+  width: 50%;
+  height: 100%;
+  background: -webkit-linear-gradient(left, rgba(255,255,255,0) 0%, rgba(255,255,255,.3) 100%);
+  background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,.3) 100%);
+  -webkit-transform: skewX(-25deg);
+  transform: skewX(-25deg);
+}
+.hover14 figure:hover::before {
+  -webkit-animation: shine .75s;
+  animation: shine .75s;
+}
+@-webkit-keyframes shine {
+  100% {
+    left: 125%;
+  }
+}
+@keyframes shine {
+  100% {
+    left: 125%;
+  }
+}
+
+
+   /* カギ括弧 */
+.box19:before,.box19:after{ 
+    content:'';
+    width: 20px;
+    height: 30px;
+    position: absolute;
+    display: inline-block;
+}
+.box19:before{
+    border-left: solid 1px #5767bf;
+    border-top: solid 1px #5767bf;
+    top:0;
+    left: 0;
+}
+.box19:after{
+    border-right: solid 1px #5767bf;
+    border-bottom: solid 1px #5767bf;
+    bottom:0;
+    right: 0;
+}
+.box19 p {
+    margin: 0; 
+    padding: 0;
 }

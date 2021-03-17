@@ -28,11 +28,10 @@ class Users::SessionsController < Devise::SessionsController
   def after_sign_in_path_for(_resource)
     user_path(current_user)
   end
-  
+
   def new_guest
     user = User.guest
     sign_in user
     redirect_to root_path, notice: 'ゲストユーザーとしてログインしました。'
   end
-  
 end

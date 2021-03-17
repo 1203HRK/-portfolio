@@ -34,7 +34,7 @@ class ReviewsController < ApplicationController
     @item = @review.item
     @tag_list = @review.tags.pluck(:tag_name).split(/[[:blank:]]+/).select(&:present?)
     # 重複している　＝　チェック処理　2件以上あればfalse 以外はtreu を書く　？→三項演算子
-    @isDuplicated = (Review.where(item_id: @item.id).size >= 2) ? true : false
+    @isDuplicated = Review.where(item_id: @item.id).size >= 2
   end
 
   def update

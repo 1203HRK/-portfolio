@@ -28,41 +28,59 @@
   </div>
   <!-- 代表投稿（いいね1番多い投稿） -->
   <div class="item-info__top-review">
-      <div class="d-flex">
-        <div class="my-box">
-          <div class="item-info__top-review__image">
-          <% @item_ranks.first(1).each do |review| %>
-            <% review.review_images.first(1).each do |image| %>
-              <%= link_to attachment_image_tag(image, :image, format: 'jpeg', fallback: "sample.png", class: "reviewimage"), review_path(review) %>
-            <% end %>
-            </div>
-        </div>
-        <div class="my-box align-self-center">
-          <div>
-           <%= link_to user_path(review.user) do %>
-            <%= attachment_image_tag review.user, :profile_image, :fill, 70, 70, format: 'jpeg', fallback: "sample.png", class: "rounded-circle" %>
-            <span class="h4"><%= review.user.name %></span>
-          <% end %>
-          </div>
-          <div class="item-info__top-review__body">
-          <p><%= review.body %></p>
-            <% review.tags.each do |tag| %>
-              <p><%= link_to "#" + tag.tag_name, tag_path(tag) %></p>
-            <% end %>
-          </div>
-            <span id="like-<%= review.id %>">
-              <%= render partial: "likes/like", locals: { review: review } %>
-            </span>
-            <i class="fas fa-comment"></i><%= review.comments.count %>
+    <div class="item-info__top-review__image" id="demo14">
+      <div class="hover14 column">
+        <figure>
+        <% @item_ranks.first(1).each do |review| %>
+          <% review.review_images.first(1).each do |image| %>
+            <%= link_to attachment_image_tag(image, :image, format: 'jpeg', fallback: "sample.png", class: "reviewimage"), review_path(review) %>
           <% end %>
       </div>
     </div>
+    <div class="item-info__top-review__main"> <!-- d-flexのボックスは2つで止めたいから -->
+    <div class="item-info__top-review__profile">
+      <%= link_to user_path(review.user) do %>
+        <%= attachment_image_tag review.user, :profile_image, :fill, 70, 70, format: 'jpeg', fallback: "sample.png", class: "rounded-circle" %>
+        <span class="h4"><%= review.user.name %></span>
+      <% end %>
+    </div>
+     <div class="item-info__top-review__body">
+      <div id="star-rate-top-<%= review.id %>"></div>
+       <script>
+       $('#star-rate-top-<%= review.id %>').empty();
+        $('#star-rate-top-<%= review.id %>').raty({
+          size: 36,
+          starOff:  '<%= asset_path('star-off.png') %>',
+          starOn : '<%= asset_path('star-on.png') %>',
+          starHalf: '<%= asset_path('star-half.png') %>',
+          readOnly: true,
+          score: <%= review.rate %>,
+        });
+       </script>
+      <p class="item-info__top-review__body__body"><%= review.body %></p>
+      <p class="item-info__top-review__body__p">
+      <% review.tags.each do |tag| %>
+        <%= link_to "#" + tag.tag_name, tag_path(tag) %>
+      <% end %>
+      </p>
+      </div>
+      <div class="item-info__top-review__like-comment">
+        <span id="like-<%= review.id %>">
+          <%= render partial: "likes/like", locals: { review: review } %>
+        </span>
+        <i class="fas fa-comment"></i><%= review.comments.count %>
+        <% end %>
+         </div>
+       </div>
+     </div>
+    </div>
   </div>
+  <!-- 全投稿 -->
   <div class="item-info__reviews">
-  <h3><%= "全#{@item.reviews.count}件" %></h3>
-  <div class="item-info__reviews__item">
-    <%= render "reviews/review", reviews: @reviews %>
+    <h3><%= "全#{@item.reviews.count}件" %></h3>
+    <div class="item-info__reviews__item">
+      <%= render "reviews/review", reviews: @reviews %>
+    </div>
   </div>
-</div>
 </div>
 
