@@ -43,7 +43,6 @@ class User < ApplicationRecord
   def follow(user)
     following_relationships.create!(following_id: user.id)
   end
-end
 
   # フォロー通知機能
   def create_notification_follow!(current_user)
@@ -56,3 +55,5 @@ end
       notification.save if notification.valid?
     end
   end
+  
+end

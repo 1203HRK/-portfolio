@@ -39,7 +39,7 @@
         </div>
         <div class="my-box align-self-center">
           <div>
-           <%= link_to user_path(review) do %>
+           <%= link_to user_path(review.user) do %>
             <%= attachment_image_tag review.user, :profile_image, :fill, 70, 70, format: 'jpeg', fallback: "sample.png", class: "rounded-circle" %>
             <span class="h4"><%= review.user.name %></span>
           <% end %>
