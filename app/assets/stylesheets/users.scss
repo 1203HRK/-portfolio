@@ -5,3 +5,129 @@
 .card-header > .dropdown {
   float: right;
 }
+
+// ログイン画面
+
+.login {
+  position: relative;
+  height: 560px;
+  width: 405px;
+  margin: 30px auto;
+  padding: 60px 60px;
+  background: image-url('login.jpg') no-repeat #505050;   
+  background-size: cover;
+  box-shadow: 0px 30px 30px -5px #503844;
+}
+
+.login > .active {
+  border-bottom: 2px solid #FB6376;
+}
+
+.login h2 {
+  padding-left: 12px;
+  font-size: 22px;
+  text-transform: uppercase;
+  padding-bottom: 5px;
+  letter-spacing: 2px;
+  display: inline-block;
+  font-weight: 100;
+  margin-left: 20px;
+}
+
+.login h2:first-child {
+  padding-left: 0px;
+}
+
+.login span {
+  text-transform: uppercase;
+  display: inline-block;
+  margin-left: 20px;
+}
+
+.text {
+  border: none;
+  width: 89%;
+  padding: 10px 20px;
+  display: block;
+  height: 15px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.3);
+  border: 2px solid rgba(255, 255, 255, 0);
+  overflow: hidden;
+  transition: all 0.5s ease-in-out;
+}
+
+.text:focus {
+  outline: 0;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  border-radius: 20px;
+  background: rgba(0, 0, 0, 0);
+}
+
+.text:focus + span {
+  opacity: 0.6;
+}
+
+input[type="text"],
+input[type="password"] {
+  font-family: 'Montserrat', sans-serif;
+  color: #fff;
+}
+
+.login input {
+  display: inline-block;
+  padding-top: 20px;
+  font-size: 14px;
+}
+
+.custom-checkbox {
+  -webkit-appearance: none;
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 8px;
+  border-radius: 2px;
+  display: inline-block;
+  position: relative;
+  margin-left: 20px;
+}
+
+.custom-checkbox:checked {
+  background-color: rgba(17, 97, 237, 1);
+}
+
+.custom-checkbox:checked:after {
+  content: '\2714';
+  color: #fff;
+}
+
+.custom-checkbox:focus {
+  outline: none;
+}
+
+.login label {
+  padding-top: 10px;
+  padding-left: 5px;
+}
+
+.loginActions {
+  background-color: #E0479E;
+  color: #FFF;
+  width: 100%;
+  padding: 10px 20px;
+  display: block;
+  height: 39px;
+  border-radius: 20px;
+  margin-top: 30px;
+  transition: all 0.5s ease-in-out;
+  border: none;
+  text-transform: uppercase;
+}
+
+.loginActions:hover {
+  background: #EACFDF;
+  box-shadow: 0px 4px 20px -5px #E0479E;
+  cursor: pointer;
+}
+
+.loginActions:focus {
+  outline: none;
+}

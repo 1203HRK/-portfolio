@@ -2,9 +2,9 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.main-visual {
- background-image:  image-url('images/mv.jpg');
- background-size:  cover;
+.jumbotron { 
+  background: image-url('mv.jpg')center no-repeat; 
+  background-size: cover;
 }
 
 .button {

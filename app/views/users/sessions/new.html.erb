@@ -1,37 +1,30 @@
-<div class="container">
-  <div class="row">
-    <div class="col">
-      <h2>Log in</h2>
-      
-      <% flash.each do |message_type, message| %>
-      <%= content_tag :div, message, class: message_type %>
-      <% end %>
-      
+<div class="login">
+  <h2 class="active"> Log in</h2>
+      <br />
+       <br />
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
         <div class="field">
-          <%= f.label :name %><br />
-          <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
+          <span><%= f.label :NAME %><br /></span>
+          <%= f.text_field :name, autofocus: true, autocomplete: "name", class: "text" %>
         </div>
       
         <div class="field">
-          <%= f.label :password %><br />
-          <%= f.password_field :password, autocomplete: "current-password" %>
+          <span><%= f.label :PASSWOERD %><br /></span>
+          <%= f.password_field :password, autocomplete: "current-password", class: "text" %>
         </div>
       
         <% if devise_mapping.rememberable? %>
           <div class="field">
-            <%= f.check_box :remember_me %>
+            <%= f.check_box :remember_me , class:"custom-checkbox" %>
             <%= f.label :remember_me %>
           </div>
         <% end %>
-      
-        <div class="actions">
-          <%= f.submit "Log in" %>
+        <br />
+        <div>
+          <%= f.submit "Log in", class: "loginActions" %>
         </div>
       <% end %>
       
       <%= render "users/shared/links" %>
 
-    </div>
-  </div>
 </div>
