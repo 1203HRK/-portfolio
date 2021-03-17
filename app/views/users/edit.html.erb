@@ -18,11 +18,15 @@
       <label for="inputImage">プロフ画像</label>
       <%= f.attachment_field :profile_image, placeholder: "プロフィール画像", class: "form-control-file" %>
     </div>
-      <div class="form-check">
+    <div class="form-group">
+      <label for="inputName">introduction</label>
+      <%= f.text_area :introduction, autofocus: true, id:"inputIntroduction", placeholder:"自己紹介" , class: "form-control" %>
+    </div>
+    <div class="form-check">
       <%= collection_check_boxes(:user, :personal_ids, Personal.all, :id, :name ) do |t| %>
         <div class="form-check-label"><%= t.label { t.check_box + t.text } %></div>
       <% end %>
-      </div>
+    </div>
       <%= f.submit "変更を保存", class: "btn btn-outline-warning" %>
     <% end %>
 

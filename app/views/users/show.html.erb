@@ -1,29 +1,42 @@
-<div class="d-flex justify-content-around">
-    <div class="my-box text-center align-self-center">
-      <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "sample.png", class: "rounded-circle" %>
-      <h3><%= @user.name  %></h3>
-    </div>
-    <div class="my-box align-self-center">
-    <% @user.personals.each do |personal| %>
-      <p><%= personal.name %></p>
-    <% end %>
-    </div>
-  <div class="my-box align-self-center">
-    <%= link_to "#{@user.following.count}" + "フォロー", following_user_path(@user) %></br>
-    <%= link_to "#{@user.followers.count}" + "フォロワー", followers_user_path(@user) %>
-    <div>
-      <% if user_signed_in? && @user != current_user %>
-        <%= render "follow_form", user: @user %>
-      <% end %>
-    </div>
-  <div class="my-box align-self-center">
-    <% if @user.id == current_user.id %>
-      <%= link_to "プロフィールを編集", edit_user_path(@user), class: "my-box btn btn-outline-success" %>
-    <% end %>
+<div class="m-5">
+  <div class="d-flex justify-content-between">
+      <div class="mb-3 my-box text-center align-self-center">
+        <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "sample.png", class: "mb-2 rounded-circle" %>
+      </div>
+      <div class="my-box align-self-center text-center">
+        <%= @reviews.count %>
+        <p>投稿</p>
+      </div>
+      <div class="my-box align-self-center text-center">
+        <%= link_to following_user_path(@user) do %>
+        <%= @user.following.count %>
+        <p><%= "フォロー" %></p>
+        <% end %>
+      </div>
+      <div class="my-box align-self-center text-center">
+        <%= link_to followers_user_path(@user) do %>
+        <%= @user.followers.count %>
+        <p><%= "フォロワー" %></p>
+        <% end %>
+      </div>
+      <div class="my-box align-self-center">
+        <% if user_signed_in? && @user != current_user %>
+          <%= render "follow_form", user: @user %>
+        <% end %>
+        <% if @user.id == current_user.id %>
+          <%= link_to "プロフィールを編集", edit_user_path(@user), class: "my-box btn btn-outline-success" %>
+        <% end %>
+      </div>
   </div>
+  
+  <div>
+      <h3><%= @user.name %></h3>
+      <%= simple_format(@user.introduction) %>
+      <% @user.personals.each do |personal| %>
+        <%= personal.name %>
+      <% end %>
   </div>
 </div>
-
 
 <ul class="nav nav-tabs nav-justified" role="tablist">
   <li class="nav-item">
@@ -36,11 +49,6 @@
       いいね一覧
     </a>
   </li>
-  <li class="nav-item">
-    <a class="nav-link" id="item3-tab" data-toggle="tab" href="#item3" role="tab" aria-controls="item3" aria-selected="false">
-      通知
-    </a>
-  </li>
 </ul>
 <div class="tab-content">
   <div class="tab-pane fade show active" id="item1" role="tabpanel" aria-labelledby="item1-tab">
@@ -48,12 +56,5 @@
   </div>
   <div class="tab-pane fade" id="item2" role="tabpanel" aria-labelledby="item2-tab">
     <%= render "like_reviews", likes: @likes %>
-  </div>
-  <div class="tab-pane fade" id="item3" role="tabpanel" aria-labelledby="item3-tab">
-    <%# if notifications.exists? %>
-      <%#= render notifications %>
-    <%# else %>
-      <p>通知はありません</p>
-    <%# end %>
   </div>
 </div>

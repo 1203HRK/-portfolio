@@ -5,7 +5,7 @@ class UsersController < ApplicationController
     # pluck -> 引数で与えたカラムの値だけをとって配列で返す
     follower_ids = @user.following.pluck(:id)
     follower_ids.push(@user.id)
-    @reviews = Review.where(user_id: follower_ids).order(id: 'desc')
+    @reviews = Review.where(user_id: follower_ids).order(id: 'desc').limit(50)
     # @review_images = "noimage.jpg" 画像無しの時に表示したくて
     # @notifications = current_user.passive_notifications.where(checked: false)
     # notifications = @notifications.where.not(visitor_id: current_user.id)
@@ -45,6 +45,6 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :profile_image, { personal_ids: [] })
+    params.require(:user).permit(:name, :profile_image, :introduction, { personal_ids: [] })
   end
 end
