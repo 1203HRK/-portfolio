@@ -3,7 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .jumbotron { 
-  background: image-url('mv.jpg')center no-repeat; 
+  background: image-url('joha.jpg')center no-repeat; 
   background-size: cover;
 }
 
@@ -21,6 +21,7 @@
   position: relative;
   z-index: 2;
 }
+
 .button::before {
   position: absolute;
   top: 0;

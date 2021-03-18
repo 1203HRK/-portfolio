@@ -4,18 +4,18 @@
         <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "sample.png", class: "mb-2 rounded-circle" %>
       </div>
       <div class="my-box align-self-center text-center">
-        <%= @reviews.count %>
+        <h4><%= @reviews.count %></h4>
         <p>投稿</p>
       </div>
       <div class="my-box align-self-center text-center">
         <%= link_to following_user_path(@user) do %>
-        <%= @user.following.count %>
+        <h4><%= @user.following.count %></h4>
         <p><%= "フォロー" %></p>
         <% end %>
       </div>
       <div class="my-box align-self-center text-center">
         <%= link_to followers_user_path(@user) do %>
-        <%= @user.followers.count %>
+        <h4><%= @user.followers.count %></h4>
         <p><%= "フォロワー" %></p>
         <% end %>
       </div>

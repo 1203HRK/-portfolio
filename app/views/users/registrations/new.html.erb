@@ -1,44 +1,37 @@
-<div class="container">
-  <div class="row">
-    <div class="col">
-    </div>
-    <div class="col-auto">
-    <h2>新規登録</h2>
-
+<div class="sinin">
+  <h2 class="active"> 新規登録</h2>
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
       <%= render "users/shared/error_messages", resource: resource %>
 
       <div class="field">
-        <%= f.label :name %><br />
-        <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
+          <span><%= f.label :NAME %><br></span>
+        <%= f.text_field :name, autofocus: true, autocomplete: "name", class: "text" %>
       </div>
 
       <div class="field">
-        <%= f.label :email %><br />
-        <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+        <span><%= f.label :EMAIL %><br></span>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "text" %>
       </div>
 
       <div class="field">
-        <%= f.label :password %>
+        <span><%= f.label :PASSWOERD %><br></span>
         <% if @minimum_password_length %>
-        <em>(<%= @minimum_password_length %> characters minimum)</em>
-        <% end %><br />
-        <%= f.password_field :password, autocomplete: "new-password" %>
+        <em>(<%= @minimum_password_length %> 文字以上)</em>
+        <% end %><br>
+        <%= f.password_field :password, autocomplete: "new-password", class: "text" %>
       </div>
 
       <div class="field">
-        <%= f.label :password_confirmation %><br />
-        <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+        <span><%= f.label :password_confirmation %><br></span>
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "text" %>
       </div>
+      
+      <br>
 
       <div class="actions">
-        <%= f.submit "Sign up" %>
+        <%= f.submit "Sign up", class: "sininActions" %>
       </div>
     <% end %>
-
+    <br>
     <%= render "users/shared/links" %>
-    </div>
-    <div class="col">
-    </div>
-  </div>
 </div>

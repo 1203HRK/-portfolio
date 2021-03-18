@@ -38,7 +38,6 @@
  *
  */
 
-
 //　評価
 
 (function(root, factory) {

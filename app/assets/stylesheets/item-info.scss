@@ -7,36 +7,10 @@
   }
   
   &__top-review {
-    height: 350px;
-    margin: 20px;
-    display: flex;
-    
-    &__image{
-      margin-right: 20px;
-    }
-    
-    &__main {
-      height: 100%;
-    }
-    
-    &__profile{
-      margin: 20px 0;
-    }
-    
-    &__body{
-      
-      &__body{
-        padding-top: 20px;
-      }
-    }
-    
-    &__like-comment{
-      margin: 20px 0;
-    }
-    
+    margin-top: 20px;  
   }
   
-  &__reviews{
+  &__reviews {
     padding-top: 20px;
     border-top: medium solid  #FB6376;
     

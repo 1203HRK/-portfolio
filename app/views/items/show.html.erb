@@ -27,8 +27,9 @@
   </div>
   </div>
   <!-- 代表投稿（いいね1番多い投稿） -->
-  <div class="item-info__top-review">
-    <div class="item-info__top-review__image" id="demo14">
+  <div class="card border-0 text-center text-md-left item-info__top-review">
+    <div class="row no-gutters">
+    <div id="demo14" class="col-md-auto col-sm-12 mr-md-4">
       <div class="hover14 column">
         <figure>
         <% @item_ranks.first(1).each do |review| %>
@@ -37,14 +38,16 @@
           <% end %>
       </div>
     </div>
-    <div class="item-info__top-review__main"> <!-- d-flexのボックスは2つで止めたいから -->
-    <div class="item-info__top-review__profile">
+    <div class="col-md-auto col-sm-12">
+      <div class="card-body">
+        <div class="card-title">
       <%= link_to user_path(review.user) do %>
         <%= attachment_image_tag review.user, :profile_image, :fill, 70, 70, format: 'jpeg', fallback: "sample.png", class: "rounded-circle" %>
         <span class="h4"><%= review.user.name %></span>
       <% end %>
+      </div>
     </div>
-     <div class="item-info__top-review__body">
+     <div class="card-text">
       <div id="star-rate-top-<%= review.id %>"></div>
        <script>
        $('#star-rate-top-<%= review.id %>').empty();
@@ -57,14 +60,14 @@
           score: <%= review.rate %>,
         });
        </script>
-      <p class="item-info__top-review__body__body"><%= review.body %></p>
-      <p class="item-info__top-review__body__p">
+      <p><%= review.body %></p>
+      <p>
       <% review.tags.each do |tag| %>
         <%= link_to "#" + tag.tag_name, tag_path(tag) %>
       <% end %>
       </p>
       </div>
-      <div class="item-info__top-review__like-comment">
+      <div>
         <span id="like-<%= review.id %>">
           <%= render partial: "likes/like", locals: { review: review } %>
         </span>
@@ -73,8 +76,7 @@
          </div>
        </div>
      </div>
-    </div>
-  </div>
+     </div>
   <!-- 全投稿 -->
   <div class="item-info__reviews">
     <h3><%= "全#{@item.reviews.count}件" %></h3>

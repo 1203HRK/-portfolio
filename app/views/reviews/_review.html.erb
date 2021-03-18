@@ -1,7 +1,7 @@
 <!-- 画像1枚＋評価＋いいね数＋コメント数 -->
 <div class="d-flex flex-wrap">
 <% reviews.each do |review| %>
-  <div class="mr-1 m card">
+  <div class="my-box mr-md-1 card">
     <div class="card-header">
       <%= link_to attachment_image_tag(review.user, :profile_image, :fill, 30, 30, size:"30x30", format: 'jpeg', fallback: "sample.png", class: "mr-2 rounded-circle"), user_path(review.user.id) %>
       <%= link_to review.user.name, user_path(review.user.id)  %>
