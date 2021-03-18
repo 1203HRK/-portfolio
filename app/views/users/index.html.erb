@@ -35,7 +35,7 @@
       <div class="col-auto">
       <div class="card-body">
         <h5 class="card-title">
-          <%= link_to review.item.name, item_path(review.item.id) %>
+          <%= link_to review.item.name, review_path(review) %>
           <span id="star-rate-<%= review.id %>"></span>
         </h5>
          <script>

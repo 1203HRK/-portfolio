@@ -74,6 +74,7 @@ html, body {
  width: 100%;
  text-align: center;
 }
+
 .mainInner div{
  display:table-cell;
  vertical-align: middle;
@@ -81,6 +82,7 @@ html, body {
  font-weight: bold;
  letter-spacing: 1.25px;
 }
+
 #sidebarMenu {
  height: 100%;
  position: fixed;
@@ -117,6 +119,7 @@ html, body {
  font-weight: bold;
  cursor: pointer;
  text-decoration: none;
+ display: block;
 }
 input[type="checkbox"]:checked ~ #sidebarMenu {
  transform: translateX(0);
@@ -192,6 +195,15 @@ input[type=checkbox]:checked ~ .sidebarIconToggle > .diagonal.part-2 {
  margin-top: -9px;
 }
 
+// フッター
+footer {
+ height: 30px;
+ width: 100%;
+ background-color: #EACFDF;
+}
+
+
+
 @media (max-width: 575.98px) {
 	.my-class {
 		// cssプロパティをここに記述
@@ -207,17 +219,18 @@ input[type=checkbox]:checked ~ .sidebarIconToggle > .diagonal.part-2 {
 @media (min-width: 768px) and (max-width: 991.98px) {
 	.my-class {
 		// cssプロパティをここに記述
-	}	
+	}
 }
 
 @media (min-width: 992px) and (max-width: 1199.98px) {
 	.my-class {
 		// cssプロパティをここに記述
-	}	
+	}
 }
 
 @media (min-width: 1200px) {
 	.my-class {
 		// cssプロパティをここに記述
-	}	
+	}
 }
+

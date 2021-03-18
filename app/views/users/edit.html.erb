@@ -7,19 +7,18 @@
     </ul>
   </div>
 <% end %>
-    <h1>プロフィール編集</h1>
+    <h2>プロフィールを編集</h2>
     <%= form_with model:@user, local:true do |f| %>
     <div class="form-group">
-      <label for="inputName">Name</label>
-      <%= f.text_field :name, autofocus: true, id:"inputName", placeholder:"名前"%>
-    </div>
-    <div class="form-group">
-      <%= attachment_image_tag @user, :profile_image, fallback: "sample.png", id: "img_prev",style: "height: 250px; width:300px;" %>
-      <label for="inputImage">プロフ画像</label>
+      <%= attachment_image_tag @user, :profile_image, fallback: "sample.png", id: "img_prev",style: "height: 250px; width:300px;", class: "rounded-circle" %>
       <%= f.attachment_field :profile_image, placeholder: "プロフィール画像", class: "form-control-file" %>
     </div>
+      <div class="form-group">
+      <label for="inputName">Name</label><br>
+      <%= f.text_field :name, autofocus: true, id:"inputName", placeholder:"名前", class: "form-control"   %>
+    </div>
     <div class="form-group">
-      <label for="inputName">introduction</label>
+      <label for="inputName">Introduction</label>
       <%= f.text_area :introduction, autofocus: true, id:"inputIntroduction", placeholder:"自己紹介" , class: "form-control" %>
     </div>
     <div class="form-check">

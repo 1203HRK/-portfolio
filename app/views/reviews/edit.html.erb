@@ -1,50 +1,52 @@
-<div class="container">
-  <div class="row">
-    <div class="col-1"></div>
-      <div class="col-10">
-        <h1>投稿編集</h1>
+<div class="container-fluid">
+  <div class="row justify-content-around">
+     <div class="my-box col-8">
+        <h1>投稿を編集</h1>
         <%= form_with model:@review, local:true do |f| %>
         <%= render 'layouts/error_messages', model: f.object %>
 
-       <% unless  @isDuplicated == true %> 
-        <div class="col-auto">
+       <%# unless  @isDuplicated == true %>
+        <div class="form-group">
           <label for="inputName">商品名</label>
           <%= f.fields_for :item do |item| %>
-          <%= item.text_field :name, value: @item.name, class: "form-control" %>
+          <%= item.text_field :name, value: @item.name, class: "form-control", :readonly => true %>
           <% end %>
           <span id="help8" class="form-text text-muted">
-            商品名[全角スペース]色番等</br>
-            ブランド名は入れず、商品名のみ登録してください。
+          　商品名は後から編集できません
           </span>
         </div>
-      <% end %> 
-        
-        <div class="col-auto">
-          <label for="inputImage">商品画像</label>
-           <%= f.attachment_field :review_images_images, multiple: true %>
+      <%# end %>
+        <div class="form-group">
+          <label for="inputImage">商品画像</label><br>
+          <%= f.attachment_field :review_images_images, multiple: true %>
+          <span id="help8" class="form-text text-muted">
+          　4枚まで登録できます。<br>
+          　変更する場合は全ての画像を再度選択してください。
+            </span>
         </div>
-        <div class="col-auto form-group row" id="star">
-          <label for="inputImage">評価</label>
-          <%= f.hidden_field :rate,  id: :review_star %>
-          <script>
-          $('#star').empty();
-          $('#star').raty({
-            size     : 36,
-            starOff:  '<%= asset_path('star-off.png') %>',
-            starOn : '<%= asset_path('star-on.png') %>',
-            starHalf: '<%= asset_path('star-half.png') %>',
-            score: <%= @review.rate %>,
-            scoreName: 'review[rate]'
-          });
-          </script>
+        <div class="form-group">
+          <%= f.label :rate,'評価', class:'col-form-label' %><br>
+          <div id="star">
+            <%= f.hidden_field :rate,  id: :review_star %>
+            <script>
+            $('#star').empty();
+            $('#star').raty({
+              size     : 36,
+              starOff:  '<%= asset_path('star-off.png') %>',
+              starOn : '<%= asset_path('star-on.png') %>',
+              starHalf: '<%= asset_path('star-half.png') %>',
+              score: <%= @review.rate %>,
+              scoreName: 'review[rate]'
+            });
+            </script>
+          </div>
         </div>
-
-        <div class="col-auto">
-          <label>文書</label>
+        <div class="form-group">
+          <%= f.label :body, '投稿文' %>
           <%= f.text_area :body, class: "form-control" %>
         </div>
-        <div class="col-auto">
-          <label>タグ</label>
+        <div class="form-group">
+          <%= f.label :tag_name, 'タグ' %>
           <%= f.text_field :tag_name, value: @tag_list, class: "form-control" %>
           <span id="help8" class="form-text text-muted">
           スペースを開けると複数登録できます。
@@ -52,25 +54,7 @@
         </div>
           <%= f.submit '編集' %>
         <% end %>
-       </div>
-    <div class="col-1"></div>
+      </div>
   </div>
 </div>
 
-
-<script>
-$(document).on("turbolinks:load", function(){
-  function readURL(input) {
-    if(input.files && input.files[0]){
-      var reader = new FileReader();
-      reader.onload = function (e) {
-        $('#img_prev').attr('src', e.target.result);
-      }
-      reader.readAsDataURL(input.files[0]);
-    }
-  }
-  $("#review_image").change(function(){
-    readURL(this);
-  });
-});
-</script>

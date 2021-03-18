@@ -1,5 +1,5 @@
-
 <div class="jumbotron mx-auto" style="width:95%;">
+  <div class="bg">
     <h1 class="display-4">BeoPLE</h1>
     <p class="lead">自宅で自分に合う商品を見つけませんか?</p>
     <hr class="my-4">
@@ -15,12 +15,53 @@
       <% end %>
     <% end %>
   </div>
-
-
-  <div class="col no-gutters　mv">
-    <% @all_ranks.first(5).each do |review| %>
-     <% review.review_images.first(1).each do |image| %>
-      <%= attachment_image_tag image, :image, :fill, 200, 200, format: 'jpeg', fallback: "sample.png" %>
-      <% end %>
-    <% end %>
-  </div>
+</div>
+<div id="fh5co-main">
+			<div class="fh5co-cards">
+				<div class="container-fluid">
+					<div class="row animate-box">
+						<div class="col-md-12 heading text-center"><h2>人気のREVIEW</h2></div>
+					</div>
+					<div class="row">
+           <% @all_ranks.first(4).each do |review| %>
+						<div class="col-lg-3 col-md-6 col-sm-6 animate-box">
+							<div class="fh5co-card">
+							  <% review.review_images.first(1).each do |image| %>
+                <%= attachment_image_tag image, :image, :fill, 200, 200, format: 'jpeg', fallback: "sample.png", class: "img-responsive" %>
+                <% end %>
+								<div class="fh5co-card-body">
+									<h3 class="card-title"><%= review.item.name %></h3>
+									<p><%= review.body %></p>
+								</div>
+							</div>
+						</div>
+						 <% end %>
+					</div>
+				</div>
+			</div>
+			<div class="animate-box fh5co-product-2">
+				<div class="fh5co-half">
+				</div>
+				<div class="fh5co-half">
+					<h3>テスターが不要な世界へ</h3>
+					<p>気軽にタッチアップや試着の出来ない昨今<br>
+					みなさんはどの様にメイク用品や洋服を購入していますか？<br>
+					BeoPLEではパーソナルカラー・骨格診断を利用した利用満足度を共有します。
+					共有することにより、試さずとも自身に1番似合う物をピックアップすることが可能となります。</p>
+					<% if user_signed_in? %>
+            <%= link_to(users_path, class: "button") do %>
+              <span>TIME LINE</span>
+            <% end %>
+          <% else %>
+            <%= link_to(new_user_registration_path, class: "button") do %>
+              <span>使ってみる！</span>
+            <% end %>
+          <% end %>
+				</div>
+			</div>
+			</div>
+			
+	<!-- jQuery -->
+	<script src="js/jquery-1.10.2.min.js"></script>
+	<!-- Main JS -->
+	<script src="js/main.js"></script>
