@@ -1,17 +1,15 @@
 <div class="container">
   <div class="row">
-    <div class="col-1"></div>
-      <div class="col-10">
+    <div class="col-2"></div>
+      <div class="col-8">
         <h1>パーソナル一覧</h1>
+        <table class="table table-hover table-sm">
         <% @personals.each do |personal| %>
-        <table class="table table-striped table-hover table-sm">
           <tr>
-            <th style="width:70%"><%= link_to personal.name, personal_path(personal) %></th>
-            <th style="width:30%"><%= "(#{Review.joins(user: :personal_users).where(user: { personal_users: { personal: personal } }).count})" %></th>
+            <td><%= link_to personal.name + "　(#{Review.joins(user: :personal_users).where(user: { personal_users: { personal: personal } }).count})", personal_path(personal) %></td>
           </tr>
+          <% end %>
         </table>
-        <% end %>
-      </div>
-    <div class="col-1"></div>
+    <div class="col-2"></div>
   </div>
 </div>

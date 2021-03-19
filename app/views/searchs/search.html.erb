@@ -1,21 +1,29 @@
-<% if @range == "Tag" %>
-    <h2>#<%= @word %>の検索結果</h2>
-    <h3><%= @tags.count %>件ヒットしました</h3>
-    <% @tags.each do |tag| %>
-    <table class="table table-striped table-hover table-sm">
-      <tr>
-        <th><%= link_to "#" +tag.tag_name + "(#{tag.reviews.count})", tag_path(tag) %></th>
-      </tr>
-    </teble>
-    <% end %>
-<% else %>
-    <h2>「<%= @word %>」の検索結果</h2>
-    <h3><%= @items.count %>件ヒットしました</h3>
-    <% @items.each do |item| %>
-    <table class="table table-striped table-hover table-sm">
-       <tr>
-        <th><%= link_to item.name + "(#{item.reviews.count})", item_path(item.id) %></th>
-      </tr>
-    </teble>
-    <% end %>
-<% end %>
+<div class="container">
+  <div class="row">
+    <div class="col-2"></div>
+      <div class="col-8">
+        <% if @range == "Tag" %>
+            <h2>#<%= @word %>の検索結果</h2>
+            <h3><%= @tags.count %>件ヒットしました</h3>
+            <% @tags.each do |tag| %>
+              <table class="table table-striped table-hover table-sm">
+                <tr>
+                  <th><%= link_to "#" +tag.tag_name + "(#{tag.reviews.count})", tag_path(tag) %></th>
+                </tr>
+              </teble>
+            <% end %>
+        <% else %>
+            <h2>「<%= @word %>」の検索結果</h2>
+            <h3><%= @items.count %>件ヒットしました</h3>
+            <% @items.each do |item| %>
+            <table class="table table-striped table-hover table-sm">
+               <tr>
+                <th><%= link_to item.name + "(#{item.reviews.count})", item_path(item.id) %></th>
+              </tr>
+            </teble>
+            <% end %>
+        <% end %>
+      </div>
+    <div class="col-2"></div>
+  </div>
+</div>
