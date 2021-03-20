@@ -19,12 +19,12 @@
 <div id="fh5co-main">
 			<div class="fh5co-cards">
 				<div class="container-fluid">
-					<div class="row animate-box">
+					<div class="row scrollanime">
 						<div class="col-md-12 heading text-center"><h2>人気のREVIEW</h2></div>
 					</div>
 					<div class="row">
            <% @all_ranks.first(4).each do |review| %>
-						<div class="col-lg-3 col-md-6 col-sm-6 animate-box">
+						<div class="col-lg-3 col-md-6 col-sm-6 scrollanime downup">
 							<div class="fh5co-card">
 							  <% review.review_images.first(1).each do |image| %>
                 <%= attachment_image_tag image, :image, :fill, 200, 200, format: 'jpeg', fallback: "sample.png", class: "img-responsive" %>
@@ -61,5 +61,17 @@
 			</div>
 			</div>
 			
-
-		
+<script>
+$(function () {
+  $(window).scroll(function () {
+      const wHeight = $(window).height();
+      const scrollAmount = $(window).scrollTop();
+      $('.scrollanime').each(function () {
+          const targetPosition = $(this).offset().top;
+          if(scrollAmount > targetPosition - wHeight + 60) {
+              $(this).addClass("fadeInDown");
+          }
+      });
+    });
+});
+</script>

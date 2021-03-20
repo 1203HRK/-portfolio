@@ -175,3 +175,23 @@ body.fh5co-mobile-menu-visible #fh5co-logo-mobile-wrap {
     line-height: 28px;
   }
 }
+
+
+/*フェードインアニメーションの指定*/
+.scrollanime {opacity: 0;} /*一瞬表示されるのを防ぐ*/
+.fadeInDown {
+    animation-name: fadeInDown;
+    animation-duration: 3s;
+    animation-fill-mode: forwards;
+}
+@keyframes fadeInDown {
+    0% {
+        opacity: 0;         
+    }
+    100% {
+    opacity: 1;
+    transform: translate(0);
+    }
+}
+ 
+.downup {transform: translateY(100px);}
