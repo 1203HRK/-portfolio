@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-
   root to: 'home#top'
 
   get 'search' => 'searchs#search'
@@ -31,6 +30,12 @@ Rails.application.routes.draw do
           get :following, :followers
       end
     end
+  namespace :admin do
+    root to: 'homes#top'
+    resources :users
+  end
+  
+  
   resources :relationships, only: [:create, :destroy]
   resources :reviews do
     post 'like' => 'likes#create', as: 'create_like'
