@@ -6,5 +6,10 @@ class InquiryMailer < ApplicationMailer
     @inquiry = inquiry
     mail(:from => inquiry.email, :subject => 'お問い合わせがありました')
   end
+  
+  #def userreceived_email(inquiry)
+   # @inquiry = inquiry
+    #mail(:to => inquiry.email, :subject => 'お問い合わせがありがとうございました')
+  #end
 
 end

@@ -88,7 +88,7 @@ body.fh5co-mobile-menu-visible #fh5co-logo-mobile-wrap {
 }
 
 .fh5co-cards {
-  background: whitesmoke;
+  background-color: rgb(245,245,245);
   padding: 3em 0;
 }
 @media screen and (max-width: 768px) {
@@ -96,6 +96,12 @@ body.fh5co-mobile-menu-visible #fh5co-logo-mobile-wrap {
     padding: 3em 0;
   }
 }
+
+.img-responsive {
+  height: 200px;
+  width: auto;
+}
+
 .fh5co-cards .fh5co-card {
   display: block;
   background: #ffffff;
@@ -164,6 +170,11 @@ body.fh5co-mobile-menu-visible #fh5co-logo-mobile-wrap {
   font-weight: 300;
 }
 
+.fh5co-half-left {
+  background: image-url('subv.jpg');
+  background-size: cover;
+}
+
 
 @media screen and (max-width: 768px) {
   .fh5co-product-2 .fh5co-half {
@@ -181,7 +192,7 @@ body.fh5co-mobile-menu-visible #fh5co-logo-mobile-wrap {
 .scrollanime {opacity: 0;} /*一瞬表示されるのを防ぐ*/
 .fadeInDown {
     animation-name: fadeInDown;
-    animation-duration: 3s;
+    animation-duration: 5s;
     animation-fill-mode: forwards;
 }
 @keyframes fadeInDown {
@@ -195,3 +206,9 @@ body.fh5co-mobile-menu-visible #fh5co-logo-mobile-wrap {
 }
  
 .downup {transform: translateY(100px);}
+
+//　お問い合わせフォーム
+.contact {
+  padding: 3em 0;
+  background-color: rgb(245,245,245);
+}

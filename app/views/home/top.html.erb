@@ -17,54 +17,80 @@
   </div>
 </div>
 <div id="fh5co-main">
-			<div class="fh5co-cards">
-				<div class="container-fluid">
-					<div class="row scrollanime">
-						<div class="col-md-12 heading text-center"><h2>人気のREVIEW</h2></div>
-					</div>
-					<div class="row">
-           <% @all_ranks.first(4).each do |review| %>
-						<div class="col-lg-3 col-md-6 col-sm-6 scrollanime downup">
-							<div class="fh5co-card">
-							  <% review.review_images.first(1).each do |image| %>
-                <%= attachment_image_tag image, :image, :fill, 200, 200, format: 'jpeg', fallback: "sample.png", class: "img-responsive" %>
-                <% end %>
-								<div class="fh5co-card-body">
-									<h3 class="card-title"><%= review.item.name %></h3>
-									<p><%= review.body %></p>
-								</div>
-							</div>
+	<div class="fh5co-cards">
+		<div class="container-fluid">
+			<div class="row scrollanime">
+				<div class="col-md-12 heading text-center"><h2>人気のREVIEW</h2></div>
+			</div>
+			<div class="row">
+       <% @all_ranks.first(4).each do |review| %>
+				<div class="col-lg-3 col-md-6 col-sm-6 scrollanime downup">
+					<div class="fh5co-card">
+					  <% review.review_images.first(1).each do |image| %>
+            <%= attachment_image_tag image, :image, format: 'jpeg', fallback: "sample.png", class: "img-responsive d-block mx-auto" %>
+            <% end %>
+						<div class="fh5co-card-body">
+							<h3 class="card-title"><%= review.item.name %></h3>
+							<p><%= review.body %></p>
 						</div>
-						 <% end %>
 					</div>
 				</div>
+				 <% end %>
 			</div>
-			<div class="animate-box fh5co-product-2 row">
-				<div class="fh5co-half col-6">
-				</div>
-				<div class="fh5co-half col-6">
-					<h3>テスターが不要な世界へ</h3>
-					<p>気軽にタッチアップや試着の出来ない昨今<br>
-					みなさんはどの様にメイク用品や洋服を購入していますか？<br>
-					BeoPLEではパーソナルカラー・骨格診断を利用した利用満足度を共有します。
-					共有することにより、試さずとも自身に1番似合う物をピックアップすることが可能となります。</p>
-					<% if user_signed_in? %>
-            <%= link_to(users_path, class: "button") do %>
-              <span>TIME LINE</span>
-            <% end %>
-          <% else %>
-            <%= link_to(new_user_registration_path, class: "button") do %>
-              <span>使ってみる！</span>
-            <% end %>
+		</div>
+	</div>
+</div>
+<div class="animate-box fh5co-product-2 scrollanime downup row">
+	<div class="fh5co-half fh5co-half-left col-6">
+	</div>
+	<div class="fh5co-half col-6">
+		<h3>テスターが不要な世界へ</h3>
+		<p>気軽にタッチアップや試着の出来ない昨今<br>
+		みなさんはどの様にメイク用品や洋服を購入していますか？<br>
+		BeoPLEではパーソナルカラー・骨格診断を利用した利用満足度を共有します。
+		共有することにより、試さずとも自身に1番似合う物をピックアップすることが可能となります。</p>
+		<% if user_signed_in? %>
+      <%= link_to(users_path, class: "button") do %>
+        <span>TIME LINE</span>
+      <% end %>
+    <% else %>
+      <%= link_to(new_user_registration_path, class: "button") do %>
+        <span>使ってみる！</span>
+      <% end %>
+    <% end %>
+	</div>
+</div>
+<div class="contact">
+	<div style="width:80%;" class="mx-auto">
+		<%= form_for @inquiry, :url => inquiry_confirm_path do |f| %>
+      <h3>お問い合わせ</h3>
+    <% if @inquiry.errors.any? %>
+      <div class="alert alert-danger" role="alert">
+        <strong>入力内容にエラーがあります</strong>
+        <ul>
+          <% @inquiry.errors.each do |attr, msg| %>
+            <li><%= msg %></li>
           <% end %>
-				</div>
-			</div>
-			<div>
-			  <h3>お問い合わせ</h3>
-			</div>
-			
-			</div>
-			
+        </ul>
+      </div>
+    <% end %>
+    <div class="form-group">
+      <label>名前<span class="text-danger">（必須）</span></label>
+      <%= f.text_field :name, class: "form-control" %>
+    </div>
+    <div class="form-group">
+    <label>メールアドレス<span class="text-danger">（必須）</span></label>
+      <%= f.text_field :email, class: "form-control" %>
+    </div>
+     <div class="form-group">
+      <label>お問い合わせ内容</label>
+      <%= f.text_area :message, class: "form-control" %>
+    </div>
+    <%= f.submit '確認', class: 'btn  btn-outline-success' %>
+    <% end %>
+	</div>
+</div>
+
 <script>
 $(function () {
   $(window).scroll(function () {

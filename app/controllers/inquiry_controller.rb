@@ -16,8 +16,9 @@ class InquiryController < ApplicationController
 
   def thanks
     # メール送信
-    @inquiry = Inquiry.new(params[:inquiry].permit(:name, :email, :message))    
+    @inquiry = Inquiry.new(params[:inquiry].permit(:name, :email, :message))
     InquiryMailer.received_email(@inquiry).deliver
+    #InquiryMailer.userreceived_email(@inquiry).deliver
     render :action => 'thanks'
   end
 end
