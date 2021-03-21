@@ -130,6 +130,12 @@
   outline: none;
 }
 
+//TL
+
+.tl-image {
+  object-fit: cover;
+}
+
 // 新規登録画面
 
 .sinin {
@@ -254,3 +260,15 @@
   outline: none;
 }
 
+
+@media (max-width: 575.98px) {
+
+  .tl-image{
+    height: 25%;
+    width: 100%;
+  }
+
+	.card-body {
+		display: none;
+	}
+}

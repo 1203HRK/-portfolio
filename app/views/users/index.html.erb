@@ -27,12 +27,12 @@
     </div>
     <!-- 投稿内容 -->
     <div class="row no-gutters">
-      <div class="col-3 my-auto">
+      <div class="col-md-3 col-xs-12 my-auto">
         <% review.review_images.first(1).each do |image| %>
-          <%= link_to attachment_image_tag(image, :image, size: "150x150", format: 'jpeg', fallback: "sample.png" , class: "main__image"), review_path(review) %>
+          <%= link_to attachment_image_tag(image, :image, size: "150x150", format: 'jpeg', fallback: "sample.png" , class: "tl-image"), review_path(review) %>
         <% end %>
       </div>
-      <div class="col-9">
+      <div class="col-md-9">
       <div class="card-body">
         <h5 class="card-title">
           <%= link_to review.item.name, review_path(review), class: "clearfix" %> <br>

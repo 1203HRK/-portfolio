@@ -195,22 +195,20 @@ input[type=checkbox]:checked ~ .sidebarIconToggle > .diagonal.part-2 {
  margin-top: -9px;
 }
 
-// フッター
-footer {
- height: 30px;
- width: 100%;
- background-color: #EACFDF;
- position: absolute;
- bottom: 0;
- left: 0;
-}
+
 
 
 
 @media (max-width: 575.98px) {
-	.my-class {
-		// cssプロパティをここに記述
-	}
+// フッター
+ footer {
+  height: 40px;
+  width: 100%;
+  background-color: #EACFDF;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+ }
 }
 
 @media (min-width: 576px) and (max-width: 767.98px) {

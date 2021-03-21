@@ -7,7 +7,6 @@ class CommentsController < ApplicationController
       @review.create_notification_comment!(current_user, @comment.id) # 通知機能
       @comments = @comment.review.comments.order(created_at: :desc) # 作成日新着順
       render :index
-      # redirect_back(fallback_location: root_path)
     else
       render 'show'
     end
@@ -22,7 +21,6 @@ class CommentsController < ApplicationController
     @comment.destroy
     @comments = @comment.review.comments.order(created_at: :desc) # 作成日新着順
     render :index
-    # redirect_back(fallback_location: root_path)
   end
 
   private

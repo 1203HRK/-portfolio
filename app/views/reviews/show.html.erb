@@ -84,7 +84,7 @@
     </div>
   </div>
   <!-- 投稿内容 -->
-  <div class="mt-2 border-left">
+  <div class="mt-2">
    <%= simple_format(@review.body) %>
     <% @review_tags.each do |tag| %>
       <a><%= link_to "#" + tag.tag_name, tag_path(tag) %></a>
