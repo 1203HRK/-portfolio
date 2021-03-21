@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
 
   root to: 'home#top'
-
+  
+  get   'inquiry'         => 'inquiry#index'  
+  post  'inquiry/confirm' => 'inquiry#confirm' 
+  post  'inquiry/thanks'  => 'inquiry#thanks'
   get 'search' => 'searchs#search'
   
   #devide
