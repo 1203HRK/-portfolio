@@ -1,4 +1,4 @@
-<div class="m-5">
+<div class="m-md-5 mypage">
   <div class="d-flex justify-content-between">
       <div class="mb-3 my-box text-center align-self-center">
         <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "sample.png", class: "mb-2 rounded-circle" %>
@@ -19,7 +19,7 @@
         <p><%= "フォロワー" %></p>
         <% end %>
       </div>
-      <div class="my-box align-self-center">
+      <div class="my-box align-self-center mypage-edit">
         <% if user_signed_in? && @user != current_user %>
           <%= render "follow_form", user: @user %>
         <% end %>

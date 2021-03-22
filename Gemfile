@@ -85,5 +85,5 @@ end
 gem 'rails-i18n'
 
 gem 'omniauth', '1.9.1'
-gem 'omniauth-google-oauth2'
 gem 'omniauth-facebook'
+gem 'omniauth-google-oauth2'

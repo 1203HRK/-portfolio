@@ -1,5 +1,4 @@
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
-
   def google_oauth2
     callback_for(:google)
   end
@@ -8,17 +7,16 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     @omniauth = request.env['omniauth.auth']
     info = User.find_oauth(@omniauth)
     @user = info[:user]
-    if @user.persisted? 
+    if @user.persisted?
       sign_in_and_redirect @user, event: :authentication
-      set_flash_message(:notice, :success, kind: "#{provider}".capitalize) if is_navigational_format?
-    else 
+      set_flash_message(:notice, :success, kind: provider.to_s.capitalize) if is_navigational_format?
+    else
       @sns = info[:sns]
-      render "users/registrations/new" 
+      render 'users/registrations/new'
     end
   end
 
   def failure
     redirect_to root_path and return
   end
-  
 end

@@ -89,23 +89,25 @@
    <!-- ログアウト時の中身　-->
       <%= yield %>
     <% end %>
-    <footer class="d-md-none">
-    <div class="d-flex justify-content-around">
-    <div class="my-box"><%= link_to image_tag("home.png", size:'40x40', alt: "TIME LINE"), users_path %></div>
-    <div class="my-box">
-      <%= link_to(notifications_path) do %>
-        <% if unchecked_notifications.any? %>
-          <span class="fa-stack"></span>
-          <i class="fas fa-circle n-circle fa-stack-1"></i>
-          <%= image_tag("alert.png", size:'40x40', alt: "ALERT") %>
-        <% else %>
-          <%= image_tag("alert.png", size:'40x40', alt: "ALERT") %>
+    <% if user_signed_in? %>
+      <footer class="d-md-none">
+      <div class="d-flex justify-content-around">
+      <div class="my-box"><%= link_to image_tag("home.png", size:'40x40', alt: "TIME LINE"), users_path %></div>
+      <div class="my-box">
+        <%= link_to(notifications_path) do %>
+          <% if unchecked_notifications.any? %>
+            <span class="fa-stack"></span>
+            <i class="fas fa-circle n-circle fa-stack-1"></i>
+            <%= image_tag("alert.png", size:'40x40', alt: "ALERT") %>
+          <% else %>
+            <%= image_tag("alert.png", size:'40x40', alt: "ALERT") %>
+          <% end %>
         <% end %>
-      <% end %>
-    </div>
-    <div class="my-box"><%= link_to image_tag("MYPAGE.png", size:'40x40', alt: "MY PEGE"), user_path(current_user.id) %></div>
-    <div class="my-box"><%= link_to image_tag("newreview.png", size:'40x40', alt: "NEW REVIEW"), new_review_path %></div>
-    </div>
-    </footer>
+      </div>
+      <div class="my-box"><%= link_to image_tag("MYPAGE.png", size:'40x40', alt: "MY PEGE"), user_path(current_user.id) %></div>
+      <div class="my-box"><%= link_to image_tag("newreview.png", size:'40x40', alt: "NEW REVIEW"), new_review_path %></div>
+      </div>
+      </footer>
+    <% end %>
   </body>
 </html>

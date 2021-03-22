@@ -63,34 +63,34 @@ class User < ApplicationRecord
   def self.without_sns_data(auth)
     user = User.where(email: auth.info.email).first
 
-      if user.present?
-        sns = SnsCredential.create(
-          uid: auth.uid,
-          provider: auth.provider,
-          user_id: user.id
-        )
-      else
-        user = User.new(
-          name: auth.info.name,
-          email: auth.info.email,
-        )
-        sns = SnsCredential.new(
-          uid: auth.uid,
-          provider: auth.provider
-        )
-      end
-      return { user: user ,sns: sns}
+    if user.present?
+      sns = SnsCredential.create(
+        uid: auth.uid,
+        provider: auth.provider,
+        user_id: user.id
+      )
+    else
+      user = User.new(
+        name: auth.info.name,
+        email: auth.info.email
+      )
+      sns = SnsCredential.new(
+        uid: auth.uid,
+        provider: auth.provider
+      )
+    end
+    { user: user, sns: sns }
   end
 
   def self.with_sns_data(auth, snscredential)
     user = User.where(id: snscredential.user_id).first
-    unless user.present?
+    if user.blank?
       user = User.new(
         name: auth.info.name,
-        email: auth.info.email,
+        email: auth.info.email
       )
     end
-    return {user: user}
+    { user: user }
   end
 
   def self.find_oauth(auth)
@@ -104,6 +104,6 @@ class User < ApplicationRecord
       user = without_sns_data(auth)[:user]
       sns = without_sns_data(auth)[:sns]
     end
-    return { user: user ,sns: sns}
+    { user: user, sns: sns }
   end
 end
