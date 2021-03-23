@@ -16,10 +16,13 @@ class ItemsController < ApplicationController
 
   def show
     @item = Item.find(params[:id])
+    # アイテムIDに紐づいたレビュー
     @reviews = @item.reviews
     @item_ranks = Review.create_item_ranks(@item.id)
     @average = @item.reviews.average(:rate).to_f.round(1)
-    @personals = Personal.all
+    personal = Personal.all
+     # パーソナルに紐づいたレビュー
+    @personal_reviews = Review.joins(user: :personal_users).where(user: { personal_users: { personal: personal }})
   end
 
   def edit

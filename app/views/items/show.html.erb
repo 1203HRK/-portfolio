@@ -6,12 +6,15 @@
     <h3>平均<%= @average %>点
       <span id="star-rate-item-<%= @item.id %>"></span>
     </h3>
-    <% @personals.each do |personal| %>
-      <%= link_to personal_path(personal) do %>
-        <%= personal.name %>
-          <%= "(#{Review.joins(user: :personal_users).where(user: { personal_users: { personal: personal } }).count})" %>
-      <% end %>
-    <% end %>
+    <%# @reviews.each do |review| %>
+      <%#= review.user.id %>
+    <%# end %>
+    <%# @personal_reviews.each do |pr| %>
+      <%#= link_to personal_path(pr) do %>
+        <%#= personal.name %>
+          <%#= pr.user.id %>
+      <%# end %>
+    <%# end %>
     <script>
     $('#star-rate-item-<%= @item.id %>').empty();
      $('#star-rate-item-<%= @item.id %>').raty({
@@ -84,5 +87,6 @@
       <%= render "reviews/review", reviews: @reviews %>
     </div>
   </div>
+  
 </div>
 
