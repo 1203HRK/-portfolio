@@ -193,10 +193,9 @@ input[type=checkbox]:checked ~ .sidebarIconToggle > .diagonal.part-2 {
 }
 
 @media (max-width: 575.98px) {
-
  main {
- padding-bottom: 40px;
-}
+  padding-bottom: 30px;
+ }
 
  footer {
   width: 100%;

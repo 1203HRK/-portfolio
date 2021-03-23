@@ -212,3 +212,37 @@ body.fh5co-mobile-menu-visible #fh5co-logo-mobile-wrap {
   padding: 3em 0;
   background-color: rgb(245,245,245);
 }
+
+@media (max-width: 575.98px) {
+  .jumbotron {
+  background: image-url('spmv.jpg')center no-repeat; 
+  background-size: cover;
+  }
+  
+  
+}
+
+@media (min-width: 576px) and (max-width: 767.98px) {
+	.my-class {
+		// cssプロパティをここに記述
+	}
+}
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+	.my-class {
+		// cssプロパティをここに記述
+	}
+}
+
+@media (min-width: 992px) and (max-width: 1199.98px) {
+	.footer {
+		 display: none;
+	}
+}
+
+@media (min-width: 1200px) {
+	.my-class {
+		// cssプロパティをここに記述
+	}
+}
+
