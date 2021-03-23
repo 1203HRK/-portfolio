@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
-    <div class="col-2"></div>
-      <div class="col-8">
+    <div class="col-md-2"></div>
+      <div class="col-md-8">
         <% if @range == "Tag" %>
             <h2>#<%= @word %>の検索結果</h2>
             <h3><%= @tags.count %>件ヒットしました</h3>
@@ -24,6 +24,6 @@
             <% end %>
         <% end %>
       </div>
-    <div class="col-2"></div>
+    <div class="col-md-2"></div>
   </div>
 </div>

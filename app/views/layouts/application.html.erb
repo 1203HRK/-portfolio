@@ -5,7 +5,7 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
+    
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <!--link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/flick/jquery-ui.css" -->
@@ -47,11 +47,12 @@
         </div>
       </nav>
     </header>
-    <% flash.each do |name, msg| %>
+    <main>
+       <% flash.each do |name, msg| %>
       <div class="alert alert-warning alert-<%= name %>">
         <%= msg.html_safe %>
       </div>
-    <% end %>
+      <% end %>
     <% if user_signed_in? %>
     <div class="container-fluid top">
       <div class="row  top">
@@ -90,6 +91,7 @@
    <!-- ログアウト時の中身　-->
       <%= yield %>
     <% end %>
+    </main>
     <% if user_signed_in? %>
       <footer class="d-md-none">
         <div class="d-flex justify-content-around">

@@ -78,3 +78,22 @@
     margin: 0; 
     padding: 0;
 }
+
+@media (max-width: 575.98px) {
+  .item-info {
+    &__reviews__item{
+      margin-left: 0;
+    }
+    
+    &__reviews__items {
+      width: 47%;
+      margin: 0 3px;
+    }
+  }
+    
+  .item_image {
+    width: 100%;
+    height: auto;
+  }
+
+}

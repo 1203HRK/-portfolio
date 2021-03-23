@@ -27,7 +27,7 @@
     </div>
     <!-- 投稿内容 -->
     <div class="row no-gutters">
-      <div class="col-md-3 col-xs-12 my-auto">
+      <div class="col-md-auto col-xs-12 m-auto">
         <% review.review_images.first(1).each do |image| %>
           <%= link_to attachment_image_tag(image, :image, size: "150x150", format: 'jpeg', fallback: "sample.png" , class: "tl-image"), review_path(review) %>
         <% end %>
