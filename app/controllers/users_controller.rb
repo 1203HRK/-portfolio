@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_action :autheniticate_user, {only: [:edit, :update]}
+  
   def index
     @user = current_user
     # フォローユーザーと自分のIDをまとめた。

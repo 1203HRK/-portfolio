@@ -1,10 +1,10 @@
 <div class="container-fluid">
   <div class="row justify-content-around">
-     <div class="my-box col-8">
+     <div class="my-box col-md-8">
   <h2>NEW REVIEW</h2>
     <%= form_with model:@review, local:true do |f| %>
     <%= render 'layouts/error_messages', model: f.object %>
-    
+
     <div class="form-group">
       <label for="inputName">商品名</label>
       <%= f.fields_for :items do |item| %>

@@ -1,4 +1,6 @@
 class ReviewsController < ApplicationController
+  before_action :autheniticate_user, {only: [:new, :edit, :update]}
+
   def new
     @review = Review.new
     @item = Item.new
