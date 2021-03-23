@@ -13,6 +13,7 @@
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
+//= require_tree .
 
 //= require jquery3
 //= require popper
@@ -36,6 +37,8 @@
  * version: 3.0.0
  *
  */
+
+
 
 //　評価
 
@@ -798,3 +801,5 @@
     return Raty;
   })();
 }));
+
+
