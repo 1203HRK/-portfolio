@@ -33,12 +33,9 @@
  *
  */
 
-
-
 //　評価
 
 (function(root, factory) {
-  console.log('>>> test');
   if (typeof define === 'function' && define.amd) {
     define(['jquery'], factory);
   } else if (typeof module === 'object' && module.exports) {
