@@ -6,15 +6,11 @@
     <h3>平均<%= @average %>点
       <span id="star-rate-item-<%= @item.id %>"></span>
     </h3>
-    <%# @reviews.each do |review| %>
-      <%#= review.user.id %>
-    <%# end %>
-    <%# @personal_reviews.each do |pr| %>
-      <%#= link_to personal_path(pr) do %>
-        <%#= personal.name %>
-          <%#= pr.user.id %>
-      <%# end %>
-    <%# end %>
+    <% @personal.each do |personal| %>
+    <%= personal.name %>
+    <% end %><br>
+    <%= @personal_and_review_counts %>
+
     <script>
     $('#star-rate-item-<%= @item.id %>').empty();
      $('#star-rate-item-<%= @item.id %>').raty({
@@ -87,6 +83,6 @@
       <%= render "reviews/review", reviews: @reviews %>
     </div>
   </div>
-  
+
 </div>
 
