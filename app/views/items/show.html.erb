@@ -6,10 +6,12 @@
     <h3>平均<%= @average %>点
       <span id="star-rate-item-<%= @item.id %>"></span>
     </h3>
-    <% @personal.each do |personal| %>
-    <%= personal.name %>
-    <% end %><br>
-    <%= @personal_and_review_counts %>
+    
+    <% @personal_and_review_counts.each do |key, value| %>
+        <a><%= key %>
+        <%= "(" + "#{value}" + ")　" %></a>
+    <% end %>
+    
 
     <script>
     $('#star-rate-item-<%= @item.id %>').empty();
