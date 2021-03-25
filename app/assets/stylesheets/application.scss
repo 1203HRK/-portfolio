@@ -192,9 +192,6 @@ input[type=checkbox]:checked ~ .sidebarIconToggle > .diagonal.part-2 {
 
 @media (max-width: 575.98px) {
  
- body {
-  overflow: hidden;
- }
  
  main {
   padding-bottom: 45px;
@@ -211,26 +208,26 @@ input[type=checkbox]:checked ~ .sidebarIconToggle > .diagonal.part-2 {
 }
 
 @media (min-width: 576px) and (max-width: 767.98px) {
- body {
-  overflow: hidden;
- }
+	.my-class {
+		// cssプロパティをここに記述
+	}
 }
 
 @media (min-width: 768px) and (max-width: 991.98px) {
- body {
-  overflow: hidden;
- }
+	.my-class {
+		// cssプロパティをここに記述
+	}
 }
 
 @media (min-width: 992px) and (max-width: 1199.98px) {
- body {
-  overflow: hidden;
- }
+	.footer {
+		 display: none;
+	}
 }
 
 @media (min-width: 1200px) {
- body {
-  overflow: hidden;
- }
+	.my-class {
+		// cssプロパティをここに記述
+	}
 }
 
