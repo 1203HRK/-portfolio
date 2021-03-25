@@ -21,10 +21,6 @@
           　4枚まで登録できます。
         </span>
       </div>
-      <div class="form-group" id="star">
-        <%= f.label :rate,'評価', class:'col-form-label' %><br>
-        <%= f.hidden_field :rate, id: :review_star %>
-      </div>
 
 
 <% end %>
@@ -32,31 +28,3 @@
   </div>
 </div>
 
-<pre>
-<script>
-$('#star').raty({
-  size     : 36,
-  starOff:  '<%= asset_path('star-off.png') %>',
-  starOn : '<%= asset_path('star-on.png') %>',
-  starHalf: '<%= asset_path('star-half.png') %>',
-  scoreName: 'review[rate]',
-  half: true,
-});
-</script>
-<script>
-$(document).on("turbolinks:load", function(){
-  function readURL(input) {
-    if(input.files && input.files[0]){
-      var reader = new FileReader();
-      reader.onload = function (e) {
-        $('#img_prev').attr('src', e.target.result);
-      }
-      reader.readAsDataURL(input.files[0]);
-    }
-  }
-  $("#review_images_images").change(function(){
-    readURL(this);
-  });
-});
-</script>
-</pre>
