@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :autheniticate_user, {only: [:edit, :update]}
+  before_action :authenticate_user!, {only: [:edit, :update]}
   
   def index
     @user = current_user
