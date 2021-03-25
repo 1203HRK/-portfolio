@@ -1,4 +1,4 @@
-<div>
+
   <h2>NEW REVIEW</h2>
     <%= form_with model:@review, local:true do |f| %>
     <%= render 'layouts/error_messages', model: f.object %>
@@ -38,7 +38,7 @@
     </div>
       <%= f.submit '投稿' %>
     <% end %>
-</div>
+
 
 <script>
 $('#star').raty({
