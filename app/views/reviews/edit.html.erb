@@ -14,9 +14,9 @@
     </span>
   </div>
 <%# end %>
-  <div class="form-group">
-    <label for="inputImage">商品画像</label><br>
-    <%= f.attachment_field :review_images_images, multiple: true %>
+      <div class="form-group">
+        <label for="file1">商品画像</label>
+    <%= f.attachment_field :review_images_images, type: "file", id: "file1", class: "form-control-file", multiple: true %>
     <span id="help8" class="form-text text-muted">
     　4枚まで登録できます。<br>
     　変更する場合は全ての画像を再度選択してください。
