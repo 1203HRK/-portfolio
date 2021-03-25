@@ -1,7 +1,22 @@
 <div class="container-fluid">
   <div class="row justify-content-around">
-     <div class="my-box col-xs-10 col-md-8">
+    <div class="my-box col-xs-10 col-md-8">
   <h2>NEW REVIEW</h2>
+    <%= form_with model:@review, local:true do |f| %>
+    <%= render 'layouts/error_messages', model: f.object %>
+
+    <div class="form-group">
+      <label for="inputName">商品名</label>
+      <%= f.fields_for :items do |item| %>
+      <%= item.text_field :name, placeholder: "パールグロウハイライト [全角スペース]シャンパンベージュ", class: "form-control" %>
+      <% end %>
+      <span id="help8" class="form-text text-muted">
+        　商品名は後から編集できません<br>
+       　 ブランド名は入れず、商品名のみ登録してください。
+      </span>
     </div>
+
+<% end %>
     </div>
-    </div>
+  </div>
+</div>
