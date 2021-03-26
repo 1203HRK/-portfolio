@@ -6,13 +6,6 @@
     <h3>平均<%= @average %>点
       <span id="star-rate-item-<%= @item.id %>"></span>
     </h3>
-    
-    <% @personal_and_review_counts.each do |key, value| %>
-        <a><%= key %>
-        <%= "(" + "#{value}" + ")　" %></a>
-    <% end %>
-    
-
     <script>
     $('#star-rate-item-<%= @item.id %>').empty();
      $('#star-rate-item-<%= @item.id %>').raty({
@@ -25,6 +18,10 @@
         score: <%= @item.reviews.average(:rate).to_f.round(1) %>
       });
     </script>
+    <% @personal_and_review_counts.each do |key, value| %>
+      <a><%= key %>
+      <%= "(" + "#{value}" + ")　" %></a>
+    <% end %>
   </div>
   </div>
   <!-- 代表投稿（いいね1番多い投稿） -->
@@ -85,6 +82,5 @@
       <%= render "reviews/review", reviews: @reviews %>
     </div>
   </div>
-
 </div>
 
