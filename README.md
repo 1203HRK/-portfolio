@@ -7,7 +7,12 @@ be(autiful)・(pe)ople
 ファッション・メイクに特化した評価SNSです。
 洋服・化粧品の使用感や色のノリ方、似合わせなど、様々な目線から商品の評価を投稿していきます。
 共有することにより、興味のある商品を買う前に自身に似合うのか確かめられる様になっています。
+- TOP画面
+
 <img width="1417" alt="fv" src="https://user-images.githubusercontent.com/75369026/112709056-6d7f6b00-8ef9-11eb-9de0-2c03d6fc0688.png">
+
+- 投稿一覧画面
+
 <img width="1419" alt="スクリーンショット 2021-03-27 12 41 14" src="https://user-images.githubusercontent.com/75369026/112709115-db2b9700-8ef9-11eb-8b60-03958298f256.png">
 
 ### サイトテーマ
