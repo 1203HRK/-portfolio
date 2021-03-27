@@ -25,10 +25,11 @@ be(autiful)・(pe)ople
 ファッション・メイク用品に特化したSNSを作成し、手軽に商品の評価を確認できればと思い作成しました。
 
 ### ターゲットユーザ
-ファッション・メイクに興味のある20代・30代
+ファッション・メイクに興味のある10代〜20代・30代
 
 ### 主な利用シーン
-欲しいジャンルの品定め
+- 気になった商品の品定め
+- 自身の商品利用履歴、使用感の記録
 
 ## 設計書
 -　機能一覧：　https://docs.google.com/spreadsheets/d/1hQVdC3yqmxP7b5IVzCFjf1x2Mc-ZxvYwGgQiu5GOyJg/edit?usp=sharing
