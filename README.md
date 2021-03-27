@@ -8,8 +8,7 @@ be(autiful)・(pe)ople
 洋服・化粧品の使用感や色のノリ方、似合わせなど、様々な目線から商品の評価を投稿していきます。
 共有することにより、興味のある商品を買う前に自身に似合うのか確かめられる様になっています。
 <img width="1417" alt="fv" src="https://user-images.githubusercontent.com/75369026/112709056-6d7f6b00-8ef9-11eb-9de0-2c03d6fc0688.png">
-<img width="1417" alt="fv" src="https://user-images.githubusercontent.com/75369026/112709056-6d7f6b00-8ef9-11eb-9de0-2c03d6fc0688.png">
-
+<img width="1419" alt="スクリーンショット 2021-03-27 12 41 14" src="https://user-images.githubusercontent.com/75369026/112709115-db2b9700-8ef9-11eb-8b60-03958298f256.png">
 
 ### サイトテーマ
 ファッション・メイクに特化したSNS
@@ -39,10 +38,10 @@ be(autiful)・(pe)ople
 ## 機能一覧
 - ユーザー登録、ログイン機能(devise)
 - 投稿機能
- - 画像投稿(refile)
- - 評価(Raty)
+  - 画像投稿(refile)
+  - 評価(Raty)
 - いいね機能(Ajax)
- - ランキング機能
+  - ランキング機能
 - コメント機能(Ajax)
 - フォロー機能(Ajax)
 - 環境変数化(dotenv-rails)
