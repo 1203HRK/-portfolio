@@ -2,16 +2,7 @@
   <% reviews.each do |review| %>
   <div class="m-1 card mypage-review">
     <% review.review_images.first(1).each do |image| %>
-     <section class="hover">
-       <div class="hover-img">
       <%= link_to attachment_image_tag(image, :image, :fill, 200, 200, format: 'jpeg', fallback: "sample.png" , class: "main__image mypage-review-img"), review_path(review.id) %>
-      </div>
-      <div class="hover-text">
-        <% review.tags.each do |tag| %>
-        　#<%= tag.tag_name %><br>
-      　<% end %>
-    　</div>
-    </section>
     <% end %>
     <div id="star-rate-<%= review.id %>" class="mypage-review-star"></div>
      <script>
