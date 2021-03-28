@@ -1,9 +1,18 @@
-<h1>パーソナル登録</h1>
-  <%= form_with model:@user, local:true do |f| %>
-  <div class="form-check">
-  <%= collection_check_boxes(:user, :personal_ids, Personal.all, :id, :name ) do |t| %>
-    <div class="form-check-label"><%= t.label { t.check_box + t.text } %></div>
-  <% end %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-2"></div>
+      <div class="col-md-8">
+        <br>
+        <h2>パーソナル登録</h2>
+          <%= form_with model:@user, local:true do |f| %>
+          <div class="form-check d-flex">
+          <%= collection_check_boxes(:user, :personal_ids, Personal.all, :id, :name ) do |t| %>
+            <div class="form-check-label my-box"><%= t.label { t.check_box + t.text } %></div>
+          <% end %>
+          </div>
+          <%= f.submit "保存", class: "btn btn-outline-warning" %>
+        <% end %>
+        </div>
+      <div class="col-md-2"></div>
+    </div>
   </div>
-  <%= f.submit "保存", class: "btn btn-outline-warning" %>
-<% end %>

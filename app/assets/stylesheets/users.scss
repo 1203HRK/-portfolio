@@ -298,5 +298,21 @@
 	.mypage-review-header {
 	  display: none;
 	}
+}
 
+.hover .hover-text {
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  color: #fff;
+  background-color: rgba(0,0,0,0.65);
+  opacity: 0;
+  transition: .3s ease-in-out;
+}
+
+.hover:hover .hover-text {
+  opacity: 1;
 }
