@@ -140,7 +140,7 @@
 
 .sinin {
   position: relative;
-  height: 560px;
+  min-height: 560px;
   width: 405px;
   margin: 30px auto;
   padding: 60px 60px;
@@ -262,7 +262,7 @@
 
 
 @media (max-width: 575.98px) {
-  
+
   // TL
   .tl-image{
     height: 25%;
@@ -272,31 +272,31 @@
 	.card-body {
 		display: none;
 	}
-	
+
 	//マイページ
 	.mypage {
 	  margin: none;
 	}
-	
+
 	.mypage-edit {
 	  margin-bottom: 5px;
 	}
-	
+
 	.mypage-review {
   width: 30%;
 	}
-	
+
 	.mypage-review-img {
 	  width : 100%;
 	  height: auto;
 	}
-	
+
 	.mypage-review-star {
 	  display: none;
 	}
-	
+
 	.mypage-review-header {
 	  display: none;
 	}
-	
+
 }
