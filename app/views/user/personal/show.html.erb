@@ -1,4 +1,4 @@
 <h1><%= @personal.name %><span class="h4"><%= "全#{@reviews.count}件" %></span></h1>
   <div class="d-flex  justify-content-around">
-    <%= render "reviews/review", reviews: @reviews %>
+    <%= render "user/reviews/review", reviews: @reviews %>
   </div>

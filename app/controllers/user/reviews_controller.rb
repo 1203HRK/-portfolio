@@ -1,4 +1,4 @@
-class ReviewsController < ApplicationController
+class User::ReviewsController < ApplicationController
   before_action :authenticate_user!, {only: [:new, :edit, :update]}
 
   def new

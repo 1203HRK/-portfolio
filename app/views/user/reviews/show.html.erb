@@ -72,7 +72,7 @@
     <!-- いいね数 -->
   <div class="d-flex">
     <div class="my-box mr-2" id="like-<%= @review.id %>">
-      <%= render partial: "likes/like", locals: { review: @review } %>
+      <%= render partial: "user/likes/like", locals: { review: @review } %>
     </div>
   <!-- コメント数  -->
     <div class="my-box">
@@ -93,11 +93,11 @@
   <!-- コメント  -->
   <div style="width:80%;">
     <div id="comments_area">
-      <%= render partial: 'comments/index', locals: { comments: @comments } %>
+      <%= render partial: 'user/comments/index', locals: { comments: @comments } %>
     </div>
     <% if user_signed_in? %>
     <div class="comment-create">
-      <%= render partial: 'comments/form', locals: { comment: @comment, review: @review } %>
+      <%= render partial: 'user/comments/form', locals: { comment: @comment, review: @review } %>
     <% end %>
   </div>
 </div>

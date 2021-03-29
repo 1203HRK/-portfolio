@@ -1,4 +1,4 @@
-class TagsController < ApplicationController
+class User::TagsController < ApplicationController
   def index
     @tags = Tag.order('tag_name')
   end

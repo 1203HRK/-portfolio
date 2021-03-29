@@ -6,7 +6,7 @@
       <li><a target="_blank"><%= link_to image_tag("home.png", size:'40x40', alt: "TIME LINE") + "TIME LINE", users_path %></a></li>
       <li><%= link_to image_tag("MYPAGE.png", size:'40x40', alt: "MY PEGE") + "MY PAGE", user_path(current_user.id) %></li>
       <li><a target="_blank"><%= link_to image_tag("newreview.png", size:'40x40', alt: "NEW REVIEW") + "NEW REVIEW", new_review_path %></li>
-      <li><a target="_blank"><%= render "notifications/circle" %></li>
+      <li><a target="_blank"><%= render "user/notifications/circle" %></li>
       <li><a target="_blank"><%= link_to image_tag("item.png", size:'40x40', alt: "ITEM") + "ITEM", items_path %></a></li>
       <li><a target="_blank"><%= link_to image_tag("tag.png", size:'40x30', alt: "NEW REVIEW") + "TAGS", tags_path %></a></li>
       <li><a target="_blank"><%= link_to image_tag("personal.png", size:'40x30', alt: "PERSONAL") + "PERSONAL", personal_index_path %></a></li>

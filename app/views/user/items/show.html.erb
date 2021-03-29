@@ -67,7 +67,7 @@
       </div>
       <div>
         <span id="like-<%= review.id %>">
-          <%= render partial: "likes/like", locals: { review: review } %>
+          <%= render partial: "user/likes/like", locals: { review: review } %>
         </span>
         <i class="fas fa-comment"></i><%= review.comments.count %>
         <% end %>
@@ -79,7 +79,7 @@
   <div class="item-info__reviews">
     <h3><%= "全#{@item.reviews.count}件" %></h3>
     <div class="item-info__reviews__item">
-      <%= render "reviews/review", reviews: @reviews %>
+      <%= render "user/reviews/review", reviews: @reviews %>
     </div>
   </div>
 </div>

@@ -1,4 +1,4 @@
-class SearchsController < ApplicationController
+class User::SearchsController < ApplicationController
   def search
     @range = params[:range]
     @word = params[:word]

@@ -1,6 +1,6 @@
 <h1><%= @tag.tag_name %><span class="h4"><%= "全#{@tag.reviews.count}件" %></span></h1>
   <div class="d-flex  justify-content-around">
-    <%= render "reviews/review", reviews: @reviews %>
+    <%= render "user/reviews/review", reviews: @reviews %>
   </div>
 
 

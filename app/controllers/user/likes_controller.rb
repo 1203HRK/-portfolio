@@ -1,4 +1,4 @@
-class LikesController < ApplicationController
+class User::LikesController < ApplicationController
   before_action :review_params
 
   def create
