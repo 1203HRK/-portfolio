@@ -6,6 +6,7 @@ class User::PersonalController < ApplicationController
   def show
     @personal = Personal.find(params[:id])
     @reviews =  Review.joins(user: :personal_users).where(user: { personal_users: { personal: @personal } })
+    @personal_ranks = Review.joins(user: :personal_users).where(user: { personal_users: { personal: @personal } }).order('likes_count desc')
   end
 
   def select
