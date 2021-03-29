@@ -52,7 +52,7 @@
         <%= simple_format(review.body) %>
         <div class="d-flex">
           <div class="my-box mr-1" id="like-<%= review.id %>">
-            <%= render partial: "likes/like", locals: { review: review } %>
+            <%= render partial: "user/likes/like", locals: { review: review } %>
           </div>
           <div class="my-box">
             <i class="fas fa-comment"></i><%= review.comments.count %>

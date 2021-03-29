@@ -1,4 +1,4 @@
-class CommentsController < ApplicationController
+class User::CommentsController < ApplicationController
   
   def create
     @review = Review.find(params[:review_id])

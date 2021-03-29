@@ -1,4 +1,4 @@
-class ItemsController < ApplicationController
+class User::ItemsController < ApplicationController
   before_action :authenticate_user!, {only: [:edit, :update, :destroy]}
 
   def new
