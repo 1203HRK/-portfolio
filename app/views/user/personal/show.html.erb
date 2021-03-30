@@ -20,10 +20,10 @@
       <% review.review_images.first(1).each do |image| %>
         <%= link_to attachment_image_tag(image, :image, :fill, 200, 200, format: 'jpeg', fallback: "sample.png" , class: "main__image item_image"), review_path(review) %>
       <% end %>
-    <div id="star-rate-<%= review.id %>"></div>
+    <div id="star-rate-personal-<%= review.id %>"></div>
      <script>
-     $('#star-rate-<%= review.id %>').empty();
-      $('#star-rate-<%= review.id %>').raty({
+     $('#star-rate-personal-<%= review.id %>').empty();
+      $('#star-rate-personal-<%= review.id %>').raty({
         size: 36,
         starOff:  '<%= asset_path('star-off.png') %>',
         starOn : '<%= asset_path('star-on.png') %>',

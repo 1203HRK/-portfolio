@@ -1,6 +1,49 @@
-<h1><%= @tag.tag_name %><span class="h4"><%= "全#{@tag.reviews.count}件" %></span></h1>
-  <div class="d-flex  justify-content-around">
-    <%= render "user/reviews/review", reviews: @reviews %>
+<h2><%= @tag.tag_name %><span class="h4"><%= "全#{@tag.reviews.count}件" %></span></h2>
+<ul class="nav nav-tabs nav-justified" role="tablist">
+  <li class="nav-item">
+    <a class="nav-link active" id="item1-tab" data-toggle="tab" href="#item1" role="tab" aria-controls="item1" aria-selected="true">ランキング</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="item2-tab" data-toggle="tab" href="#item2" role="tab" aria-controls="item2" aria-selected="false">最新</a>
+  </li>
+</ul>
+<div class="tab-content">
+  <div class="tab-pane fade show active" id="item1" role="tabpanel" aria-labelledby="item1-tab">
+   <div class="d-flex flex-wrap">
+  <% @tag_ranks.each do |review| %>
+  <div class="item-info__reviews__items my-box mr-md-1 card">
+    <div class="card-header">
+      <%= link_to attachment_image_tag(review.user, :profile_image, :fill, 30, 30, size:"30x30", format: 'jpeg', fallback: "sample.png", class: "mr-2 rounded-circle"), user_path(review.user.id) %>
+      <%= link_to review.user.name, user_path(review.user.id)  %>
+    </div>
+    <div>
+      <% review.review_images.first(1).each do |image| %>
+        <%= link_to attachment_image_tag(image, :image, :fill, 200, 200, format: 'jpeg', fallback: "sample.png" , class: "main__image item_image"), review_path(review) %>
+      <% end %>
+    <div id="star-rate-tag-<%= review.id %>"></div>
+     <script>
+     $('#star-rate-tag-<%= review.id %>').empty();
+      $('#star-rate-tag-<%= review.id %>').raty({
+        size: 36,
+        starOff:  '<%= asset_path('star-off.png') %>',
+        starOn : '<%= asset_path('star-on.png') %>',
+        starHalf: '<%= asset_path('star-half.png') %>',
+        readOnly: true,
+        score: <%= review.rate %>,
+      });
+    </script>
+    <div>
+    <i class="fas fa-heart"></i><%= review.likes.count  %><!-- あとでいいねできるようにしたい -->
+    <i class="fas fa-comment"></i><%= review.comments.count %>
+    </div>
   </div>
-
-
+  </div>
+  <% end %>
+  </div>
+  </div>
+  <div class="tab-pane fade" id="item2" role="tabpanel" aria-labelledby="item2-tab">
+    <div class="d-flex  justify-content-around">
+      <%= render "user/reviews/review", reviews: @reviews %>
+    </div>
+  </div>
+</div>

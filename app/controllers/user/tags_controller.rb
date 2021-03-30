@@ -6,6 +6,7 @@ class User::TagsController < ApplicationController
   def show
     @tag = Tag.find(params[:id])
     @reviews = @tag.reviews
+    @tag_ranks = @reviews.order('likes_count desc')
   end
 
   def destroy

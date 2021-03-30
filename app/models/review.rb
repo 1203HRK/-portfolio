@@ -27,6 +27,8 @@ class Review < ApplicationRecord
   def self.create_item_ranks(item_id)
     Review.where(item_id: item_id).order('likes_count desc')
   end
+  
+
 
   # タグ登録、既存か新規か判断
   def save_tag(sent_tags)
