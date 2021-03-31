@@ -16,7 +16,7 @@
   <!-- 投稿内容 -->
   <div class="d-flex">
   <div class="my-box mr-auto">
-  <div class="h3"> アイテム名： <%= link_to @item.name, item_path(@item.id) %> </div>
+  <div class="h3"> アイテム名： <span data-toggle="tooltip" title="アイテム詳細へ"><%= link_to @item.name, item_path(@item.id) %></span></div>
   <div class="h4" id="star-rate-<%= @review.id %>">評価：<%= @review.rate %>点　</div>
   </div>
    <!-- 編集・削除 -->
@@ -102,13 +102,16 @@
   </div>
 </div>
  <script>
- $('#star-rate-<%= @review.id %>').empty();
-  $('#star-rate-<%= @review.id %>').raty({
-    size: 36,
-    starOff:  '<%= asset_path('star-off.png') %>',
-    starOn : '<%= asset_path('star-on.png') %>',
-    starHalf: '<%= asset_path('star-half.png') %>',
-    readOnly: true,
-    score: <%= @review.rate %>,
-  });
+   $('#star-rate-<%= @review.id %>').empty();
+    $('#star-rate-<%= @review.id %>').raty({
+      size: 36,
+      starOff:  '<%= asset_path('star-off.png') %>',
+      starOn : '<%= asset_path('star-on.png') %>',
+      starHalf: '<%= asset_path('star-half.png') %>',
+      readOnly: true,
+      score: <%= @review.rate %>,
+    });
+  </script>
+  <script>
+    $('[data-toggle="tooltip"]').tooltip();
   </script>
