@@ -13,14 +13,13 @@ Rails.application.routes.draw do
     registrations: 'users/registrations',
     omniauth_callbacks: 'users/omniauth_callbacks'
   }
-
-  # 新規登録後にパーソナル登録に移行する為
+  
   devise_scope :user do
-    get 'personal/select' => 'personal#select'
     post 'users/guest_sign_in', to: 'users/sessions#new_guest'
   end
 
   scope module: :user do
+    get 'personal/select' => 'personal#select'
     resources :users do
       member do
         get :following, :followers
