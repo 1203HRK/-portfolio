@@ -89,7 +89,7 @@
     <% @review_tags.each do |tag| %>
       <a><%= link_to "#" + tag.tag_name, tag_path(tag) %></a>
     <% end %>
-    <p><%= @review.created_at.strftime("%Y-%m-%d %H:%M") %></p>
+    <p class="review-date"><%= @review.created_at.strftime("%Y-%m-%d %H:%M") %></p>
   </div>
   <!-- コメント  -->
   <div style="width:80%;">
