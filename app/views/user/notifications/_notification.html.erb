@@ -4,7 +4,7 @@
 <div class="border-bottom">
   <!-- 誰が -->
   <%= link_to user_path(visitor) do %>
-    <%= attachment_image_tag visitor, :profile_image, :fill, 50, 50, format: 'jpeg', fallback: "sample.png", class: "rounded-circle" %>
+    <%= attachment_image_tag visitor, :profile_image, :fill, 50, 50, size:"50x50", format: 'jpeg', fallback: "sample.png", class: "rounded-circle" %>
     <%= visitor.name %>
   <% end %>
   <a>さんが</a>
@@ -21,7 +21,7 @@
           <%= link_to "あなたの投稿", notification.review, style: "font-weight: bold;" %>
         <% else %>
            <%= link_to review_path(notification.review) do %>
-            <%= attachment_image_tag notification.review.user, :profile_image, :fill, 30, 30, format: 'jpeg', fallback: "sample.png", class: "rounded-circle" %>
+            <%= attachment_image_tag notification.review.user, :profile_image, :fill, 30, 30, size:"30x30", format: 'jpeg', fallback: "sample.png", class: "rounded-circle" %>
               <%= notification.review.user.name + 'さんの投稿' %>
             <% end %>
         <% end %>
