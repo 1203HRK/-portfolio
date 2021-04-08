@@ -1,5 +1,5 @@
 class User::ReviewsController < ApplicationController
-  before_action :authenticate_user!, {only: [:new, :edit, :update]}
+  before_action :authenticate_user!, { only: %i[new edit update] }
 
   def new
     @review = Review.new

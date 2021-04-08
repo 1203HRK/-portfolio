@@ -1,5 +1,4 @@
 class User::CommentsController < ApplicationController
-  
   def create
     @review = Review.find(params[:review_id])
     @comment = @review.comments.build(comment_params)
@@ -12,10 +11,6 @@ class User::CommentsController < ApplicationController
       render 'show'
     end
   end
-
-  def edit; end
-
-  def updated; end
 
   def destroy
     @comment = Comment.find(params[:id])

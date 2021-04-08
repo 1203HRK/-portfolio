@@ -1,5 +1,5 @@
 class User::ItemsController < ApplicationController
-  before_action :authenticate_user!, {only: [:edit, :update, :destroy]}
+  before_action :authenticate_user!, { only: %i[edit update destroy] }
 
   def new
     @item = Item.new
@@ -28,15 +28,16 @@ class User::ItemsController < ApplicationController
     @personal = Personal.where(id: personal_user_ids)
     @personal_all_users = {}
     # @personal 'イエローベース', ブルーベース,,,etc
-    @personal.each do | personal |
-      @personal_all_users[personal.name] = PersonalUser.where(personal_id: Personal.where(name: personal.name).pluck('id')).pluck('user_id')
+    @personal.each do |personal|
+      @personal_all_users[personal.name] =
+        PersonalUser.where(personal_id: Personal.where(name: personal.name).pluck('id')).pluck('user_id')
     end
-    #personal_all_users {"ブルーベース"=>[1, 2, 3], "spring"=>[1, 2, 3]}
-    #hash[key] = value
-    #{key => value}
+    # personal_all_users {"ブルーベース"=>[1, 2, 3], "spring"=>[1, 2, 3]}
+    # hash[key] = value
+    # {key => value}
     @personal_and_review_counts = {}
     # user_ids [5,5,5]
-    user_ids.each.with_index(1) do | id, index |
+    user_ids.each.with_index(1) do |id, index|
       @personal_all_users.each do |personal_name, user_ids|
         @personal_and_review_counts[personal_name] = 0 if index == 1
         @personal_and_review_counts[personal_name] += user_ids.count(id)
