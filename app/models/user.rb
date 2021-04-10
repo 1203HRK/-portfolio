@@ -7,7 +7,7 @@ class User < ApplicationRecord
 
   attachment :profile_image
 
-  has_many :personal_users, :destroy
+  has_many :personal_users, dependent: :destroy
   has_many :personals, through: :personal_users
   has_many :reviews, dependent: :destroy
   has_many :comments, dependent: :destroy
