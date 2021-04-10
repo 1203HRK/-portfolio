@@ -21,7 +21,6 @@ class User::ItemsController < ApplicationController
     @item_ranks = Review.create_item_ranks(@item.id)
     @average = @item.reviews.average(:rate).to_f.round(1)
     @personals = Personal.all
-
     # show page users
     user_ids = @reviews.pluck('user_id')
     personal_user_ids = PersonalUser.where(user_id: user_ids.uniq).pluck('personal_id')
