@@ -1,26 +1,49 @@
-<h2>管理者用Log in</h2>
-
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
-
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+<div id="adminLouinFormWrapper">
+  <div id="form">
+    <div class="loginlogo">
+      <h2>管理者用Log in</h2>
     </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
+    <%= form_with model: @admin, url: admin_session_path, local: true do |f| %>
+      <div class="login-item">
+        <p class="loginFormLabel">Name</p>
+        <%= f.text_field :name, class:"loginForm-style", autocomplete:"off" %>
+      </div>
+      <div class="login-item">
+        <p class="loginFormLabel">Password</p>
+        <%= f.password_field :password, class:"loginForm-style", autocomplete:"off" %>
+      </div>
+      <% if devise_mapping.rememberable? %>
+        <div class="login-item">
+          <%= f.check_box :remember_me %>
+          <%= f.label :remember_me %>
+        </div>
+      <% end %>
+      <div class="login-item">
+        <%= f.submit "Log in", class:"adminLogin pull-right" %>
+      </div>
+      <div class="clear-fix"></div>
+    <% end %>
+    <%= render "admins/shared/links" %>
   </div>
-<% end %>
+</div>
 
-<%= render "admins/shared/links" %>
+<script>
+$(document).ready(function(){
+  var formInputs = $('input[type="text"],input[type="password"]');
+  formInputs.focus(function() {
+       $(this).parent().children('p.loginFormLabel').addClass('formTop');
+       $('div#adminLouinFormWrapper').addClass('darken-bg');
+       $('div.loginlogo').addClass('logo-active');
+  });
+  formInputs.focusout(function() {
+    if ($.trim($(this).val()).length == 0){
+    $(this).parent().children('p.loginFormLabel').removeClass('formTop');
+    }
+    $('div#adminLouinFormWrapper').removeClass('darken-bg');
+    $('div.loginlogo').removeClass('logo-active');
+  });
+  $('p.loginFormLabel').click(function(){
+     $(this).parent().children('.form-style').focus();
+  });
+});
+</script>
