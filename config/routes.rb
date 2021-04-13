@@ -1,23 +1,35 @@
 Rails.application.routes.draw do
+
    # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-   root to: 'home#top'
-  #devide
+  root to: 'home#top'
+
+  # devide 管理者
   devise_for :admins, controllers: {
     sessions:      'admins/sessions',
     passwords:     'admins/passwords',
     registrations: 'admins/registrations'
   }
+  # devide ユーザー
   devise_for :users, controllers: {
     sessions:      'users/sessions',
     passwords:     'users/passwords',
     registrations: 'users/registrations',
     omniauth_callbacks: 'users/omniauth_callbacks'
   }
-  
   devise_scope :user do
     post 'users/guest_sign_in', to: 'users/sessions#new_guest'
   end
 
+  #　管理者
+  namespace :admin do
+    root to: 'homes#top'
+    resources :personal
+    resources :items
+    resources :tags
+    resources :users
+  end
+
+  #　ユーザー
   scope module: :user do
     get 'personal/select' => 'personal#select'
     resources :users do
@@ -39,15 +51,11 @@ Rails.application.routes.draw do
       end
     end
     resources :notifications, only: :index
-    get   'inquiry'         => 'inquiry#index'  
-    post  'inquiry/confirm' => 'inquiry#confirm' 
+    get   'inquiry'         => 'inquiry#index'
+    post  'inquiry/confirm' => 'inquiry#confirm'
     post  'inquiry/thanks'  => 'inquiry#thanks'
     get 'search' => 'searchs#search'
   end
- 
-  namespace :admin do
-    root to: 'homes#top'
-    resources :users
-  end
-  
+
+
 end
