@@ -3,6 +3,5 @@ class Admin::ItemsController < ApplicationController
     @items = Item.all
   end
 
-  def edit
-  end
+  def edit; end
 end
