@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="row">
+    <div class="col-2"></div>
+      <div class="col-8">
+        <h2><%= @item.name %></h2>
+        <table class="table table-bordered">
+          <tr>
+            <td>Item name</td>
+            <td><%= @item.name %></td>
+          </tr>
+           <tr>
+            <td>Reviews</td>
+            <td><%= @reviews.count %></td><!-- リンクにしてレビュー一覧つくるのもありかも？ -->
+          </tr>
+          <tr>
+            <td> </td>
+            <td> </td>
+          </tr>
+        </table>
+       </div>
+    <div class="col-2"></div>
+  </div>
+</div>
