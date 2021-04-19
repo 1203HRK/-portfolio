@@ -1,5 +1,7 @@
 class Admin::TagsController < ApplicationController
-  def index; end
+  def index
+    @tags = Tag.all
+  end
 
   def edit; end
 end
