@@ -3,9 +3,9 @@ class User::SearchsController < ApplicationController
     @range = params[:range]
     @word = params[:word]
     if @range == 'Tag'
-      @tags = Tag.looks(params[:word])
+      @tags = Tag.name_like(params[:word])
     else
-      @items = Item.looks(params[:word])
+      @items = Item.name_like(params[:word])
     end
   end
 end

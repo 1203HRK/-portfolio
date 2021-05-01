@@ -3,7 +3,7 @@ class Item < ApplicationRecord
 
   validates :name, presence: true
 
-  def self.looks(words)
-    @item = Item.where('name LIKE ?', "%#{words}%")
+  def self.name_like(name)
+    where('name LIKE ?', "%#{name}%")
   end
 end

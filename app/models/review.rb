@@ -20,12 +20,12 @@ class Review < ApplicationRecord
 
   # いいねのランキング取得
   def self.create_all_ranks
-    Review.order('likes_count desc')
+    order('likes_count desc')
   end
 
   # アイテムだけのいいねのランキング取得
   def self.create_item_ranks(item_id)
-    Review.where(item_id: item_id).order('likes_count desc')
+    where(item_id: item_id).order('likes_count desc')
   end
 
   # タグ登録、既存か新規か判断
