@@ -26,6 +26,11 @@ class User < ApplicationRecord
 
   validates :name, presence: true
 
+  # ログインユーザーかどうか
+  def me?(user_id)
+   id == user_id
+  end
+
   # ゲストログイン
   def self.guest
     find_or_create_by!(email: 'guest@example.com', name: 'ゲスト') do |user|

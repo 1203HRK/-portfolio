@@ -2,11 +2,11 @@ class User::UsersController < ApplicationController
   before_action :authenticate_user!, { only: %i[edit update] }
 
   def index
-    @user = current_user
+    @me = current_user
     # フォローユーザーと自分のIDをまとめた。
     # pluck -> 引数で与えたカラムの値だけをとって配列で返す
-    follower_ids = @user.following.pluck(:id)
-    follower_ids.push(@user.id)
+    follower_ids = @me.following.pluck(:id)
+    follower_ids.push(@me.id)
     @reviews = Review.where(user_id: follower_ids).order(id: 'desc').limit(50)
     # @review_images = "noimage.jpg" 画像無しの時に表示したくて
     # @notifications = current_user.passive_notifications.where(checked: false)

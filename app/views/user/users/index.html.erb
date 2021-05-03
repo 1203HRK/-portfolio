@@ -1,5 +1,5 @@
- <div class="card border-light mx-10" style="width:100%;">
-<% @reviews.each do |review| %>
+<div class="card border-light mx-10" style="width:100%;">
+  <% @reviews.each do |review| %>
     <!-- 投稿者情報 -->
     <div class="card-header">
       <%= link_to user_path(review.user.id) do %>
@@ -9,7 +9,7 @@
      <time datetime="<%= review.created_at %>">
       <%= time_ago_in_words(review.created_at) %>前
      </time>
-     <% if review.user.id == current_user.id %>
+     <% if review.user.id == @me.id %>
      <span class="mt-1 dropdown">
       <button type="button" id="dropdown1"
           class="btn btn-outline-secondary dropdown-toggle"
@@ -33,33 +33,33 @@
         <% end %>
       </div>
       <div class="col-md-9">
-      <div class="card-body">
-        <h5 class="card-title">
-          <%= link_to review.item.name, review_path(review), class: "clearfix" %> <br>
-          <span id="star-rate-<%= review.id %>"></span>
-        </h5>
-         <script>
-         $('#star-rate-<%= review.id %>').empty();
-          $('#star-rate-<%= review.id %>').raty({
-            size: 36,
-            starOff:  '<%= asset_path('star-off.png') %>',
-            starOn : '<%= asset_path('star-on.png') %>',
-            starHalf: '<%= asset_path('star-half.png') %>',
-            readOnly: true,
-            score: <%= review.rate %>,
-          });
-         </script>
-        <%= simple_format(review.body) %>
-        <div class="d-flex">
-          <div class="my-box mr-1" id="like-<%= review.id %>">
-            <%= render partial: "user/likes/like", locals: { review: review } %>
-          </div>
-          <div class="my-box">
-            <i class="fas fa-comment"></i><%= review.comments.count %>
+        <div class="card-body">
+          <h5 class="card-title">
+            <%= link_to review.item.name, review_path(review), class: "clearfix" %> <br>
+            <span id="star-rate-<%= review.id %>"></span>
+          </h5>
+           <script>
+           $('#star-rate-<%= review.id %>').empty();
+            $('#star-rate-<%= review.id %>').raty({
+              size: 36,
+              starOff:  '<%= asset_path('star-off.png') %>',
+              starOn : '<%= asset_path('star-on.png') %>',
+              starHalf: '<%= asset_path('star-half.png') %>',
+              readOnly: true,
+              score: <%= review.rate %>,
+            });
+           </script>
+          <%= simple_format(review.body) %>
+          <div class="d-flex">
+            <div class="my-box mr-1" id="like-<%= review.id %>">
+              <%= render partial: "user/likes/like", locals: { review: review } %>
+            </div>
+            <div class="my-box">
+              <i class="fas fa-comment"></i><%= review.comments.count %>
+            </div>
           </div>
         </div>
-        </div>
+     </div>
     </div>
-  </div>
-  <% end %>
+    <% end %>
   </div>
