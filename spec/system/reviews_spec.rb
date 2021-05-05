@@ -1,3 +1,4 @@
+=begin
 require 'rails_helper'
 
 describe '投稿のテスト' do
@@ -25,14 +26,13 @@ describe '投稿のテスト' do
       end
       it "review内容を表示し、詳細・編集・削除のリンクが表示されているか" do
           (1..5).each do |i|
-            Book.create(title:'hoge'+i.to_s,body:'body'+i.to_s)
+            Review.create(i.to_s,body:'body'+i.to_s)
           end
-          visit books_path
-          Book.all.each_with_index do |book,i|
+          visit users_path
+          Review.all.each_with_index do |review,i|
             j = i * 3
-            expect(page).to have_content book.title
-            expect(page).to have_content book.body
-            # Showリンク
+            expect(page).to have_content review.body
+            # 詳細リンク
             show_link = find_all('a')[j]
             expect(show_link.native.inner_text).to match(/show/i)
             expect(show_link[:href]).to eq book_path(book)
@@ -162,3 +162,4 @@ describe '投稿のテスト' do
     end
   end
 end
+=end
