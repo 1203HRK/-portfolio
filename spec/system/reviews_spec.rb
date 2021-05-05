@@ -1,31 +1,29 @@
 require 'rails_helper'
 
 describe '投稿のテスト' do
-  let!(:book) { create(:book,title:'hoge',body:'body') }
+  let!(:review) { create(:review,body:'body') }
   describe 'トップ画面(root_path)のテスト' do
     before do 
       visit root_path
     end
-    context '表示の確認' do
-      it 'トップ画面(root_path)に一覧ページへのリンクが表示されているか' do
-        expect(page).to have_link "", href: books_path
+    context 'トップ画面(root_path)の表示の確認' do
+      it 'タイムラインへのリンクが表示されているか' do
+        expect(page).to have_link "", href: users_path
       end
       it 'root_pathが"/"であるか' do
         expect(current_path).to eq('/')
       end
     end
   end
-  describe "一覧画面のテスト" do
+  describe "タイムラインのテスト" do
     before do
-      visit books_path
+      visit users_path
     end
     context '一覧の表示とリンクの確認' do
-      it "bookの一覧表示(tableタグ)と投稿フォームが同一画面に表示されているか" do
-        expect(page).to have_selector 'table'
-        expect(page).to have_field 'book[title]'
-        expect(page).to have_field 'book[body]'
+      it "reviewの一覧表示(card)がされているか" do
+        expect(page).to have_selector 'card'
       end
-      it "bookのタイトルと感想を表示し、詳細・編集・削除のリンクが表示されているか" do
+      it "review内容を表示し、詳細・編集・削除のリンクが表示されているか" do
           (1..5).each do |i|
             Book.create(title:'hoge'+i.to_s,body:'body'+i.to_s)
           end
