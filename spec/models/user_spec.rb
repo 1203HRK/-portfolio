@@ -12,5 +12,20 @@ RSpec.describe User, "モデルに関するテスト", type: :model do
       expect(user).to be_invalid
       expect(user.errors[:name]).to include("を入力してください")
     end
+    it "emailが空白の場合にバリデーションチェックされ空白のエラーメッセージが返ってきているか" do
+      user = build(:user, email: nil)
+      expect(user).to be_invalid
+      expect(user.errors[:email]).to include("を入力してください")
+    end
+    it "passwordが空白の場合にバリデーションチェックされ空白のエラーメッセージが返ってきているか" do
+      user = build(:user, password: nil)
+      expect(user).to be_invalid
+      expect(user.errors[:password]).to include("を入力してください")
+    end
+    it "passwordが不一致の場合、エラーメッセージが返ってきているか" do
+      user = build(:user, password: "111111")
+      expect(user).to be_invalid
+      expect(user.errors[:password_confirmation]).to be_present
+    end
   end
 end
