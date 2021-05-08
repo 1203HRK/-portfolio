@@ -1,4 +1,3 @@
-=begin
 require 'rails_helper'
 
 RSpec.describe Review, "モデルに関するテスト", type: :model do
@@ -8,4 +7,3 @@ RSpec.describe Review, "モデルに関するテスト", type: :model do
     end
   end
 end
-=end
